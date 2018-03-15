@@ -20,6 +20,10 @@
     animation: weirdo       9s infinite ease-in-out;
 }
 
+.falling {
+    color: red;
+}
+
 @keyframes weirdo {
     0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
     50% { transform: rotateX(-10deg) rotateY(20deg) rotateZ(100deg); }
