@@ -26,10 +26,10 @@ export const init = async (rootSelector, selectedFilename) => {
         slidesUtil.createSlide(createFct, "threejstitle", selectedFilename),
         slidesUtil.createSlide(createFct, "positionRotation", selectedFilename),
         slidesUtil.createSlide(createFct, "simplartitle", selectedFilename),
-        slidesUtil.createSlide(createFct, "pagejstitle", selectedFilename),
         slidesUtil.createSlide(createFct, "pagejs", selectedFilename),
-        slidesUtil.createSlide(createFct, "codejstitle", selectedFilename),
         slidesUtil.createSlide(createFct, "codejs", selectedFilename),
+        slidesUtil.createSlide(createFct, "qrcode2", selectedFilename),
+        slidesUtil.createSlide(createFct, "final", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {
