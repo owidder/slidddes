@@ -17,7 +17,7 @@ const addOffsetToPhaseFrom0To2 = (phase, offset = 0) => {
     return newPhase >= 0 ? newPhase : newPhase + 2;
 }
 
-export const randomSphereInit = (numberOfPossiblePlaces) => {
+export const randomSphereInit = (numberOfPossiblePlaces, radius) => {
     const shuffledPlaces = _.shuffle(_.range(0, numberOfPossiblePlaces-1));
 
     return (i, offset = 0) => {
@@ -26,9 +26,9 @@ export const randomSphereInit = (numberOfPossiblePlaces) => {
         const theta = Math.sqrt((numberOfPossiblePlaces - 1) * Math.PI) * phi;
 
         const random = new THREE.Object3D();
-        random.position.x = 800 * Math.cos(theta) * Math.sin(phi);
-        random.position.y = 800 * Math.sin(theta) * Math.sin(phi);
-        random.position.z = 800 * Math.cos(phi);
+        random.position.x = radius * Math.cos(theta) * Math.sin(phi);
+        random.position.y = radius * Math.sin(theta) * Math.sin(phi);
+        random.position.z = radius * Math.cos(phi);
 
         const vector = new THREE.Vector3();
         vector.copy(random.position).multiplyScalar(-2);

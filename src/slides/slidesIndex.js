@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import {log} from '../util/log';
-import {setArPositionRotation, TYPE_RING, ringInit} from '../ar/arPositions';
+import {setArPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/arPositions';
 import {init} from '../ar/argonApp';
 import {connect} from './control/commandHub';
 import {executeCommand, COMMAND_INIT} from './control/commandExecutor';
@@ -39,8 +39,21 @@ const addHudButtons = () => {
 }
 
 const createPositionFunction = (type, radius) => {
-    if(type == TYPE_RING && radius > 0) {
-        return ringInit(Number(radius));
+    switch (type) {
+        case TYPE_RING:
+            if(radius > 0) {
+                return ringInit(Number(radius));
+            }
+
+        case TYPE_SPHERE:
+            if(radius > 0) {
+                return sphereInit(Number(radius));
+            }
+
+        case TYPE_SPHERE_RANDOM:
+            if(radius > 0) {
+                return randomSphereInit(50, Number(radius));
+            }
     }
 }
 
