@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&effect=anaglyph" rel="stylesheet">
+    <link href="./slides/3dd3/style.css" rel="stylesheet">
+</head>
+
+<style>
+    @keyframes xaxis {
+        0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        50% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+    }
+
+    .xaxis {
+        animation: xaxis 6s infinite ease-in-out;
+    }
+
+    @keyframes totaly {
+        0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+    }
+
+    .totaly {
+        animation: totaly 10s infinite ease-in-out;
+    }
+
+    @keyframes totalz {
+        0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg); }
+    }
+
+    .totalz {
+        animation: totalz 20s infinite ease-in-out;
+    }
+</style>
+<body>
+
+<div class="slidecounter"></div>
+
+<div class="title slide-title">
+    <div id="totalz">
+        <div id="totaly">
+            <div class="char font-effect-anaglyph">D</div>
+            <div class="char font-effect-anaglyph">O</div>
+            <div class="char font-effect-anaglyph">M</div>
+            <div class="char font-effect-anaglyph">b</div>
+            <div class="char font-effect-anaglyph">a</div>
+            <div class="char font-effect-anaglyph">s</div>
+            <div class="char font-effect-anaglyph">e</div>
+            <div class="char font-effect-anaglyph">d</div>
+            <div class="char font-effect-anaglyph">A</div>
+            <div class="char font-effect-anaglyph">R</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var timer1, timer2;
+
+        function animate() {
+            slidAR.classUtil.setClass(".slide-title div.char", "xaxis", 100);
+            timer1 = setTimeout(function () {
+                slidAR.classUtil.setClass("#totaly", "totaly");
+            }, 10000);
+            timer2 = setTimeout(function () {
+                slidAR.classUtil.setClass("#totalz", "totalz");
+            }, 20000);
+        }
+
+        function _animate() {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+            slidAR.classUtil.removeClass(".slide-title div.char", "xaxis");
+            slidAR.classUtil.removeClass("#totaly", "totaly");
+            slidAR.classUtil.removeClass("#totalz", "totalz");
+        }
+
+
+        slidAR.steps.set("title", [
+            {f: animate, b: _animate, demo: true},
+        ]);
+    })()
+</script>
+
+</body>
+</html>

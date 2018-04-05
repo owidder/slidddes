@@ -1,0 +1,246 @@
+<style>
+
+    #cube-container {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 40vh;
+        left: 40vw;
+        font-size: 3em;
+        perspective: 800px;
+    }
+
+    #_cube {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+    }
+
+    #cube .cube-side {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        margin: 0;
+        display: block;
+        opacity: 0.5;
+    }
+
+    #cube-back {
+        background-color: #0f9d58;
+        color: white;
+    }
+
+    @keyframes cube-animate-back {
+        100% {transform: rotateY(-180deg) translateZ(100px);}
+    }
+
+    #cube .animate-back {
+        animation: cube-animate-back 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    #cube-top {
+        background-color: #4a148c;
+        color: white;
+    }
+
+    @keyframes cube-animate-top {
+        100% {transform: rotateX(90deg) translateZ(100px)}
+    }
+
+    #cube .animate-top {
+        animation: cube-animate-top 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    #cube-bottom {
+        background-color: #9e9d24;
+        color: black;
+    }
+
+    @keyframes cube-animate-bottom {
+        100% {transform: rotateX(-90deg) translateZ(100px)}
+    }
+
+    #cube .animate-bottom {
+        animation: cube-animate-bottom 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    #cube-left {
+        background-color: #37474f;
+        color: white;
+    }
+
+    @keyframes cube-animate-left {
+        100% {transform: rotateY(-90deg) translateZ(100px)}
+    }
+
+    #cube .animate-left {
+        animation: cube-animate-left 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    #cube-right {
+        background-color: #880e4f;
+        color: white;
+    }
+
+    @keyframes cube-animate-right {
+        100% {transform: rotateY(90deg) translateZ(100px)}
+    }
+
+    .animate-right {
+        animation: cube-animate-right 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    #cube-front {
+        background-color: #d4e157;
+        color: black;
+    }
+
+    @keyframes cube-animate-front {
+        100% {transform: translateZ(100px)}
+    }
+
+    #cube .animate-front {
+        animation: cube-animate-front 1s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes cube-animate-cube {
+        100% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+    }
+
+    #cube .animate-cube {
+        animation: cube-animate-cube 10s infinite ease-in-out;
+    }
+
+    @keyframes cube-perspective-x {
+        40% {perspective-origin: 500%}
+        80% {perspective-origin: -500%}
+        100% {perspective-origin: 0%}
+    }
+
+    #cube .animate-perspective-x {
+        animation: cube-perspective-x 10s infinite ease-in-out;
+    }
+
+    @keyframes cube-perspective-y {
+        40% {perspective-origin: 0% 500%}
+        80% {perspective-origin: 0% -500%}
+        100% {perspective-origin: 0% 0%}
+    }
+
+    #cube .animate-perspective-y {
+        animation: cube-perspective-y 10s infinite ease-in-out;
+    }
+
+</style>
+
+<div class="slidecounter"></div>
+
+<div id="cube-container">
+    <div id="_cube">
+        <span></span>
+        <!--<div id="cube-back" class="cube-side">Back</div>-->
+    </div>
+</div>
+
+<div class="code"></div>
+
+<script>
+
+    (function () {
+
+        const backCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".back {\n" +
+            "        transform: rotateY(-180deg) translateZ(100px);\n" +
+            "    }")
+
+        const topCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".top {\n" +
+            "        transform: rotateX(90deg) translateZ(100px)\n" +
+            "    }")
+
+        const bottomCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".bottom {\n" +
+            "        transform: rotateX(-90deg) translateZ(100px)\n" +
+            "    }")
+
+        const leftCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".left {\n" +
+            "        transform: rotateY(-90deg) translateZ(100px)\n" +
+            "    }")
+
+        const rightCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".right {\n" +
+            "        transform: rotateY(90deg) translateZ(100px)\n" +
+            "    }")
+
+        const frontCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", ".front{\n" +
+            "        transform: translateZ(100px)\n" +
+            "    }")
+
+        const tooltipStep = slidAR.tooltip.createPtStepWithReverse("div.cube", "#_cube", slidAR.tooltip.TOP);
+
+        const keyframeCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", "    @keyframes animate-cube {\n" +
+            "        100% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}\n" +
+            "    }\n" +
+            "\n" +
+            "    .cube {\n" +
+            "        animation: animate-cube 10s infinite ease-in-out;\n" +
+            "    }\n");
+
+        const animateStep = slidAR.classUtil.setClassStepWithReverse("#_cube", "animate-cube");
+
+        const perspectiveXCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", "@keyframes perspective-x {\n" +
+            "        40% {perspective-origin: 500%}\n" +
+            "        80% {perspective-origin: -500%}\n" +
+            "        100% {perspective-origin: 0%}\n" +
+            "    }\n" +
+            "\n" +
+            "    .animate-perspective-x {\n" +
+            "        animation: perspective-x 10s infinite ease-in-out;\n" +
+            "    }");
+
+        const perspectiveXStep = slidAR.classUtil.setClassStepWithReverse("#cube-container", "animate-perspective-x");
+
+        const perspectiveYCodeStep = slidAR.showCode.cssStepWithReverse("#cube .code", "@keyframes perspective-y {\n" +
+            "        40% {perspective-origin: 0% 500%}\n" +
+            "        80% {perspective-origin: 0% -500%}\n" +
+            "        100% {perspective-origin: 0% 0%}\n" +
+            "    }\n" +
+            "\n" +
+            "    .animate-perspective-y {\n" +
+            "        animation: perspective-y 10s infinite ease-in-out;\n" +
+            "    }");
+
+        const perspectiveYStep = slidAR.classUtil.setClassStepWithReverse("#cube-container", "animate-perspective-y");
+
+        slidAR.createElement.div("#_cube span", "cube-back", ["cube-side"], "Back"),
+
+        slidAR.steps.set("cube", [
+            backCodeStep.step,
+            slidAR.classUtil.setClassStep("#cube-back", "animate-back"),
+            slidAR.steps.combineSteps([backCodeStep.reverseStep, slidAR.createElement.divStep("#_cube span", "cube-top", ["cube-side"], "Top")]),
+            topCodeStep.step,
+            slidAR.classUtil.setClassStep("#cube-top", "animate-top"),
+            slidAR.steps.combineSteps([topCodeStep.reverseStep, slidAR.createElement.divStep("#_cube span", "cube-bottom", ["cube-side"], "Bottom"), bottomCodeStep.step]),
+            slidAR.classUtil.setClassStep("#cube-bottom", "animate-bottom"),
+            slidAR.steps.combineSteps([bottomCodeStep.reverseStep, slidAR.createElement.divStep("#_cube span", "cube-left", ["cube-side"], "Left"), leftCodeStep.step]),
+            slidAR.classUtil.setClassStep("#cube-left", "animate-left"),
+            slidAR.steps.combineSteps([leftCodeStep.reverseStep, slidAR.createElement.divStep("#_cube span", "cube-right", ["cube-side"], "Right"), rightCodeStep.step]),
+            slidAR.classUtil.setClassStep("#cube-right", "animate-right"),
+            slidAR.steps.combineSteps([rightCodeStep.reverseStep, slidAR.createElement.divStep("#_cube span", "cube-front", ["cube-side"], "Front"), frontCodeStep.step]),
+            slidAR.classUtil.setClassStep("#cube-front", "animate-front"),
+            slidAR.steps.combineSteps([frontCodeStep.reverseStep, tooltipStep.step]),
+            slidAR.steps.combineSteps([tooltipStep.reverseStep, keyframeCodeStep.step]),
+            Object.assign({}, animateStep.step, {demo: true}),
+            slidAR.steps.combineSteps([animateStep.reverseStep, keyframeCodeStep.reverseStep]),
+            perspectiveXCodeStep.step,
+            perspectiveXStep.step,
+            slidAR.steps.combineSteps([perspectiveXStep.reverseStep, perspectiveXCodeStep.reverseStep]),
+            perspectiveYCodeStep.step,
+            perspectiveYStep.step,
+        ])
+    })()
+
+</script>

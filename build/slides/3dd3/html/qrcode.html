@@ -1,0 +1,21 @@
+<style>
+
+    #qrcode .text {
+        margin-left: 30%;
+        font-size: 2em;
+    }
+
+</style>
+
+<div class="qrcode title"></div><br>
+<div class="text"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const address = slidAR.qrUtil.qrCurrentAddress("#qrcode .qrcode", "master=1");
+        $("#qrcode .text").html(address);
+    })()
+</script>

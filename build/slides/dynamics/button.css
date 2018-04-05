@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+.dynamics button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -74px;
+    margin-top: -21px;
+    background: transparent;
+    border: none;
+    width: 148px;
+    height: 43px;
+    padding: 0;
+    overflow: visible;
+}
+.dynamics button span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font: 22px 'Source Sans Pro', 'HelveticaNeue', Arial;
+    line-height: 41px;
+    color: #fff;
+    text-align: center;
+}

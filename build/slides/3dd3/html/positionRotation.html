@@ -1,0 +1,146 @@
+<style>
+
+    #positionRotation {
+        border-width: 1px;
+        background-color: lightgray;
+    }
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        if(slidAR.slidarGlobal.withAr) {
+
+            const ttPos = function() {
+                const position = slidAR.positionRotation.getPosition("positionRotation");
+                const posString = "<b>POSITION</b><br>x: " + Math.round(position.x) +
+                    ", <br>y: " + Math.round(position.y) +
+                    ", <br>z: " + Math.round(position.z);
+                slidAR.tooltip.createPt(posString, "#positionRotation", slidAR.tooltip.TOP);
+            }
+
+            const _ttPosStep = {
+                f: ttPos,
+                b: function () {
+                    slidAR.tooltip.removePt("#positionRotation")
+                }
+            }
+            const ttPosStep = slidAR.steps.createReverseStep(_ttPosStep);
+
+            const ttRot = function () {
+                const rotation = slidAR.positionRotation.getRotation("positionRotation");
+                const rotString = "<b>ROTATION</b><br>x: " + slidAR.math.round(rotation.x, 2) +
+                    ", <br>y: " + slidAR.math.round(rotation.y, 2) +
+                    ", <br>z: " + slidAR.math.round(rotation.z, 2);
+                slidAR.tooltip.createPt(rotString, "#positionRotation", slidAR.tooltip.BOTTOM);
+            }
+
+            const _ttRotStep = {
+                f: ttRot,
+                b: function() {
+                    slidAR.tooltip.removePt("#positionRotation")
+                }
+            }
+            const ttRotStep = slidAR.steps.createReverseStep(_ttRotStep);
+
+            const codeStepX = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.position)\n" +
+                "            .to({x: 5000}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const positionXStep = slidAR.positionRotation.toPositionStepWithReverse("positionRotation", {x: 5000})
+
+            const codeStepY = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.position)\n" +
+                "            .to({y: 5000}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const positionYStep = slidAR.positionRotation.toPositionStepWithReverse("positionRotation", {y: 5000})
+
+            const codeStepZ1 = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.position)\n" +
+                "            .to({z: 50000}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const positionZ1Step = slidAR.positionRotation.toPositionStepWithReverse("positionRotation", {z: 50000})
+
+            const codeStepZ2 = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.position)\n" +
+                "            .to({z: -3000}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const positionZ2Step = slidAR.positionRotation.toPositionStepWithReverse("positionRotation", {z: -3000})
+
+            const codeStepRotX = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.rotation)\n" +
+                "            .to({x: 0}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const rotationStepX = slidAR.positionRotation.toRotationStepWithReverse("positionRotation", {x: 0})
+
+            const codeStepRotY = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.rotation)\n" +
+                "            .to({y: Math.PI}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const rotationStepY = slidAR.positionRotation.toRotationStepWithReverse("positionRotation", {y: Math.PI})
+
+            const codeStepRotZ = slidAR.showCode.jsStepWithReverse("#positionRotation .code",
+                "new TWEEN.Tween(threeCss3dObject.rotation)\n" +
+                "            .to({z: 0}, 1000)\n" +
+                "            .easing(TWEEN.Easing.Exponential.InOut)\n" +
+                "            .start();");
+
+            const rotationStepZ = slidAR.positionRotation.toRotationStepWithReverse("positionRotation", {z: 0})
+
+            slidAR.steps.set("positionRotation", [
+                ttPosStep.step,
+                codeStepX.step,
+                positionXStep.step,
+                positionXStep.reverseStep,
+                codeStepX.reverseStep,
+                codeStepY.step,
+                positionYStep.step,
+                positionYStep.reverseStep,
+                codeStepY.reverseStep,
+                codeStepZ1.step,
+                positionZ1Step.step,
+                positionZ1Step.reverseStep,
+                codeStepZ1.reverseStep,
+                codeStepZ2.step,
+                positionZ2Step.step,
+                positionZ2Step.reverseStep,
+                codeStepZ2.reverseStep,
+                ttRotStep.step,
+                codeStepRotX.step,
+                rotationStepX.step,
+                rotationStepX.reverseStep,
+                codeStepRotX.reverseStep,
+                codeStepRotY.step,
+                rotationStepY.step,
+                rotationStepY.reverseStep,
+                codeStepRotY.reverseStep,
+                codeStepRotZ.step,
+                rotationStepZ.step,
+            ]);
+        }
+        else {
+            console.log('This slide only works in AR mode');
+            slidAR.showCode.js("#positionRotation .code", "console.log('This slide only works in AR mode')");
+        }
+
+    })()
+
+</script>

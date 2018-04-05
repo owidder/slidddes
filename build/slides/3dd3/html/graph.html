@@ -1,0 +1,178 @@
+<style>
+
+    @keyframes graph-animate-cube {
+        33% {transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+    }
+
+    #graph .animate-cube {
+        animation: graph-animate-cube 20s infinite ease-in-out;
+    }
+
+    #graph .with-angels {
+        background-image: url("./img/angels.png");
+        background-size: cover;
+        background-position: left top;
+    }
+
+    #graph .with-water {
+        background-image: url("./img/water.png");
+        background-size: cover;
+        background-position: left top;
+    }
+
+    #graph .with-bird {
+        background-image: url("./img/bird.png");
+        background-size: cover;
+        background-position: left top;
+    }
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div id="graphcube">
+</div>
+
+<script src="./lib/dynamics.js"></script>
+<script src="./slides/3dd3/js/chart.js"></script>
+<script src="./slides/3dd3/js/graph.js"></script>
+<script>
+
+    /* global Chart */
+    /* global slidAR */
+
+    (function () {
+
+        const pieChartCode = slidAR.showCode.jsStepWithReverse("#graph .code",
+            "var context = document.querySelector(div.front canvas).getContext('2d')\n" +
+            "var config = {\n" +
+            "   type: 'pie',\n" +
+            "   data: {\n" +
+            "       datasets: [{\n" +
+            "           data: [random0To100(), random0To100(), random0To100(), random0To100(), random0To100()],\n" +
+            "           backgroundColor: [chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue],\n" +
+            "           label: 'Dataset 1'\n" +
+            "       }],\n" +
+            "       labels: [\"Red\", \"Orange\", \"Yellow\", \"Green\", \"Blue\"]\n" +
+            "   },\n" +
+            "   options: {responsive: true}\n" +
+            "};\n" +
+            "\n" +
+            "new Chart(context, config);\n");
+
+        const donutCharCode = slidAR.showCode.jsStepWithReverse("#graph .code",
+            "var context = document.querySelector(div.left canvas).getContext('2d')\n" +
+            "var config = {\n" +
+            "   type: 'doughnut',\n" +
+            "   data: {\n" +
+            "       datasets: [{\n" +
+            "           data: [random0To100(), random0To100(), random0To100(), random0To100(), random0To100()],\n" +
+            "           backgroundColor: [chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue],\n" +
+            "           label: 'Dataset 1'\n" +
+            "       }],\n" +
+            "       labels: [\"Red\", \"Orange\", \"Yellow\", \"Green\", \"Blue\"]\n" +
+            "   },\n" +
+            "   options: {\n" +
+            "       responsive: true,\n" +
+            "       legend: {position: 'top'},\n" +
+            "       title: {\n" +
+            "           display: true,\n" +
+            "           text: 'Chart.js Doughnut Chart'\n" +
+            "       },\n" +
+            "       animation: {\n" +
+            "           animateScale: true,\n" +
+            "           animateRotate: true\n" +
+            "       }\n" +
+            "   }\n" +
+            "};\n" +
+            "\n" +
+            "new Chart(context, config);");
+
+        const pinCode = slidAR.showCode.jsStepWithReverse("#graph .code",
+            "var svg d3.select(\"div.top svg\")\n" +
+            "var g = svg.append(\"g\")\n" +
+            "   .attr(\"transform\", \"translate(50,50)\")\n" +
+            "\n" +
+            "g.append(\"path\")\n" +
+            "   .attr(\"d\", \"M38 106.7c2.4 0 37.7-43 37.8-68.8 0-21-17-38-38-38C17 0 0 17 0 38c.4 27 35.4 68.7 38 68.7z\")\n" +
+            "   .attr(\"fill\", \"#EC1A0A\")\n" +
+            "\n" +
+            "g.append(\"ellipse\")\n" +
+            "   .attr(\"fill\", \"#FFF\")\n" +
+            "   .attr(\"cx\", \"38.1\")\n" +
+            "   .attr(\"cy\", \"38.1\")\n" +
+            "   .attr(\"rx\", \"23.1\")\n" +
+            "   .attr(\"ry\", \"23.1\")\n")
+
+        const pinAnimateCode = slidAR.showCode.jsStepWithReverse("#graph .code",
+            "function horizontalBounce() {\n" +
+            "    dynamics.animate(div, \n" +
+            "        {rotateZ: -45}, \n" +
+            "        {type: dynamics.bounce, duration: 1800, complete: verticalBounce})\n" +
+            "}\n" +
+            "\n" +
+            "function verticalBounce() {\n" +
+            "    dynamics.animate(svg, \n" +
+            "        {scaleY: 0.8}, \n" +
+            "        {type: dynamics.bounce, duration: 800, bounciness: 0})\n" +
+            "\n" +
+            "    dynamics.animate(div, \n" +
+            "        {translateY: -60}, \n" +
+            "        {type: dynamics.forceWithGravity, bounciness: 0, duration: 500, delay: 150})\n" +
+            "\n" +
+            "    dynamics.animate(svg, \n" +
+            "        {scaleY: 0.8}, \n" +
+            "        {type: dynamics.bounce, duration: 800, bounciness: 600, delay: 650, complete: horizontalBounce})\n" +
+            "}\n" +
+            "\n" +
+            "horizontalBounce()\n")
+
+        const tooltipStepFront = slidAR.tooltip.createPtStepWithReverse("div.front canvas", "#graphcube .front", slidAR.tooltip.TOP);
+        const tooltipStepLeft = slidAR.tooltip.createPtStepWithReverse("div.right canvas", "#graphcube .right", slidAR.tooltip.TOP);
+        const tooltipStepTop = slidAR.tooltip.createPtStepWithReverse("div.top svg", "#graphcube .top", slidAR.tooltip.TOP);
+        const tooltipStepBack = slidAR.tooltip.createPtStepWithReverse("div.back div", "#graphcube .back", slidAR.tooltip.TOP);
+
+        const imageCssCode = slidAR.showCode.cssStepWithReverse("#graph .code",
+            "div.back {\n" +
+            "   background-image: url(\"./img/angels.png\");\n" +
+            "   background-size: cover;\n" +
+            "   background-position: left top;\n" +
+            "}\n")
+
+        const imageStepAngels = slidAR.classUtil.setClassStepWithReverse("#graphcube .back", "with-angels");
+        const imageStepWater = slidAR.classUtil.setClassStepWithReverse("#graphcube .left", "with-water");
+        const imageStepBird = slidAR.classUtil.setClassStepWithReverse("#graphcube .bottom", "with-bird");
+
+        slidAR.cube.create("#graphcube", 200);
+
+        slidAR.steps.set("graph", [
+            tooltipStepFront.step,
+            pieChartCode.step,
+            {f: _graph_pie, b: _graph_clean_pie},
+            pieChartCode.reverseStep,
+            tooltipStepLeft.step,
+            donutCharCode.step,
+            {f: _graph_donut, b: _graph_clean_donut},
+            donutCharCode.reverseStep,
+            tooltipStepTop.step,
+            pinCode.step,
+            {f: _graph_pin, b: _graph_clean_pin},
+            pinCode.reverseStep,
+            pinAnimateCode.step,
+            {f: _graph_pin_animate, b: _graph_pin_stop_animate},
+            pinAnimateCode.reverseStep,
+            tooltipStepBack.step,
+            imageCssCode.step,
+            imageStepAngels.step,
+            imageCssCode.reverseStep,
+            imageStepWater.step,
+            Object.assign({}, imageStepBird.step, {demo: true}),
+        ])
+
+    })()
+
+
+</script>

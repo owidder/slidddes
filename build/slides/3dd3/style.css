@@ -1,0 +1,28 @@
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+.char {
+    margin: .1em;
+    height: 2em;
+    width: 1em;
+    background-color: pink;
+    font-family: Montserrat, sans-serif;
+    font-size: 5em;
+    text-align: center;
+    line-height: 2em;
+    float: left;
+}
+
+.weirdo {
+    animation: weirdo       9s infinite ease-in-out;
+}
+
+@keyframes weirdo {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    50% { transform: rotateX(-10deg) rotateY(20deg) rotateZ(100deg); }
+    75% { transform: rotateX(-190deg) rotateY(200deg) rotateZ(-100deg); }
+}
+

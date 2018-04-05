@@ -1,0 +1,36 @@
+<style>
+
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        slidAR.showCode.js("#argon .code",
+            "const app = Argon.init();\n" +
+            "app.view.element.style.zIndex = 0;\n" +
+            "\n" +
+            "const renderer = new THREE.CSS3DArgonRenderer();\n" +
+            "const hud = new THREE.CSS3DArgonHUD();\n" +
+            "\n" +
+            "app.view.element.appendChild(renderer.domElement);\n" +
+            "app.view.element.appendChild(hud.domElement);\n" +
+            "\n" +
+            "const camera = new THREE.PerspectiveCamera();\n" +
+            "const scene = new THREE.Scene();\n" +
+            "\n" +
+            "const root = new THREE.Object3D();\n" +
+            "const userLocation = new THREE.Object3D();\n" +
+            "userLocation.add(root);\n" +
+            "\n" +
+            "scene.add(userLocation);\n" +
+            "scene.add(camera);\n" +
+            "\n" +
+            "app.context.setDefaultReferenceFrame(app.context.localOriginEastUpSouth);\n");
+    })()
+</script>

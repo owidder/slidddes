@@ -1,0 +1,27 @@
+<style>
+
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        slidAR.showCode.js("#codejs .code",
+            "simplAR.initAr();\n" +
+            "simplAR.initTween();\n" +
+            "const radius = simplAR.paramValue(\"radius\");\n" +
+            "simplAR.ring(radius);\n" +
+            "simplAR.sphere(radius);\n" +
+            "simplAR.table(numberOfColumns, cellWidth, cellHeight, xOffset, yOffset, zOffset);\n" +
+            "simplAR.rotate();\n" +
+            "const socket = simplAR.connect(function(messageString) {...});\n" +
+            "simplAR.send(socket, messageString);\n" +
+            "simplAR.toPosition(pageId, newPosition, duration);\n" +
+            "simplAR.toRotation(pageId, newRotation, duration);\n");
+    })()
+</script>

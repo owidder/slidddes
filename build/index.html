@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta http-equiv="origin-trial" data-feature="WebVR" data-expires="2017-06-06" content="ArfXzMSluPfAfoVDD+ne9oWykUyDeLFD/z4/0uRCdZ1491aSrytWyj7gnGhwK1/Tzg/D+UOvNgD2+L9PWqF5XwwAAABceyJvcmlnaW4iOiJodHRwczovL2FyZ29uanMuaW86NDQzIiwiZmVhdHVyZSI6IldlYlZSIiwiZXhwaXJ5IjoxNDk2NzcxODA0LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+    <meta name="theme-color" content="#333333">
+
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/material-icons.css">
+    <link rel="stylesheet" type="text/css" href="./css/protip.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/prism.css">
+
+    <script src="lib/argon-1.4.0.js"></script>
+    <script src="lib/three.min.js"></script>
+    <script src="lib/tween.min.js"></script>
+    <script src="lib/CSS3DArgonRenderer.js"></script>
+    <script src="lib/CSS3DArgonHUD.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/protip.min.js"></script>
+    <script src="lib/d3.js"></script>
+    <script src="lib/Chart.js"></script>
+    <script src="lib/chartsUtils.js"></script>
+    <script src="lib/qrcode.js"></script>
+
+    <link rel="manifest" href="/radAR/build/manifest.json">
+    <link rel="shortcut icon" href="/radAR/build/favicon.ico">
+    <title>DOM based AR</title>
+<link href="/radAR/build/static/css/main.e1d5f32a.css" rel="stylesheet"></head>
+<body>
+<div id="container"></div>
+<div id="_hud" style="pointer-events:auto">
+    <div class="menu">
+        <button onclick="simplAR.move(10)" class="lefthud"><i class="material-icons">keyboard_arrow_left</i></button>
+        <button onclick="simplAR.move(-10)" class="righthud"><i class="material-icons">keyboard_arrow_right</i></button>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $.protip();
+    });
+</script>
+<script src="../public/code/pages.js"></script>
+<script src="../public/code/code.js"></script>
+<script src="../public/code/stockprices.js"></script>
+<script src="../public/js/simplAR.js"></script>
+<script type="text/javascript" src="/radAR/build/static/js/main.82655bb6.js"></script></body>
+</html>

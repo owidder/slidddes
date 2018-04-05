@@ -1,0 +1,15 @@
+.dynamics .loader {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    margin-left: -60px;
+    margin-top: -12px;
+}
+.dynamics .dot {
+    float: left;
+    margin: 0 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: black;
+}

@@ -1,0 +1,23 @@
+.dynamics .spinner {
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    margin-left: -60px;
+    margin-top: -60px;
+    overflow: visible;
+    opacity: 0;
+}
+.dynamics .line {
+    stroke: #0083FF;
+    stroke-width: 10;
+    stroke-dasharray: 120, 37;
+    stroke-linecap: square;
+    stroke-linejoin: round;
+    fill: transparent;
+}
+.dynamics .arrow {
+    fill: #0083FF;
+}
+.dynamics .tick {
+    opacity: 0;
+}

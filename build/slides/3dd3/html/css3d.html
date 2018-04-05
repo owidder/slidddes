@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&effect=anaglyph" rel="stylesheet">
+    <link href="./slides/3dd3/style.css" rel="stylesheet">
+</head>
+
+<style>
+    .rotatex {
+        transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);
+    }
+
+    @keyframes rotate {
+        0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        50% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg); }
+        100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
+    }
+
+    .rotate {
+        animation: rotate 6s infinite ease-in-out;
+    }
+
+</style>
+
+<body>
+
+<div class="slidecounter"></div>
+
+<div class="title">
+    <span class="char1"><div class="char char1 font-effect-anaglyph">c</div></span>
+    <div class="char font-effect-anaglyph">s</div>
+    <div class="char font-effect-anaglyph">s</div>
+    <div class="char font-effect-anaglyph">3</div>
+    <span class="char5"><div class="char char5 font-effect-anaglyph">d</div></span>
+</div>
+
+<div id="transform-code"></div>
+<div class="code"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        function showBorder() {
+            slidAR.highlight.animatedBorder(".title div.char.char1", slidAR.highlight.DARK_COLOR_CLASS);
+        }
+
+        function _showBorder() {
+            slidAR.highlight.removeBorder(".title div.char.char1");
+        }
+
+        function showTooltip() {
+            slidAR.tooltip.createPt("div.char1", ".title span.char1", slidAR.tooltip.TOP);
+        }
+
+        function _showTooltip() {
+            slidAR.tooltip.removePt(".title span.char1", slidAR.tooltip.TOP);
+        }
+
+        function showCodeTransform() {
+            slidAR.showCode.css("#transform-code", "div.char1 {\n\ttransform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);\n}")
+        }
+
+        function _showCodeTransform() {
+            slidAR.showCode.remove("#transform-code");
+        }
+
+        function rotateX() {
+            $(".title span.char1").addClass("rotatex");
+        }
+
+        function _rotateX() {
+            $(".title span.char1").removeClass("rotatex");
+        }
+
+        function showBorderAndTooltip() {
+            slidAR.highlight.animatedBorder(".title div.char.char5", slidAR.highlight.DARK_COLOR_CLASS);
+            slidAR.tooltip.createPt("div.char5", ".title span.char5", slidAR.tooltip.TOP);
+        }
+
+        function _showBorderAndTooltip() {
+            slidAR.highlight.removeBorder(".title div.char.char5");
+            slidAR.tooltip.removePt(".title span.char5", slidAR.tooltip.TOP);
+        }
+
+        function showCodeAnimate() {
+            slidAR.showCode.css("#css3d .code", "@keyframes rotate {\n" +
+                "        0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }\n" +
+                "        50% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg); }\n" +
+                "        100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }\n" +
+                "    }\n" +
+                "\n" +
+                "div.char5 {\n" +
+                "        animation: rotate 6s infinite ease-in-out;\n" +
+                "}")
+        }
+
+        function _showCodeAnimate() {
+            slidAR.showCode.remove("#css3d .code");
+        }
+
+        function rotate() {
+            $(".title span.char5").addClass("rotate");
+        }
+
+        function _rotate() {
+            $(".title span.char5").removeClass("rotate");
+        }
+
+        window.slidAR.steps.set("css3d", [
+            {f: showBorder, b: _showBorder},
+            {f: showTooltip, b: _showTooltip},
+            {f: showCodeTransform, b: _showCodeTransform},
+            {f: rotateX, b: _rotateX},
+            {f: showBorderAndTooltip, b: _showBorderAndTooltip},
+            {f: showCodeAnimate, b: _showCodeAnimate},
+            {f: rotate, b: _rotate, demo: true}
+        ])
+    })()
+
+
+</script>
+
+</body>
+</html>
