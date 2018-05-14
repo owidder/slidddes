@@ -12,6 +12,7 @@ import * as slidAR from './slidAR/slidAR';
 import {slidarGlobal} from './slidAR/slidarGlobal';
 import * as steps from './slidAR/steps';
 import * as hudUtil from "../ar/hudUtil";
+import {set_THREE_argon, set_THREE_orig} from '../three/threeHelper';
 
 window.slidAR = slidAR;
 
@@ -65,11 +66,13 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
     const nonar = query.paramValue("nonar");
     const type = query.paramValue("type") || TYPE_RING;
     const radius = query.paramValue("radius");
+    const three = query.paramValue("three");
     checkIfMaster();
 
     const positionFunction = createPositionFunction(type, radius);
 
-    if(_.isEmpty(selectedFilename) && _.isEmpty(nonar)) {
+    if(_.isEmpty(selectedFilename) && _.isEmpty(nonar) && _.isEmpty(three)) {
+        set_THREE_argon();
         slidarGlobal.withAr = true;
         const slideShowIntervalInSeconds = param;
         const {root, app} = init();
@@ -87,7 +90,11 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
 
         startSlideShow(slideShowIntervalInSeconds);
     }
+    else if(!_.isEmpty(three)) {
+        set_THREE_orig();
+    }
     else {
+        set_THREE_argon();
         slidarGlobal.withAr = false;
         if(!_.isEmpty(selectedFilename)) {
             slideControl.setCurrentSlideId(selectedFilename);

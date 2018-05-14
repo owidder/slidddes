@@ -1,8 +1,10 @@
 import {Argon} from './argonHelper';
-import {THREE} from '../three/threeHelper';
 import * as hudUtil from './hudUtil';
+import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
 export const init = () => {
+    const THREE = slidarGlobal.THREE;
+
     const app = Argon.init();
     app.view.element.style.zIndex = 0;
 
@@ -48,6 +50,8 @@ const setViewPort = (subview, renderer, hud, i) => {
 }
 
 const renderFunc = (app, viewport, subViews, hud, camera, renderer, scene) => {
+    const THREE = slidarGlobal.THREE;
+
     renderer.setSize(viewport.width, viewport.height);
     hud.setSize(viewport.width, viewport.height);
 

@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import {THREE} from '../three/threeHelper';
+import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
 import {ObjectData} from './ObjectData';
 
@@ -18,6 +18,8 @@ const addOffsetToPhaseFrom0To2 = (phase, offset = 0) => {
 }
 
 export const randomSphereInit = (numberOfPossiblePlaces, radius) => {
+    const THREE = slidarGlobal.THREE;
+
     const shuffledPlaces = _.shuffle(_.range(0, numberOfPossiblePlaces-1));
 
     return (i, offset = 0) => {
@@ -45,6 +47,8 @@ const tableOffset = (offset = 0) => {
 }
 
 export const tableInit = (numberOfCols, _cellWidth, _cellHeight, _xOffset, _yOffset, _zOffset) => {
+    const THREE = slidarGlobal.THREE;
+
     return (i, offset = 0) => {
         const cellWidth = _.isUndefined(_cellWidth) ? 800 : _cellWidth;
         const cellHeight = _.isUndefined(_cellHeight) ? 400 : _cellHeight;
@@ -71,6 +75,8 @@ export const sphereInit = (radius) => {
 }
 
 export const sphere = (numberOfBodies, i, offset = 0, radius = 800) => {
+    const THREE = slidarGlobal.THREE;
+
     const phaseWithOffset = addOffsetToPhaseFrom0To2(2 * i / numberOfBodies, offset);
 
     const phi = Math.acos(-1 + phaseWithOffset);
@@ -89,6 +95,8 @@ export const sphere = (numberOfBodies, i, offset = 0, radius = 800) => {
 };
 
 export const helix = (numberOfBodies, i, offset = 0) => {
+    const THREE = slidarGlobal.THREE;
+
     const phaseWithOffset = addOffsetToPhaseFrom0To2(2 * i / numberOfBodies, offset);
 
     const helix = new THREE.Object3D();
@@ -115,6 +123,8 @@ export const ringInit = (radius) => {
 }
 
 export const ring = (numberOfBodies, i, offset = 0, radius = 3000) => {
+    const THREE = slidarGlobal.THREE;
+
     const phaseWithOffset = addOffsetToPhaseFrom0To2(2 * i / numberOfBodies, offset);
 
     const ring = new THREE.Object3D();
@@ -142,6 +152,8 @@ export const setPositionRotationOnObject = (object, position, rotation) => {
 }
 
 const addToRoot = (element, root, position, rotation) => {
+    const THREE = slidarGlobal.THREE;
+
     const object = new THREE.CSS3DObject(element);
 
     setPositionRotationOnObject(object, position, rotation);
