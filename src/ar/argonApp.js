@@ -1,5 +1,5 @@
 import {Argon} from './argonHelper';
-import {THREE} from './threeHelper';
+import {THREE} from '../three/threeHelper';
 import * as hudUtil from './hudUtil';
 
 export const init = () => {

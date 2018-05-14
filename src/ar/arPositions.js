@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import {THREE} from './threeHelper';
+import {THREE} from '../three/threeHelper';
 
 import {ObjectData} from './ObjectData';
 
