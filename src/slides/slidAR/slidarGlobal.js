@@ -4,4 +4,6 @@ export const slidarGlobal = {
     socket: undefined,
     TWEEN: undefined,
     THREE: undefined,
+    width: undefined,
+    height: undefined,
 }

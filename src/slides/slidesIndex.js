@@ -19,6 +19,9 @@ window.slidAR = slidAR;
 const TWEEN = window.TWEEN;
 slideControl.setTWEEN(TWEEN);
 
+slidarGlobal.width = window.innerWidth;
+slidarGlobal.height = window.innerHeight;
+
 const startSlideShow = (slideShowIntervalInSeconds) => {
     if(slideShowIntervalInSeconds > 0) {
         setInterval(() => {

@@ -3,6 +3,7 @@ import {slidePlotly} from './slidePlotly';
 import {htmlSlide, HtmlSlide} from '../htmlSlide';
 import {appendScriptsWithReadyFunction} from '../../util/loadScript';
 import {slideControl} from '../control/SlideControl';
+import {slidarGlobal} from '../slidAR/slidarGlobal';
 
 import * as query from '../../util/query';
 
@@ -11,8 +12,8 @@ const $ = window.$;
 const paramFactor = query.paramValue("f");
 const factor = Number(paramFactor || 2.0);
 
-const width = window.innerWidth * factor;
-const height = window.innerHeight * factor;
+const width = slidarGlobal.width * factor;
+const height = slidarGlobal.height * factor;
 
 const createAnimeSlide = (slides, slideId) => {
     return htmlSlide(slideId, {

@@ -4,9 +4,10 @@ import {Slides} from "../Slides";
 import {staticSlide} from "../staticSlide";
 import * as slidesUtil from '../slidesUtil';
 import {slideControl} from '../control/SlideControl';
+import {slidarGlobal} from '../slidAR/slidarGlobal';
 
-const width = window.innerWidth;
-const height = window.innerHeight;
+const width = slidarGlobal.width;
+const height = slidarGlobal.height;
 
 export const init = async (rootSelector, selectedFilename) => {
 
