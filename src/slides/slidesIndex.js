@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import {log} from '../util/log';
 import {setArPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/arPositions';
 import {init} from '../ar/argonApp';
+import {initThree} from '../three/threeApp';
 import {connect} from './control/commandHub';
 import {executeCommand, COMMAND_INIT} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
@@ -95,6 +96,15 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
     }
     else if(!_.isEmpty(three)) {
         set_THREE_orig();
+        slidarGlobal.withAr = true;
+        const {scene} = initThree("#container");
+
+        const selection = await slideCreateFunction(rootSelector);
+        log.info("demo slides ready")
+        selection.each(function (id, i) {
+            const object = setArPositionRotation(this, scene, type, i, selection.size(), positionFunction);
+            slideControl.addObject(id, object);
+        });
     }
     else {
         set_THREE_argon();

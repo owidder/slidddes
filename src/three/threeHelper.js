@@ -13,11 +13,12 @@ const set_THREE_argon = () => {
 }
 
 const set_THREE_orig = () => {
+    window.THREE = THREE_orig;
+
     require('three/examples/js/controls/TrackballControls.js') // eslint-disable-line
     require('three/examples/js/renderers/CSS3DRenderer.js') // eslint-disable-line
 
-    window.THREE = THREE_orig;
-    slidarGlobal.THREE = THREE_orig;
+    slidarGlobal.THREE = window.THREE;
 }
 
 export {

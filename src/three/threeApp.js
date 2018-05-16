@@ -1,6 +1,29 @@
-import {THREE} from './threeHelper';
+import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
-export const initThree = () => {
+const animate = (controls) => {
+    requestAnimationFrame(animate);
+    controls.update();
+}
 
+export const initThree = (containerSelector) => {
+    const THREE = slidarGlobal.THREE;
+    const width = slidarGlobal.width;
+    const height = slidarGlobal.height;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, width / height, 1, 10000);
+    camera.position.z = 3000;
+
+    const renderer = new THREE.CSS3DRenderer();
+    renderer.setSize(width, height);
+    renderer.domElement.style.position = 'absolute';
+    document.querySelector(containerSelector).appendChild(renderer.domElement)
+
+    const controls = new THREE.TrackballControls(camera, renderer.domElement)
+    controls.addEventListener('change', () => {
+        renderer.render(scene, camera)
+    });
+
+    return {scene}
 }
 
