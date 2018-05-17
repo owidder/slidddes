@@ -1,7 +1,7 @@
 import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
 const animate = (controls) => {
-    requestAnimationFrame(animate);
+    requestAnimationFrame(() => {animate(controls)});
     controls.update();
 }
 
@@ -11,7 +11,7 @@ export const initThree = (containerSelector) => {
     const height = slidarGlobal.height;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, width / height, 1, 10000);
+    const camera = new THREE.PerspectiveCamera(40, width / height, .1, 100000);
     camera.position.z = 3000;
 
     const renderer = new THREE.CSS3DRenderer();
@@ -23,7 +23,8 @@ export const initThree = (containerSelector) => {
     controls.addEventListener('change', () => {
         renderer.render(scene, camera)
     });
+    animate(controls);
 
-    return {scene}
+    return {scene, camera, renderer}
 }
 

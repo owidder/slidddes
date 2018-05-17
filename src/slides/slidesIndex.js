@@ -97,7 +97,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
     else if(!_.isEmpty(three)) {
         set_THREE_orig();
         slidarGlobal.withAr = true;
-        const {scene} = initThree("#container");
+        const {scene, camera, renderer} = initThree("#container");
 
         const selection = await slideCreateFunction(rootSelector);
         log.info("demo slides ready")
@@ -105,6 +105,8 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
             const object = setArPositionRotation(this, scene, type, i, selection.size(), positionFunction);
             slideControl.addObject(id, object);
         });
+
+        renderer.render(scene, camera);
     }
     else {
         set_THREE_argon();
