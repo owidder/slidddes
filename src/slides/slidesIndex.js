@@ -73,9 +73,10 @@ const initCamera = (camera, selection) => {
         .filter((___, i) => {return i === 0})
         .each(id => {
             const object = slideControl.getObject(id);
-            camera.position.x = -object.position.x;
-            camera.position.y = -object.position.y;
-            camera.position.z = -object.position.z;
+            camera.position.x = (object.position.x + 100);
+            camera.position.y = (object.position.y + 100);
+            camera.position.z = (object.position.z + 100);
+            camera.lookAt(object.position);
         })
 }
 
