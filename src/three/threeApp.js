@@ -1,8 +1,12 @@
 import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
-const animate = (controls) => {
-    requestAnimationFrame(() => {animate(controls)});
+const animate = (controls, render) => {
+    const TWEEN = slidarGlobal.TWEEN;
+
+    requestAnimationFrame(() => {animate(controls, render)});
     controls.update();
+    TWEEN.update();
+    render();
 }
 
 export const initThree = (containerSelector) => {
@@ -23,7 +27,9 @@ export const initThree = (containerSelector) => {
     controls.addEventListener('change', () => {
         renderer.render(scene, camera)
     });
-    animate(controls);
+    animate(controls, () => {
+        renderer.render(scene, camera);
+    });
 
     return {scene, camera, renderer}
 }
