@@ -49,16 +49,45 @@ const createPositionFunction = (type, radius) => {
             if(radius > 0) {
                 return ringInit(Number(radius));
             }
+            break;
 
         case TYPE_SPHERE:
             if(radius > 0) {
                 return sphereInit(Number(radius));
             }
+            break;
 
         case TYPE_SPHERE_RANDOM:
             if(radius > 0) {
                 return randomSphereInit(50, Number(radius));
             }
+            break;
+
+        default:
+            throw new Error("unkown type");
+    }
+}
+
+const initCamera = (camera, selection) => {
+    selection
+        .filter((___, i) => {return i === 0})
+        .each(id => {
+            const object = slideControl.getObject(id);
+            camera.position.x = -object.position.x;
+            camera.position.y = -object.position.y;
+            camera.position.z = -object.position.z;
+        })
+}
+
+const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root, camera) => {
+    const selection = await slideCreateFunction(rootSelector);
+    selection.each(function (id, i) {
+        const object = setArPositionRotation(this, root, type, i, selection.size(), positionFunction);
+        slideControl.addObject(id, object);
+    });
+
+    if(!_.isUndefined(camera)) {
+        initCamera(camera, selection);
     }
 }
 
@@ -99,12 +128,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
         slidarGlobal.withAr = true;
         const {scene, camera, renderer} = initThree("#container");
 
-        const selection = await slideCreateFunction(rootSelector);
-        log.info("demo slides ready")
-        selection.each(function (id, i) {
-            const object = setArPositionRotation(this, scene, type, i, selection.size(), positionFunction);
-            slideControl.addObject(id, object);
-        });
+        position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene, camera);
 
         renderer.render(scene, camera);
     }
