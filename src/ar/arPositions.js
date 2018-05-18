@@ -18,11 +18,11 @@ const addOffsetToPhaseFrom0To2 = (phase, offset = 0) => {
 }
 
 export const randomSphereInit = (numberOfPossiblePlaces, radius) => {
-    const THREE = slidarGlobal.THREE;
-
     const shuffledPlaces = _.shuffle(_.range(0, numberOfPossiblePlaces-1));
 
     return (i, offset = 0) => {
+        const THREE = slidarGlobal.THREE;
+
         const phaseWithOffset = addOffsetToPhaseFrom0To2(2 * shuffledPlaces[i] / numberOfPossiblePlaces, offset);
         const phi = Math.acos(-1 + phaseWithOffset);
         const theta = Math.sqrt((numberOfPossiblePlaces - 1) * Math.PI) * phi;
