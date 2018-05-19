@@ -68,28 +68,34 @@ const createPositionFunction = (type, radius) => {
     }
 }
 
-const initCamera = (camera, selection) => {
-    selection
-        .filter((___, i) => {return i === 0})
-        .each(id => {
-            const object = slideControl.getObject(id);
-            camera.position.x = (object.position.x + 100);
-            camera.position.y = (object.position.y + 100);
-            camera.position.z = (object.position.z + 100);
-            camera.lookAt(object.position);
-        })
+const initCamera = (selection) => {
+    const camera = slidarGlobal.camera;
+
+    if(!_.isUndefined(camera)) {
+        selection
+            .filter((___, i) => {return i === 0})
+            .each(id => {
+                const FACTOR = .9;
+                const object = slideControl.getObject(id);
+                camera.position.x = (object.position.x * FACTOR);
+                camera.position.y = (object.position.y * FACTOR);
+                camera.position.z = (object.position.z * FACTOR);
+
+                if(!_.isUndefined(slidarGlobal.controls)) {
+                    slidarGlobal.controls.target = object.position;
+                }
+            })
+    }
 }
 
-const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root, camera) => {
+const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root) => {
     const selection = await slideCreateFunction(rootSelector);
     selection.each(function (id, i) {
         const object = setArPositionRotation(this, root, type, i, selection.size(), positionFunction);
         slideControl.addObject(id, object);
     });
 
-    if(!_.isUndefined(camera)) {
-        initCamera(camera, selection);
-    }
+    initCamera(selection);
 }
 
 export const initSlides = async (rootSelector, slideCreateFunction, param) => {
@@ -108,6 +114,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
     if(_.isEmpty(selectedFilename) && _.isEmpty(nonar) && _.isEmpty(three)) {
         set_THREE_argon();
         slidarGlobal.withAr = true;
+        slidarGlobal.useArgon = true;
         const slideShowIntervalInSeconds = param;
         const {root, app} = init();
 
@@ -127,9 +134,12 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
     else if(!_.isEmpty(three)) {
         set_THREE_orig();
         slidarGlobal.withAr = true;
-        const {scene, camera, renderer} = initThree("#container");
+        slidarGlobal.useArgon = false;
+        const {scene, camera, renderer, controls} = initThree("#container");
+        slidarGlobal.controls = controls;
+        slidarGlobal.camera = camera;
 
-        position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene, camera);
+        position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene);
 
         renderer.render(scene, camera);
     }

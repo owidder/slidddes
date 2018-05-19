@@ -144,6 +144,7 @@ class SlideControl {
             const allObjects = this.getAllObjects();
             arTransform.allFwd(allObjects, this.TWEEN);
             this.shiftForwardCurrentSlideId();
+            this.moveCameraToCurrentSlide();
             fct.call(sendStatusFunction);
         }
         else {
@@ -173,6 +174,15 @@ class SlideControl {
         }
     }
 
+    moveCameraToCurrentSlide() {
+        if(!_.isUndefined(slidarGlobal.controls)) {
+            const currentSlideId = this.getCurrentSlideId();
+            const currentObject = this.getObject(currentSlideId);
+
+            slidarGlobal.controls.target = currentObject.position;
+        }
+    }
+
     moveToAbsolutePositionRotation(slideId, position, rotation) {
         const object = this.getObject(slideId);
         if(_.isObject(object)) {
@@ -185,6 +195,7 @@ class SlideControl {
             const allObjects = this.getAllObjects();
             arTransform.allBack(allObjects, this.TWEEN);
             this.shiftBackwardCurrentSlideId();
+            this.moveCameraToCurrentSlide();
             fct.call(sendStatusFunction);
         }
         else {

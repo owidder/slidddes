@@ -16,7 +16,7 @@ export const initThree = (containerSelector) => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, .1, 100000);
-    camera.position.z = 3000;
+    scene.add(camera);
 
     const renderer = new THREE.CSS3DRenderer();
     renderer.setSize(width, height);
@@ -31,6 +31,6 @@ export const initThree = (containerSelector) => {
         renderer.render(scene, camera);
     });
 
-    return {scene, camera, renderer}
+    return {scene, camera, renderer, controls}
 }
 

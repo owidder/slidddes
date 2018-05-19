@@ -6,4 +6,7 @@ export const slidarGlobal = {
     THREE: undefined,
     width: undefined,
     height: undefined,
+    useArgon: undefined,
+    controls: undefined,
+    camera: undefined,
 }
