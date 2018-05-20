@@ -227,27 +227,27 @@ class SlideControl {
         this.steps[slideId] = {stepNumber: 0};
     }
 
-    currentIndex() {
+    indexOfCurrentSlide() {
         return this.slideIds.indexOf(this.currentSlideId);
     }
 
-    nextIndexForward() {
-        const currentIndex = this.currentIndex();
+    indexOfNextSlideForward() {
+        const currentIndex = this.indexOfCurrentSlide();
         return currentIndex >= this.slideIds.length - 1 ? 0 : currentIndex+1;
     }
 
     shiftForwardCurrentSlideId() {
-        const nextIndex = this.nextIndexForward();
+        const nextIndex = this.indexOfNextSlideForward();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
     }
 
-    nextIndexBack() {
-        const currentIndex = this.currentIndex();
+    indexOfNextSlideBack() {
+        const currentIndex = this.indexOfCurrentSlide();
         return currentIndex <= 0 ? this.slideIds.length - 1 : currentIndex-1;
     }
 
     shiftBackwardCurrentSlideId() {
-        const nextIndex = this.nextIndexBack();
+        const nextIndex = this.indexOfNextSlideBack();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
     }
 
