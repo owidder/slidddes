@@ -142,9 +142,10 @@ class SlideControl {
     fwdSlide(sendStatusFunction) {
         if(slidarGlobal.withAr) {
             const allObjects = this.getAllObjects();
-            arTransform.allFwd(allObjects, this.TWEEN);
-            this.shiftForwardCurrentSlideId();
-            this.moveCameraToCurrentSlide();
+            arTransform.allFwd(allObjects, this.TWEEN).then(() => {
+                this.shiftForwardCurrentSlideId();
+                this.moveCameraToCurrentSlide();
+            })
             fct.call(sendStatusFunction);
         }
         else {
@@ -179,7 +180,22 @@ class SlideControl {
             const currentSlideId = this.getCurrentSlideId();
             const currentObject = this.getObject(currentSlideId);
 
-            slidarGlobal.controls.target = currentObject.position;
+            if(this.TWEEN) {
+                const startPosition = {...slidarGlobal.controls.target};
+                new this.TWEEN.Tween(startPosition)
+                    .to({x: currentObject.position.x, y: currentObject.position.y, z: currentObject.position.z}, (1 + Math.random()) * 1000)
+                    .onUpdate((currentPosition) => {
+                        console.log(startPosition);
+                        slidarGlobal.controls.target = startPosition;
+                    })
+                    .easing(this.TWEEN.Easing.Exponential.InOut)
+                    .start();
+            }
+            else {
+                setTimeout(() => {
+                    slidarGlobal.controls.target = currentObject.position;
+                }, 5000);
+            }
         }
     }
 
@@ -193,9 +209,10 @@ class SlideControl {
     backSlide(sendStatusFunction) {
         if(slidarGlobal.withAr) {
             const allObjects = this.getAllObjects();
-            arTransform.allBack(allObjects, this.TWEEN);
-            this.shiftBackwardCurrentSlideId();
-            this.moveCameraToCurrentSlide();
+            arTransform.allBack(allObjects, this.TWEEN).then(() => {
+                this.shiftBackwardCurrentSlideId();
+                this.moveCameraToCurrentSlide();
+            })
             fct.call(sendStatusFunction);
         }
         else {

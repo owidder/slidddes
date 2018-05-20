@@ -37,24 +37,52 @@ const refreshPositionAndRotation = (object) => {
     return {index, position, rotation}
 }
 
+export const tweenPosition = (position, newPosition, TWEEN, duration = DEFAULT_DURATION) => {
+    new TWEEN.Tween({...position})
+        .to({x: newPosition.x, y: newPosition.y, z: newPosition.z}, (1 + Math.random()) * duration)
+        .onUpdate((position) => {
+
+        })
+        .easing(TWEEN.Easing.Exponential.InOut)
+        .start();
+}
+
 export const moveTo = (object, newPosition, newRotation, TWEEN, duration = DEFAULT_DURATION) => {
     if(TWEEN) {
-        new TWEEN.Tween(object.position)
-            .to({x: newPosition.x, y: newPosition.y, z: newPosition.z}, (1 + Math.random()) * duration)
-            .easing(TWEEN.Easing.Exponential.InOut)
-            .start();
+        const prom1 = new Promise((resolve) => {
+            new TWEEN.Tween(object.position)
+                .to({x: newPosition.x, y: newPosition.y, z: newPosition.z}, (1 + Math.random()) * duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .onComplete(() => {
+                    resolve();
+                })
+                .start();
+        })
 
-        new TWEEN.Tween(object.rotation)
-            .to({x: newRotation.x, y: newRotation.y, z: newRotation.z}, (1 + Math.random()) * duration)
-            .easing(TWEEN.Easing.Exponential.InOut)
-            .start();
+        const prom2 = new Promise((resolve) => {
+            new TWEEN.Tween(object.rotation)
+                .to({x: newRotation.x, y: newRotation.y, z: newRotation.z}, (1 + Math.random()) * duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .onComplete(() => {
+                    resolve();
+                })
+                .start();
+        })
 
-        new TWEEN.Tween(this)
-            .to( {}, duration * 2 )
-            .start();
+        const prom3 = new Promise((resolve) => {
+            new TWEEN.Tween(this)
+                .to( {}, duration * 2 )
+                .onComplete(() => {
+                    resolve();
+                })
+                .start();
+        })
+
+        return Promise.all([prom1, prom2, prom3]);
     }
     else {
         setPositionRotationOnObject(object, newPosition, newRotation);
+        return Promise.resolve();
     }
 }
 
@@ -78,11 +106,13 @@ export const back = (object, TWEEN) => {
 }
 
 const fwdBack = (object, TWEEN, trueIfFwd) => {
-    const {nextIndex, position, rotation} = fwdBackPositionAndRotation(object, trueIfFwd);
-
-    moveTo(object, position, rotation, TWEEN);
-
-    object._data.setIndex(nextIndex);
+    return new Promise((resolve) => {
+        const {nextIndex, position, rotation} = fwdBackPositionAndRotation(object, trueIfFwd);
+        moveTo(object, position, rotation, TWEEN).then(() => {
+            resolve();
+        });
+        object._data.setIndex(nextIndex);
+    })
 }
 
 export const moveOffset = (object, TWEEN, offset) => {
@@ -99,17 +129,20 @@ export const allNext = (allObjects, TWEEN) => {
 }
 
 export const allFwdBack = (allObjects, TWEEN, trueIfFwd) => {
+    const promises = [];
     allObjects.forEach((object) => {
-        fwdBack(object, TWEEN, trueIfFwd);
+        promises.push(fwdBack(object, TWEEN, trueIfFwd));
     })
+
+    return Promise.all(promises);
 }
 
 export const allFwd = (allObjects, TWEEN) => {
-    allFwdBack(allObjects, TWEEN, true);
+    return allFwdBack(allObjects, TWEEN, true);
 }
 
 export const allBack = (allObjects, TWEEN) => {
-    allFwdBack(allObjects, TWEEN, false);
+    return allFwdBack(allObjects, TWEEN, false);
 }
 
 export const allMoveOffset = (allObjects, TWEEN, offset) => {
