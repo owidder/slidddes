@@ -227,15 +227,27 @@ class SlideControl {
         this.steps[slideId] = {stepNumber: 0};
     }
 
+    currentIndex() {
+        return this.slideIds.indexOf(this.currentSlideId);
+    }
+
+    nextIndexForward() {
+        const currentIndex = this.currentIndex();
+        return currentIndex >= this.slideIds.length - 1 ? 0 : currentIndex+1;
+    }
+
     shiftForwardCurrentSlideId() {
-        const currentIndex = this.slideIds.indexOf(this.currentSlideId);
-        const nextIndex = currentIndex >= this.slideIds.length - 1 ? 0 : currentIndex+1;
+        const nextIndex = this.nextIndexForward();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
     }
 
+    nextIndexBack() {
+        const currentIndex = this.currentIndex();
+        return currentIndex <= 0 ? this.slideIds.length - 1 : currentIndex-1;
+    }
+
     shiftBackwardCurrentSlideId() {
-        const currentIndex = this.slideIds.indexOf(this.currentSlideId);
-        const nextIndex = currentIndex <= 0 ? this.slideIds.length - 1 : currentIndex-1;
+        const nextIndex = this.nextIndexBack();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
     }
 
