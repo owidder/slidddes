@@ -9,4 +9,6 @@ export const slidarGlobal = {
     useArgon: undefined,
     controls: undefined,
     camera: undefined,
+    selection: undefined,
+    isRefreshPhase: true,
 }

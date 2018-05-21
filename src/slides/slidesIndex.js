@@ -68,12 +68,13 @@ const createPositionFunction = (type, radius) => {
     }
 }
 
-const initCamera = (selection) => {
+const initCamera = (targetIndex = 0) => {
     const camera = slidarGlobal.camera;
+    const selection = slidarGlobal.selection;
 
     if(!_.isUndefined(camera)) {
         selection
-            .filter((___, i) => {return i === 0})
+            .filter((___, i) => {return i === targetIndex})
             .each(id => {
                 const FACTOR = .9;
                 const object = slideControl.getObject(id);
@@ -90,12 +91,13 @@ const initCamera = (selection) => {
 
 const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root) => {
     const selection = await slideCreateFunction(rootSelector);
+    slidarGlobal.selection = selection;
     selection.each(function (id, i) {
         const object = setArPositionRotation(this, root, type, i, selection.size(), positionFunction);
         slideControl.addObject(id, object);
     });
 
-    initCamera(selection);
+    slideControl.initCamera(0);
 }
 
 export const initSlides = async (rootSelector, slideCreateFunction, param) => {
@@ -123,6 +125,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
         });
 
         const selection = await slideCreateFunction(rootSelector);
+        slidarGlobal.selection = selection;
         log.info("demo slides ready")
         selection.each(function (id, i) {
             const object = setArPositionRotation(this, root, type, i, selection.size(), positionFunction);

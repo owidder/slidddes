@@ -45,6 +45,8 @@ export const parse = (statusString) => {
 
         parseStepPart(parts[0]);
         parseCurrentIdPart(parts[1]);
-        parseNextPrevPart(parts[2]);
+        if(slidarGlobal.useArgon) {
+            parseNextPrevPart(parts[2]);
+        }
     }
 }

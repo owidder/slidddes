@@ -133,20 +133,32 @@ class SlideControl {
     gotoSlide(slideId) {
         if(slideId != this.currentSlideId) {
             this.setCurrentSlideId(slideId);
-            if(!slidarGlobal.withAr) {
+            if(slidarGlobal.withAr) {
+                this.initCamera(this.indexOfCurrentSlide());
+            }
+            else {
                 nonArSlides.nextSlide(slideId);
             }
         }
     }
 
+    moveSlides(trueIfFwd, sendStatusFunction) {
+        const allObjects = this.getAllObjects();
+        arTransform.allFwdBack(allObjects, this.TWEEN, trueIfFwd).then(() => {
+            if(trueIfFwd) {
+                this.shiftForwardCurrentSlideId();
+            }
+            else {
+                this.shiftBackwardCurrentSlideId();
+            }
+            fct.call(sendStatusFunction);
+            this.moveCameraToCurrentSlide();
+        })
+    }
+
     fwdSlide(sendStatusFunction) {
         if(slidarGlobal.withAr) {
-            const allObjects = this.getAllObjects();
-            arTransform.allFwd(allObjects, this.TWEEN).then(() => {
-                this.shiftForwardCurrentSlideId();
-                this.moveCameraToCurrentSlide();
-            })
-            fct.call(sendStatusFunction);
+            this.moveSlides(true, sendStatusFunction);
         }
         else {
             this.shiftForwardCurrentSlideId();
@@ -172,6 +184,27 @@ class SlideControl {
         const object = this.getObject(slideId);
         if(_.isObject(object)) {
             arTransform.moveTo(object, object.position, rotation, this.TWEEN);
+        }
+    }
+
+    initCamera(targetIndex = 0) {
+        const camera = slidarGlobal.camera;
+        const selection = slidarGlobal.selection;
+
+        if(!_.isUndefined(camera)) {
+            selection
+                .filter((___, i) => {return i === targetIndex})
+                .each(id => {
+                    const FACTOR = .9;
+                    const object = slideControl.getObject(id);
+                    camera.position.x = (object.position.x * FACTOR);
+                    camera.position.y = (object.position.y * FACTOR);
+                    camera.position.z = (object.position.z * FACTOR);
+
+                    if(!_.isUndefined(slidarGlobal.controls)) {
+                        slidarGlobal.controls.target = object.position;
+                    }
+                })
         }
     }
 
@@ -208,12 +241,7 @@ class SlideControl {
 
     backSlide(sendStatusFunction) {
         if(slidarGlobal.withAr) {
-            const allObjects = this.getAllObjects();
-            arTransform.allBack(allObjects, this.TWEEN).then(() => {
-                this.shiftBackwardCurrentSlideId();
-                this.moveCameraToCurrentSlide();
-            })
-            fct.call(sendStatusFunction);
+            this.moveSlides(false, sendStatusFunction);
         }
         else {
             this.shiftBackwardCurrentSlideId();
