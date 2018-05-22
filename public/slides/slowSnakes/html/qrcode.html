@@ -1,0 +1,22 @@
+<style>
+
+    #qrcode .text {
+        margin-left: 30%;
+        font-size: 2em;
+    }
+
+</style>
+
+<div class="qrcode title"></div><br>
+<div class="text"></div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const address = "https://rinkeby.etherscan.io/address/0x2b2e9386f295ed8072e3f851a02d65738e5667aa";
+        slidAR.qrUtil.makeQrCode("#qrcode .qrcode", address);
+        $("#qrcode .text").html(address);
+    })()
+</script>

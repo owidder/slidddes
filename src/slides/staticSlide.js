@@ -1,9 +1,8 @@
 import {HtmlSlide} from "./htmlSlide";
-
-const SLIDES_FOLDER = "slides/3dd3/html/"
+import {slidarGlobal} from './slidAR/slidarGlobal';
 
 export const staticSlide = (slides, filename) => {
-    const pathToHtml = SLIDES_FOLDER + filename + ".html";
+    const pathToHtml = slidarGlobal.slidesFolder + filename + ".html";
     const slideId = filename;
     slides.addOne(slideId);
     const slide = new HtmlSlide(slideId, {pathToHtml});
