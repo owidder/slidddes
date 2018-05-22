@@ -24,6 +24,7 @@ export const initThree = (containerSelector) => {
     document.querySelector(containerSelector).appendChild(renderer.domElement)
 
     const controls = new THREE.TrackballControls(camera, renderer.domElement)
+    controls.noRotate = true;
     controls.addEventListener('change', () => {
         renderer.render(scene, camera)
     });

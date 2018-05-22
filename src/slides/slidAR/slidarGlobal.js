@@ -10,5 +10,5 @@ export const slidarGlobal = {
     controls: undefined,
     camera: undefined,
     selection: undefined,
-    isRefreshPhase: true,
+    moveCameraNotSlides: undefined,
 }
