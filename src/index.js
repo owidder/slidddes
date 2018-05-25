@@ -23,7 +23,7 @@ const BODY_TYPE_SLIDE_DEMO = "slideDemo";
 const BODY_TYPE_SLIDE_DBAR = "dbar";
 const BODY_TYPE_SLIDE_SLOW_SNAKES = "slsn";
 
-const bodyType = query.firstParamSet([BODY_TYPE_SLIDE_DEMO, BODY_TYPE_CUBE, BODY_TYPE_RADAR, BODY_TYPE_SLIDE_DBAR]);
+const bodyType = query.firstParamSet([BODY_TYPE_SLIDE_DEMO, BODY_TYPE_CUBE, BODY_TYPE_RADAR, BODY_TYPE_SLIDE_DBAR, BODY_TYPE_SLIDE_SLOW_SNAKES]);
 const paramValue = query.paramValue(bodyType);
 
 switch (bodyType) {

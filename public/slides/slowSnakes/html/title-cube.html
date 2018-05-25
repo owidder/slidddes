@@ -1,0 +1,32 @@
+<style>
+
+    @keyframes graph-animate-cube {
+        33% {transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+    }
+
+    #title-cube .animate-cube {
+        animation: graph-animate-cube 20s infinite ease-in-out;
+    }
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div id="_titlecube">
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+
+        slidAR.cube.create("#_titlecube", 200);
+
+    })()
+
+
+</script>
