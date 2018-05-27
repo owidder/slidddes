@@ -11,6 +11,8 @@ import {positionRotation} from './positionRotation';
 import {slidarGlobal} from './slidarGlobal';
 import {math} from '../../util/mathUtil';
 import {qrUtil} from '../../util/qrutil';
+import {counter} from './flipcounter/counter';
+import {Snakes} from './snakes/Snakes';
 
 export const slidAR = {
     classUtil,
@@ -25,6 +27,8 @@ export const slidAR = {
     positionRotation,
     slidarGlobal,
     math,
-    qrUtil
+    qrUtil,
+    counter,
+    Snakes
 };
 

@@ -3,12 +3,12 @@ import * as $ from 'jquery';
 
 const vsprintf = require('sprintf-js').vsprintf;
 
-export const SIDE_NAME_FRONT = "front";
-export const SIDE_NAME_BACK = "back";
-export const SIDE_NAME_TOP = "top";
-export const SIDE_NAME_BOTTOM = "bottom";
-export const SIDE_NAME_LEFT = "left";
-export const SIDE_NAME_RIGHT = "right";
+export const SIDE_NAME_FRONT = "cube-front";
+export const SIDE_NAME_BACK = "cube-back";
+export const SIDE_NAME_TOP = "cube-top";
+export const SIDE_NAME_BOTTOM = "cube-bottom";
+export const SIDE_NAME_LEFT = "cube-left";
+export const SIDE_NAME_RIGHT = "cube-right";
 
 const front = {
     name: SIDE_NAME_FRONT,
@@ -81,6 +81,8 @@ const create = (containerSelector, sizeInPx) => {
         .append("div")
         .attr("class", (d) => "cube-side " + d.name)
         .style("border", "1px solid black")
+        .style("background-color", "white")
+        .style("opacity", .8)
         .style("width", "100%")
         .style("height", "100%")
         .style("position", "absolute")
