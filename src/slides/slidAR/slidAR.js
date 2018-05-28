@@ -12,7 +12,7 @@ import {slidarGlobal} from './slidarGlobal';
 import {math} from '../../util/mathUtil';
 import {qrUtil} from '../../util/qrutil';
 import {counter} from './flipcounter/counter';
-import {Snakes} from './snakes/Snakes';
+import {SvgField} from './snakes/SvgField';
 
 export const slidAR = {
     classUtil,
@@ -29,6 +29,6 @@ export const slidAR = {
     math,
     qrUtil,
     counter,
-    Snakes
+    SvgField
 };
 
