@@ -6,8 +6,8 @@ import './SvgField.css';
 import {guid} from '../../../util/random';
 
 const FIELD_PADDING = 15;
-const DIM_X = 25;
-const DIM_Y = 25;
+const DIM_X = 30;
+const DIM_Y = 30;
 
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 

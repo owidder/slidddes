@@ -7,7 +7,7 @@
     }
 
     #title-cube .animate-cube {
-        animation: graph-animate-cube 20s infinite ease-in-out;
+        animation: graph-animate-cube 100s infinite ease-in-out;
     }
 
 </style>
@@ -33,8 +33,18 @@
         slidAR.counter.create("#title-cube .cube-back", 2612771, 10000);
         var snakeField = new slidAR.SnakeField("#title-cube .cube-front", 300, 300);
 
-        const s = [W, W, W, W, W, S, S, S, E, E, E, E, E, S, S, S, W, W, W, W, W];
-        snakeField.registerAndCommands("sn1", 5, 0, s, 1000);
+        slidAR.snakeForms.s(snakeField, "_1", 0, 0);
+        slidAR.snakeForms.l(snakeField, "_1", 5, 0);
+        slidAR.snakeForms.o(snakeField, "_1", 10, 0);
+        slidAR.snakeForms.w(snakeField, "_1", 15, 0);
+
+        slidAR.snakeForms.s(snakeField, "_2", 0, 10);
+        slidAR.snakeForms.n(snakeField, "_2", 5, 10);
+        slidAR.snakeForms.a(snakeField, "_2", 11, 10);
+        slidAR.snakeForms.k(snakeField, "_2", 16, 10);
+        slidAR.snakeForms.e(snakeField, "_2", 21, 10);
+        slidAR.snakeForms.s(snakeField, "_2a", 26, 10);
+
     })()
 
 

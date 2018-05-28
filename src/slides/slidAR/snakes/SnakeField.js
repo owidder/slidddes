@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import {SvgField} from './SvgField';
 
 export class SnakeField {
@@ -76,9 +77,12 @@ export class SnakeField {
     }
 
     registerAndCommands(id, x, y, cmds, duration) {
-        this.register(id, x, y);
+        const startDuration = _.random(1000, 2000);
         setTimeout(() => {
-            this.commands(id, cmds, duration);
-        }, duration);
+            this.register(id, x, y);
+            setTimeout(() => {
+                this.commands(id, cmds, duration);
+            }, duration);
+        }, startDuration);
     }
 }
