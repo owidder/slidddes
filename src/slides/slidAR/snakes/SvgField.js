@@ -1,11 +1,13 @@
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 
+import './SvgField.css';
+
 import {guid} from '../../../util/random';
 
 const FIELD_PADDING = 15;
-const DIM_X = 10;
-const DIM_Y = 10;
+const DIM_X = 25;
+const DIM_Y = 25;
 
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -55,6 +57,7 @@ export class SvgField {
 
         const svg = d3.select(selector)
             .append("svg")
+            .attr("class", "svg-field")
             .style("margin", "5px")
             .attr("width", self.width + FIELD_PADDING*2)
             .attr("height", self.height + FIELD_PADDING*2)
@@ -93,6 +96,9 @@ export class SvgField {
         this.gyaxis = this.gaxes.append("g")
             .attr("class", "axis axis-y")
             .call(self.yAxis);
+
+        this.removeAxisLabels(".axis-x");
+        this.removeAxisLabels(".axis-y");
     }
 
     removeAxisLabels(axisSelector) {

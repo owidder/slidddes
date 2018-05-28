@@ -1,0 +1,14 @@
+@keyframes blinking {
+    0% {opacity: 1}
+    50% {opacity: 0}
+    100% {opacity: 1}
+}
+
+.svg-field rect.head {
+    animation: blinking 0.5s ease-in-out infinite;
+}
+
+.svg-field rect.highlight {
+    animation: blinking 0.1s ease-in-out infinite;
+}
+

@@ -24,9 +24,17 @@
 
     (function () {
 
+        const S = "s"
+        const N = "n"
+        const W = "w"
+        const E = "e"
+
         slidAR.cube.create("#_titlecube", 350);
-        slidAR.counter.create("#title-cube .cube-front", 2612771, 10000);
-        new slidAR.SvgField("#title-cube .cube-back", 300, 300);
+        slidAR.counter.create("#title-cube .cube-back", 2612771, 10000);
+        var snakeField = new slidAR.SnakeField("#title-cube .cube-front", 300, 300);
+
+        const s = [W, W, W, W, W, S, S, S, E, E, E, E, E, S, S, S, W, W, W, W, W];
+        snakeField.registerAndCommands("sn1", 5, 0, s, 1000);
     })()
 
 

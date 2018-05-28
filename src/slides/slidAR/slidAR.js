@@ -13,6 +13,7 @@ import {math} from '../../util/mathUtil';
 import {qrUtil} from '../../util/qrutil';
 import {counter} from './flipcounter/counter';
 import {SvgField} from './snakes/SvgField';
+import {SnakeField} from './snakes/SnakeField';
 
 export const slidAR = {
     classUtil,
@@ -29,6 +30,7 @@ export const slidAR = {
     math,
     qrUtil,
     counter,
-    SvgField
+    SvgField,
+    SnakeField
 };
 
