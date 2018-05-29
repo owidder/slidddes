@@ -9,6 +9,10 @@ export class SnakeField {
         this.snakes = {};
     }
 
+    destroy() {
+        return this.svgField.removeSvg();
+    }
+
     register(id, x, y) {
         const position = {id, x, y};
         this.newPosition(position);

@@ -15,6 +15,7 @@ import {counter} from './flipcounter/counter';
 import {SvgField} from './snakes/SvgField';
 import {SnakeField} from './snakes/SnakeField';
 import {snakeForms} from './snakes/SnakeForms';
+import {writeSlowSnakes} from './snakes/writeSlowSnakes';
 
 export const slidAR = {
     classUtil,
@@ -33,6 +34,7 @@ export const slidAR = {
     counter,
     SvgField,
     SnakeField,
-    snakeForms
+    snakeForms,
+    writeSlowSnakes
 };
 

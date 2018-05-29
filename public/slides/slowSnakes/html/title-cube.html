@@ -24,27 +24,10 @@
 
     (function () {
 
-        const S = "s"
-        const N = "n"
-        const W = "w"
-        const E = "e"
-
         slidAR.cube.create("#_titlecube", 350);
         slidAR.counter.create("#title-cube .cube-back", 2612771, 10000);
-        var snakeField = new slidAR.SnakeField("#title-cube .cube-front", 300, 300);
 
-        slidAR.snakeForms.s(snakeField, "_1", 0, 0);
-        slidAR.snakeForms.l(snakeField, "_1", 5, 0);
-        slidAR.snakeForms.o(snakeField, "_1", 10, 0);
-        slidAR.snakeForms.w(snakeField, "_1", 15, 0);
-
-        slidAR.snakeForms.s(snakeField, "_2", 0, 10);
-        slidAR.snakeForms.n(snakeField, "_2", 5, 10);
-        slidAR.snakeForms.a(snakeField, "_2", 11, 10);
-        slidAR.snakeForms.k(snakeField, "_2", 16, 10);
-        slidAR.snakeForms.e(snakeField, "_2", 21, 10);
-        slidAR.snakeForms.s(snakeField, "_2a", 26, 10);
-
+        slidAR.writeSlowSnakes.forever("#title-cube .cube-front", 300, 300, 30000);
     })()
 
 

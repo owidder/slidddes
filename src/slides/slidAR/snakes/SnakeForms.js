@@ -1,5 +1,3 @@
-import {SnakeField} from './SnakeField';
-
 const S = "s"
 const N = "n"
 const W = "w"

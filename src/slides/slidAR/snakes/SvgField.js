@@ -67,6 +67,25 @@ export class SvgField {
             .attr("transform", "translate(" + FIELD_PADDING + ", " + FIELD_PADDING + ")");
         this.grects = this.gfield.append("g").attr("class", "lines");
         this.gaxes = this.gfield.append("g").attr("class", "axes");
+        this.svg = svg;
+    }
+
+    removeSvg() {
+        const self = this;
+
+        return new Promise((resolve) => {
+            this.grects.selectAll("rect.position")
+                .data([])
+                .exit()
+                .transition()
+                .duration(2000)
+                .style("opacity", 0);
+
+            setTimeout(() => {
+                self.svg.remove();
+                resolve();
+            }, 2500);
+        })
     }
 
     initAxes() {
