@@ -16,6 +16,7 @@ import {SvgField} from './snakes/SvgField';
 import {SnakeField} from './snakes/SnakeField';
 import {snakeForms} from './snakes/SnakeForms';
 import {writeSlowSnakes} from './snakes/writeSlowSnakes';
+import {glowText} from './coolText/GlowText';
 
 export const slidAR = {
     classUtil,
@@ -35,6 +36,7 @@ export const slidAR = {
     SvgField,
     SnakeField,
     snakeForms,
-    writeSlowSnakes
+    writeSlowSnakes,
+    glowText,
 };
 

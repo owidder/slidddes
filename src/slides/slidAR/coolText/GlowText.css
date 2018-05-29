@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+.GlowText .glow {
+    font-family: 'Raleway', sans-serif;
+    font-size: 5em;
+    font-weight: lighter;
+    color: darkslategray;
+    border-radius: 50%;
+    text-shadow: 0 0 10px orange, 1px 1px 5px orange, 2px 2px 5px orange, -1px -1px 5px orange, -2px -2px 5px orange;
+}
+
+.orbs{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    display: block;
+    font-size: 128px;
+}
+
+
+.orbs span{
+    color: red;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    text-shadow: 0 0 20px orange, 1px 1px 20px orange, 2px 2px 20px orange, -1px -1px 20px orange, -2px -2px 20px orange;
+    position: absolute;
+    left: 50%;
+}
+

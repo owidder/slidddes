@@ -16,7 +16,7 @@ const _writeSlowSnakes = (snakeField) => {
 }
 
 const once = (selector, width, heigth) => {
-    const snakeField = new SnakeField("#title-cube .cube-front", 300, 300);
+    const snakeField = new SnakeField(selector, 300, 300);
     _writeSlowSnakes(snakeField);
 
     return snakeField;
