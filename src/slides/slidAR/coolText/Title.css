@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Molengo");
+
+.title-component h1 {
+    margin-top: 1em;
+    color: gray;
+    font-family: 'Molengo', Georgia, Times, serif;
+    font-size: 8em;
+    -webkit-text-fill-color: yellow; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: .1px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 0 0 10px orange, 1px 1px 5px orange, 2px 2px 5px orange, -1px -1px 5px orange, -2px -2px 5px orange;
+}
+
+.title-component p {
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+}

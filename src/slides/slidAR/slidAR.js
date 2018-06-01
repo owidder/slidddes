@@ -21,6 +21,11 @@ import {writeSlowSnakes} from './snakes/writeSlowSnakes';
 import {glowText} from './coolText/GlowText';
 import {scripts} from './scripting/scripts';
 import {totalRewards} from '../slowSnakes/TotalRewards';
+import {title} from './coolText/Title';
+
+const coolText = {
+    glowText, title
+}
 
 export const slidAR = {
     d3,
@@ -42,7 +47,7 @@ export const slidAR = {
     SnakeField,
     snakeForms,
     writeSlowSnakes,
-    glowText,
+    coolText,
     scripts,
     totalRewards,
 };

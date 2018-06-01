@@ -9,7 +9,7 @@
     text-shadow: 0 0 10px orange, 1px 1px 5px orange, 2px 2px 5px orange, -1px -1px 5px orange, -2px -2px 5px orange;
 }
 
-.orbs{
+.GlowText .orbs{
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     display: block;
@@ -17,7 +17,7 @@
 }
 
 
-.orbs span{
+.GlowText .orbs span{
     color: red;
     display: inline-block;
     text-align: center;
