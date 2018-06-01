@@ -1,3 +1,5 @@
+import * as d3 from 'd3';
+
 import {classUtil} from './classUtil';
 import {highlight} from './highlight';
 import {tooltip} from './tooltip';
@@ -17,8 +19,11 @@ import {SnakeField} from './snakes/SnakeField';
 import {snakeForms} from './snakes/SnakeForms';
 import {writeSlowSnakes} from './snakes/writeSlowSnakes';
 import {glowText} from './coolText/GlowText';
+import {scripts} from './scripting/scripts';
+import {totalRewards} from '../slowSnakes/TotalRewards';
 
 export const slidAR = {
+    d3,
     classUtil,
     highlight,
     tooltip,
@@ -38,5 +43,7 @@ export const slidAR = {
     snakeForms,
     writeSlowSnakes,
     glowText,
+    scripts,
+    totalRewards,
 };
 

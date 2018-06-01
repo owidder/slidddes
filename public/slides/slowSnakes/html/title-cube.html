@@ -24,12 +24,25 @@
 
     (function () {
 
+        function pause() {
+            slidAR.cube.startStopAnimation(false)
+        }
+
+        function resume() {
+            slidAR.cube.startStopAnimation(true)
+        }
+
+        slidAR.scripts.pause("title-cube", pause);
+        slidAR.scripts.resume("title-cube", resume);
+
         slidAR.cube.create("#_titlecube", 350);
         slidAR.counter.create("#title-cube .cube-back", 2612771, 2000);
 
         slidAR.writeSlowSnakes.forever("#title-cube .cube-front", 300, 300, 30000);
 
-        slidAR.glowText.create("#title-cube .cube-bottom", ["The","Block", "Chain", "Game"])
+        slidAR.glowText.create("#title-cube .cube-bottom", ["The","Block", "Chain", "Game"]);
+
+        slidAR.totalRewards.create("#title-cube .cube-right", 2612771);
     })()
 
 

@@ -52,6 +52,10 @@ class SlideControl {
         this.configs[slideId] = config;
     }
 
+    getConfig(slideId) {
+        return this.configs[slideId];
+    }
+
     createAndRegisterConfig(slideId) {
         log.info("created new config for: " + slideId);
         const config = {};
@@ -143,8 +147,6 @@ class SlideControl {
     }
 
     moveCameraFwdBack(trueIfFwd, sendStatusFunction) {
-        //slidarGlobal.controls.reset();
-
         if(trueIfFwd) {
             this.shiftForwardCurrentSlideId();
         }
@@ -157,7 +159,7 @@ class SlideControl {
         const newCameraPosition = this.cameraPositionForObject(currentObject);
         this.moveCameraToCurrentSlide();
         new this.TWEEN.Tween(slidarGlobal.camera.position)
-            .to({x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z}, (1 + Math.random()) * 1000)
+            .to({x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z}, (1 + Math.random()) * 2000)
             .easing(this.TWEEN.Easing.Exponential.InOut)
             .onComplete(() => {
                 fct.call(sendStatusFunction);
@@ -216,7 +218,7 @@ class SlideControl {
     }
 
     cameraPositionForObject(object) {
-        const FACTOR = .9;
+        const FACTOR = .92;
         return {
             x: object.position.x * FACTOR,
             y: object.position.y * FACTOR,
@@ -316,9 +318,33 @@ class SlideControl {
         return currentIndex >= this.slideIds.length - 1 ? 0 : currentIndex+1;
     }
 
+    runScriptOnCurrentSlide(scriptName, duration) {
+        const currentSlideId = this.getCurrentSlideId();
+        const config = this.getConfig(currentSlideId);
+        const script = config[scriptName];
+        if(_.isFunction(script)) {
+            if(duration > 0) {
+                setTimeout(script, duration)
+            }
+            else {
+                script();
+            }
+        }
+    }
+
+    pauseCurrentSlide() {
+        this.runScriptOnCurrentSlide('pauseFunction', 1000);
+    }
+
+    resumeCurrentSlide() {
+        this.runScriptOnCurrentSlide('resumeFunction');
+    }
+
     shiftForwardCurrentSlideId() {
+        this.pauseCurrentSlide();
         const nextIndex = this.indexOfNextSlideForward();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
+        this.resumeCurrentSlide();
     }
 
     indexOfNextSlideBack() {
@@ -327,8 +353,10 @@ class SlideControl {
     }
 
     shiftBackwardCurrentSlideId() {
+        this.pauseCurrentSlide();
         const nextIndex = this.indexOfNextSlideBack();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
+        this.resumeCurrentSlide();
     }
 
     setStepsObject(slideId, steps, stepNumber = 0) {

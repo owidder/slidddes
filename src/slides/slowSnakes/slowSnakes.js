@@ -22,7 +22,7 @@ export const init = async (rootSelector, selectedFilename) => {
     ])
 
     if(_.isEmpty(selectedFilename)) {
-        slideControl.setCurrentSlideId("title");
+        slideControl.setCurrentSlideId("title-cube");
     }
     else {
         slideControl.setCurrentSlideId(selectedFilename);

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import './GlowText.css';
 
 const renderLines = (lines) => {
-    return lines.map((line) => {
+    return lines.map((line, i) => {
         return (
-            <span>
+            <span key={"glow-line-" + i}>
                 <span className="glow">{line}</span>
                 <br/>
             </span>
@@ -26,7 +26,7 @@ class GlowText extends Component {
     }
 }
 
-GlowText.PropTypes = {
+GlowText.propTypes = {
     text: PropTypes.string,
     lines: PropTypes.array
 }

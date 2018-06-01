@@ -1,0 +1,17 @@
+.chaintable tr {
+    font-family: 'Courier', monospace;
+}
+
+.selected {
+    background-color: yellow;
+    font-weight: bolder;
+}
+
+td.positive {
+    background-color: green;
+    color: white;
+}
+
+td.negative {
+    background-color: red;
+}
