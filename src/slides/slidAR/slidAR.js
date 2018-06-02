@@ -22,9 +22,14 @@ import {glowText} from './coolText/GlowText';
 import {scripts} from './scripting/scripts';
 import {totalRewards} from '../slowSnakes/TotalRewards';
 import {title} from './coolText/Title';
+import {rinkeby} from '../slowSnakes/Rinkeby';
 
 const coolText = {
     glowText, title
+}
+
+const slowSnakes = {
+    writeSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms
 }
 
 export const slidAR = {
@@ -43,12 +48,8 @@ export const slidAR = {
     math,
     qrUtil,
     counter,
-    SvgField,
-    SnakeField,
-    snakeForms,
-    writeSlowSnakes,
     coolText,
     scripts,
-    totalRewards,
+    slowSnakes
 };
 

@@ -6,7 +6,7 @@
         66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
     }
 
-    #title-cube .animate-cube {
+    #title-cube .animate-cube-off {
         animation: graph-animate-cube 100s infinite ease-in-out;
     }
 
@@ -38,12 +38,14 @@
         slidAR.cube.create("#_titlecube", 350);
         slidAR.counter.create("#title-cube .cube-back", 2612771, 2000);
 
-        slidAR.writeSlowSnakes.forever("#title-cube .cube-front", 300, 300, 30000);
+        slidAR.slowSnakes.writeSlowSnakes.forever("#title-cube .cube-right", 300, 300, 30000);
 
         slidAR.coolText.glowText.create("#title-cube .cube-left", ["The","Block", "Chain", "Game"]);
         slidAR.coolText.title.create("#title-cube .cube-top", "Slow Snakes");
 
-        slidAR.totalRewards.create("#title-cube .cube-bottom", 2612771);
+        slidAR.slowSnakes.totalRewards.create("#title-cube .cube-bottom", 2612771);
+
+        slidAR.slowSnakes.rinkeby.create("#title-cube .cube-front")
     })()
 
 
