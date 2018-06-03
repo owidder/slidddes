@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex Demo</title>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        .container {
+            background-color: wheat;
+            font-size: 2rem;
+            font-family: arial;
+            font-weight: bold;
+            width: 1200px;
+            text-align: center;
+            border: solid 2px brown;
+        }
+        .item {
+            padding: 10px;
+            color: white;
+            border-radius: 10%;
+            height: 3em;
+            width: 3em;
+            padding-top:60px;
+        }
+        .color1 {
+            background-color: red;
+        }
+        .color2 {
+            background-color: green;
+        }
+        .color3 {
+            background-color: blue;
+        }
+        .color4 {
+            background-color: indigo;
+        }
+        .color5 {
+            background-color: violet;
+        }
+        .color6 {
+            background-color: darkslategray;
+        }
+
+        .container-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container container-flex">
+    <div class="item color1">A</div>
+    <div class="item color2">B</div>
+    <div class="item color3">C</div>
+    <div class="item color4">D</div>
+    <div class="item color5">E</div>
+    <div class="item color6">F</div>
+</div>
+
+</body>
+</html>

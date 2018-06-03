@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 
 .rinkeby {
+    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.rinkeby .qr {
+    width: 256px;
+    height: 256px;
 }
 
 .rinkeby h1 {
