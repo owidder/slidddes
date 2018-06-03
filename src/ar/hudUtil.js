@@ -11,8 +11,8 @@ export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
             .append("div")
             .attr("class", "menu")
 
-        addHudButton(menu, "lefthud", "keyboard_arrow_left", onLeftClick);
-        addHudButton(menu, "righthud", "keyboard_arrow_right", onRightClick);
+        addHudButton(menu, "lefthud", "arrow_back", onLeftClick);
+        addHudButton(menu, "righthud", "arrow_forward", onRightClick);
     }
 }
 

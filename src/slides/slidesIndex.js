@@ -5,7 +5,7 @@ import {setArPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringI
 import {init} from '../ar/argonApp';
 import {initThree} from '../three/threeApp';
 import {connect} from './control/commandHub';
-import {executeCommand, COMMAND_INIT} from './control/commandExecutor';
+import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
 import * as key from './slidAR/key';
 import * as query from '../util/query';
@@ -36,9 +36,9 @@ const checkIfMaster = () => {
     slidarGlobal.isMaster = !_.isUndefined(master);
 }
 
-const addHudButtons = () => {
-    const onLeftClick = () => slideControl.moveOffsetOnAllSlides(+10);
-    const onRightClick = () => slideControl.moveOffsetOnAllSlides(-10);
+const addHudButtons = (_onLeftClick, _onRightClick) => {
+    const onLeftClick = _.isFunction(_onLeftClick) ? _onLeftClick : () => slideControl.moveOffsetOnAllSlides(+10);
+    const onRightClick = _.isFunction(_onRightClick) ? _onRightClick : () => slideControl.moveOffsetOnAllSlides(-10);
 
     hudUtil.addLeftRightButtons("#_hud", onLeftClick, onRightClick);
 }
@@ -133,6 +133,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
         });
 
         startSlideShow(slideShowIntervalInSeconds);
+        addHudButtons();
     }
     else if(!_.isEmpty(three)) {
         set_THREE_orig();
@@ -146,6 +147,13 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
         position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene);
 
         renderer.render(scene, camera);
+        addHudButtons(
+            () => {
+                executeCommand(COMMAND_PREV)
+            },
+            () => {
+                executeCommand(COMMAND_NEXT)
+            });
     }
     else {
         set_THREE_argon();
@@ -154,9 +162,8 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
             slideControl.setCurrentSlideId(selectedFilename);
             await slideCreateFunction(rootSelector, selectedFilename).then(() => steps.init());
         }
+        addHudButtons();
     }
-
-    addHudButtons();
 
     executeCommand(COMMAND_INIT);
 }

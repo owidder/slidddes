@@ -12,14 +12,15 @@
     position: absolute;
     bottom: 50px;
     margin: 0 auto;
-    text-align: center;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #_hud button {
     color: blue;
     background: transparent;
-    border-color: blue;
+    border: none;
 }
 
 #_hud button:hover {
