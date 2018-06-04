@@ -3,8 +3,8 @@ import {SvgField} from './SvgField';
 
 export class SnakeField {
 
-    constructor(selector, width, height) {
-        this.svgField = new SvgField(selector, width, height);
+    constructor(selector, width, height, dimX, dimY) {
+        this.svgField = new SvgField(selector, width, height, dimX, dimY);
 
         this.snakes = {};
     }

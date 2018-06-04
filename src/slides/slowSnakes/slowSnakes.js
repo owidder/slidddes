@@ -17,8 +17,7 @@ export const init = async (rootSelector, selectedFilename) => {
 
     await Promise.all([
         slidesUtil.createSlide(createFct, "title-cube", selectedFilename),
-        slidesUtil.createSlide(createFct, "title", selectedFilename),
-        slidesUtil.createSlide(createFct, "qrcode", selectedFilename),
+        slidesUtil.createSlide(createFct, "the-matrix", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {
