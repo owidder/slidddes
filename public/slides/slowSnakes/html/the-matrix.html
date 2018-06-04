@@ -1,0 +1,32 @@
+<style>
+
+
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div id="_the_matrix">
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+
+        function pause() {
+        }
+
+        function resume() {
+        }
+
+        slidAR.scripts.pause("title-cube", pause);
+        slidAR.scripts.resume("title-cube", resume);
+
+        slidAR.slowSnakes.writeSlowSnakes.forever("#title-cube .cube-front", 300, 300, 30000);
+
+    })()
+
+
+</script>

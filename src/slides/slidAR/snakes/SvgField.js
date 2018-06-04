@@ -6,15 +6,15 @@ import './SvgField.css';
 import {guid} from '../../../util/random';
 
 const FIELD_PADDING = 15;
-const DIM_X = 30;
-const DIM_Y = 30;
+const DEFAULT_DIM_X = 30;
+const DEFAULT_DIM_Y = 30;
 
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-const emptyFlattenedMatrix = () => {
+const emptyFlattenedMatrix = (dimX, dimY) => {
     const flattenedMatrix = [];
-    _.range(DIM_Y).forEach((y) => {
-        _.range(DIM_X).forEach((x) => {
+    _.range(dimY).forEach((y) => {
+        _.range(dimX).forEach((x) => {
             const uuid = guid();
             const hash = "0";
             const id = "";
@@ -25,8 +25,8 @@ const emptyFlattenedMatrix = () => {
     return flattenedMatrix;
 }
 
-const flattenCoords = (x, y) => {
-    return Number(y) * DIM_X + Number(x);
+const flattenCoords = (x, y, dimX) => {
+    return Number(y) * dimX + Number(x);
 }
 
 const idFromObjectWithXAndY = (obj) => {
@@ -35,20 +35,22 @@ const idFromObjectWithXAndY = (obj) => {
 
 export class SvgField {
 
-    constructor(selector, width, height) {
+    constructor(selector, width, height, dimX, dimY) {
         this.width = width;
         this.height = height;
+        this.dimX = dimX ? dimX : DEFAULT_DIM_X;
+        this.dimY = dimY ? dimY : DEFAULT_DIM_Y;
 
-        const _tileWidth = width / DIM_X;
-        const _tileHeight = height / DIM_Y;
+        const _tileWidth = width / this.dimX;
+        const _tileHeight = height / this.dimY;
         this.tileSize = Math.min(_tileHeight, _tileWidth);
-        this.fieldWidth = this.tileSize * DIM_X;
-        this.fieldHeight = this.tileSize * DIM_Y;
+        this.fieldWidth = this.tileSize * this.dimX;
+        this.fieldHeight = this.tileSize * this.dimY;
 
         this.initSvg(selector);
         this.initAxes();
 
-        this.flattenedMatrix = emptyFlattenedMatrix();
+        this.flattenedMatrix = emptyFlattenedMatrix(this.dimX, this.dimY);
         this.history = {};
     }
 
@@ -91,20 +93,20 @@ export class SvgField {
     initAxes() {
         const self = this;
         this.xScale = d3.scaleLinear()
-            .domain([0, DIM_X])
+            .domain([0, this.dimX])
             .range([0, self.fieldWidth]);
 
         this.yScale = d3.scaleLinear()
-            .domain([0, DIM_Y])
+            .domain([0, this.dimY])
             .range([0, self.fieldHeight]);
 
         this.xAxis = d3.axisBottom(self.xScale)
-            .ticks(DIM_X + 1)
+            .ticks(this.dimX + 1)
             .tickSize(self.fieldHeight)
             .tickPadding(-FIELD_PADDING - this.fieldHeight);
 
         this.yAxis = d3.axisRight(self.yScale)
-            .ticks(DIM_Y + 1)
+            .ticks(this.dimY + 1)
             .tickSize(self.fieldWidth)
             .tickPadding(-FIELD_PADDING - this.fieldWidth);
 
@@ -164,7 +166,7 @@ export class SvgField {
     }
 
     newPosition(position) {
-        const index = flattenCoords(position.x, position.y);
+        const index = flattenCoords(position.x, position.y, this.dimX);
         const currentPositionAtIndex = this.flattenedMatrix[index];
         if(!_.isEmpty(currentPositionAtIndex.id)) {
             this.putInHistory(currentPositionAtIndex);
