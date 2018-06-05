@@ -1,10 +1,21 @@
 import * as _ from 'lodash';
 import {SvgField} from './SvgField';
+import {slidarGlobal} from '../slidarGlobal';
+
+const defaultSize = () => {
+    return Math.min(slidarGlobal.width, slidarGlobal.height) * .9;
+}
 
 export class SnakeField {
 
     constructor(selector, width, height, dimX, dimY) {
-        this.svgField = new SvgField(selector, width, height, dimX, dimY);
+        this.selector = selector;
+        this.width = width > 0 ? width : defaultSize();
+        this.height = height > 0 ? height : this.width;
+        this.dimX = dimX;
+        this.dimY = dimY;
+
+        this.svgField = new SvgField(selector, this.width, this.height, dimX, dimY);
 
         this.snakes = {};
     }
