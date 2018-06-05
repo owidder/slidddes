@@ -17,7 +17,7 @@ import {counter} from './flipcounter/counter';
 import {SvgField} from './snakes/SvgField';
 import {SnakeField} from './snakes/SnakeField';
 import {snakeForms} from './snakes/SnakeForms';
-import {writeSlowSnakes} from './snakes/writeSlowSnakes';
+import {moveSlowSnakes} from './snakes/moveSlowSnakes';
 import {glowText} from './coolText/GlowText';
 import {scripts} from './scripting/scripts';
 import {totalRewards} from '../slowSnakes/TotalRewards';
@@ -29,7 +29,7 @@ const coolText = {
 }
 
 const slowSnakes = {
-    writeSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms
+    moveSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms
 }
 
 export const slidAR = {

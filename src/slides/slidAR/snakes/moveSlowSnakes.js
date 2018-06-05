@@ -15,21 +15,21 @@ const _writeSlowSnakes = (snakeField) => {
     snakeForms.s(snakeField, "_2a", 26, 10);
 }
 
-const once = (selector, width, heigth) => {
+const writeSlowSnakesOnce = (selector, width, heigth) => {
     const snakeField = new SnakeField(selector, 300, 300);
     _writeSlowSnakes(snakeField);
 
     return snakeField;
 }
 
-const forever = (selector, width, heigth, duration) => {
-    let snakeField = once(selector,width, heigth);
+const writeSlowSnakesForever = (selector, width, heigth, duration) => {
+    let snakeField = writeSlowSnakesOnce(selector,width, heigth);
     setInterval(async () => {
         await snakeField.destroy();
-        snakeField = once(selector, width, heigth);
+        snakeField = writeSlowSnakesOnce(selector, width, heigth);
     }, duration > 0 ? duration : 30000);
 }
 
-export const writeSlowSnakes = {
-    once, forever
+export const moveSlowSnakes = {
+    writeSlowSnakesOnce, writeSlowSnakesForever
 }
