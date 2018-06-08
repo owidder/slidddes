@@ -24,28 +24,33 @@
 
     (function () {
 
-        function pause() {
+        const ID = "title-cube";
+
+        function exit() {
             slidAR.cube.startStopAnimation(false)
+            slidAR.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        function resume() {
+        function enter() {
             slidAR.cube.startStopAnimation(true)
+            slidAR.slowSnakes.moveSlowSnakes.writeSlowSnakesForever(ID, "#" + ID + " .cube-front", 300, 300, 30000);
         }
 
-        slidAR.scripts.pause("title-cube", pause);
-        slidAR.scripts.resume("title-cube", resume);
+        slidAR.scripts.slideEnter(ID, enter);
+        slidAR.scripts.slideExit(ID, exit);
 
         slidAR.cube.create("#_titlecube", 350);
-        slidAR.counter.create("#title-cube .cube-right", 2612771, 2000);
+        slidAR.counter.create("#" + ID + " .cube-right", 2612771, 2000);
 
-        slidAR.slowSnakes.moveSlowSnakes.writeSlowSnakesForever("#title-cube .cube-front", 300, 300, 30000);
 
-        slidAR.coolText.glowText.create("#title-cube .cube-left", ["The","Block", "Chain", "Game"]);
-        slidAR.coolText.title.create("#title-cube .cube-top", "Slow Snakes");
+        slidAR.coolText.glowText.create("#" + ID + " .cube-left", ["The","Block", "Chain", "Game"]);
+        slidAR.coolText.title.create("#" + ID + " .cube-top", "Slow Snakes");
 
-        slidAR.slowSnakes.totalRewards.create("#title-cube .cube-bottom", 2612771);
+        slidAR.slowSnakes.totalRewards.create("#" + ID + " .cube-bottom", 2612771);
 
-        slidAR.slowSnakes.rinkeby.create("#title-cube .cube-back")
+        slidAR.slowSnakes.rinkeby.create("#" + ID + " .cube-back");
+
+        slidAR.initPhase.markSlideAsReady(ID);
     })()
 
 

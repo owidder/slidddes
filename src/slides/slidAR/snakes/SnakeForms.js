@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
 import {guid} from '../../../util/random';
 
-const S = "s"
-const N = "n"
-const W = "w"
-const E = "e"
+export const S = "s"
+export const N = "n"
+export const W = "w"
+export const E = "e"
 
 const randomDuration = () => {
     return _.random(500, 1500);
@@ -69,6 +69,15 @@ const e = (snakeField, id, x, y) => {
     snakeField.registerAndCommands(id + "e2", x+1, y+2, _e2, randomDuration());
 }
 
+const moveDirections = (snakeField, id, x, y, directions) => {
+    const directionArrays = directions.map((direction) => {
+        return _.range(direction[0]).map(() => direction[1])
+    });
+    const flattened = Array.prototype.concat.apply([], directionArrays);
+    snakeField.registerAndCommands(id + "-moveDirections", x, y, flattened, randomDuration());
+}
+
 export const snakeForms = {
     a, e, k, l, n, o, s, w,
+    moveDirections,
 }

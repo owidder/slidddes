@@ -23,6 +23,7 @@ import {scripts} from './scripting/scripts';
 import {totalRewards} from '../slowSnakes/TotalRewards';
 import {title} from './coolText/Title';
 import {rinkeby} from '../slowSnakes/Rinkeby';
+import {initPhase} from './initPhase';
 
 const coolText = {
     glowText, title
@@ -50,6 +51,7 @@ export const slidAR = {
     counter,
     coolText,
     scripts,
-    slowSnakes
+    slowSnakes,
+    initPhase,
 };
 

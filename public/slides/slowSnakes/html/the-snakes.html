@@ -18,9 +18,19 @@
     /* global slidAR */
 
     (function () {
-        const ID = "the-matrix";
+        const ID = "the-snakes";
 
-        new slidAR.slowSnakes.SnakeField("#" + ID + " .matrix", undefined, undefined, 100, 100);
+        function exit() {
+            slidAR.scripts.stopAllScriptsForSlideId(ID);
+        }
+
+        function enter() {
+            slidAR.slowSnakes.moveSlowSnakes.dance01Forever(ID, "#" + ID, undefined, undefined, 180e3, 100, 100)
+        }
+
+        slidAR.scripts.slideEnter(ID, enter);
+        slidAR.scripts.slideExit(ID, exit);
+
         slidAR.coolText.glowText.create("#" + ID + " .text", ["Far away in", "Block Chain Land", "there is a", "100x100 matrix..."]);
 
         slidAR.initPhase.markSlideAsReady(ID);

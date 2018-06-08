@@ -1,5 +1,7 @@
+import * as _ from 'lodash';
 import {SnakeField} from './SnakeField';
-import {snakeForms} from './SnakeForms';
+import {snakeForms, S, N, W, E} from './SnakeForms';
+import {scripts} from '../scripting/scripts';
 
 const _writeSlowSnakes = (snakeField) => {
     snakeForms.s(snakeField, "_1", 0, 0);
@@ -15,21 +17,54 @@ const _writeSlowSnakes = (snakeField) => {
     snakeForms.s(snakeField, "_2a", 26, 10);
 }
 
-const writeSlowSnakesOnce = (selector, width, heigth) => {
-    const snakeField = new SnakeField(selector, 300, 300);
-    _writeSlowSnakes(snakeField);
+const _dance01 = (snakeField) => {
+    snakeForms.moveDirections(snakeField, "_1", 5, 90, [[80, N], [80, E]]);
+    snakeForms.moveDirections(snakeField, "_2", 90, 5, [[80, S], [80, W]]);
+}
+
+const once = (slideId, selector, width, height, command, dimX, dimY) => {
+    const snakeField = new SnakeField(slideId, selector, width, height, dimX, dimY);
+    command(snakeField);
 
     return snakeField;
 }
 
-const writeSlowSnakesForever = (selector, width, heigth, duration) => {
-    let snakeField = writeSlowSnakesOnce(selector,width, heigth);
-    setInterval(async () => {
+const forever = (slideId, selector, width, height, duration, command, dimX, dimY) => {
+    const callOnce = () => once(slideId, selector, width, height, command, dimX, dimY);
+    let snakeField = callOnce();
+
+    const interval = setInterval(async () => {
         await snakeField.destroy();
-        snakeField = writeSlowSnakesOnce(selector, width, heigth);
+        snakeField = callOnce();
     }, duration > 0 ? duration : 30000);
+
+    const handle = {interval, snakeField, selector};
+
+    scripts.registerStopFunction(slideId, () => {
+        stop(handle);
+    })
+
+    return handle;
+}
+
+const writeSlowSnakesForever = (slideId, selector, width, height, duration, dimX, dimY) => {
+    return forever(slideId, selector, width, height, duration, _writeSlowSnakes, dimX, dimY)
+}
+
+const dance01Forever = (slideId, selector, width, height, duration, dimX, dimY) => {
+    return forever(slideId, selector, width, height, duration, _dance01, dimX, dimY);
+}
+
+const stop = (handle) => {
+    if(!_.isUndefined(handle)) {
+        const {interval, snakeField, selector} = handle;
+        clearInterval(interval);
+        snakeField.clear(selector);
+    }
 }
 
 export const moveSlowSnakes = {
-    writeSlowSnakesOnce, writeSlowSnakesForever
+    writeSlowSnakesForever,
+    dance01Forever,
+    stop,
 }

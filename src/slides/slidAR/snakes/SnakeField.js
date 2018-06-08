@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import {SvgField} from './SvgField';
 import {slidarGlobal} from '../slidarGlobal';
+import {scripts} from '../scripting/scripts';
 
 const defaultSize = () => {
     return Math.min(slidarGlobal.width, slidarGlobal.height) * .9;
@@ -8,7 +9,8 @@ const defaultSize = () => {
 
 export class SnakeField {
 
-    constructor(selector, width, height, dimX, dimY) {
+    constructor(slideId, selector, width, height, dimX, dimY) {
+        this.slideId = slideId;
         this.selector = selector;
         this.width = width > 0 ? width : defaultSize();
         this.height = height > 0 ? height : this.width;
@@ -18,6 +20,10 @@ export class SnakeField {
         this.svgField = new SvgField(selector, this.width, this.height, dimX, dimY);
 
         this.snakes = {};
+    }
+
+    clear(parentSelector) {
+        this.svgField.clear(parentSelector);
     }
 
     destroy() {
@@ -78,26 +84,38 @@ export class SnakeField {
         }
     }
 
-    _doCommandRecusive(id, cmds, duration, index) {
+    _doCommandRecursive(id, cmds, duration, index, stoppedObj) {
         this.command(id, cmds[index]);
         if(index+1 < cmds.length) {
+            if(stoppedObj.stopped) return;
             setTimeout(() => {
-                this._doCommandRecusive(id, cmds, duration, index+1);
+                this._doCommandRecursive(id, cmds, duration, index+1, stoppedObj);
             }, duration);
         }
     }
 
     commands(id, cmds, duration) {
-        this._doCommandRecusive(id, cmds, duration, 0);
+        const stoppedObj = {stopped: false};
+        scripts.registerStopFunction(this.slideId, () => {
+            stoppedObj.stopped = true;
+        })
+        this._doCommandRecursive(id, cmds, duration, 0, stoppedObj);
     }
 
     registerAndCommands(id, x, y, cmds, duration) {
         const startDuration = _.random(1000, 2000);
+        let stopped = false;
         setTimeout(() => {
+            if(stopped) return;
             this.register(id, x, y);
             setTimeout(() => {
+                if(stopped) return;
                 this.commands(id, cmds, duration);
             }, duration);
         }, startDuration);
+
+        scripts.registerStopFunction(this.slideId, () => {
+            stopped = true;
+        })
     }
 }

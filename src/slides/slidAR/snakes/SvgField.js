@@ -72,6 +72,11 @@ export class SvgField {
         this.svg = svg;
     }
 
+    clear(parentSelector) {
+        d3.selectAll(parentSelector + " .svg-field")
+            .remove();
+    }
+
     removeSvg() {
         const self = this;
 

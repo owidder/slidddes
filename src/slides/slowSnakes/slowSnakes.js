@@ -5,6 +5,8 @@ import {staticSlide} from "../staticSlide";
 import * as slidesUtil from '../slidesUtil';
 import {slideControl} from '../control/SlideControl';
 import {slidarGlobal} from '../slidAR/slidarGlobal';
+import {initPhase} from '../slidAR/initPhase';
+
 
 const width = slidarGlobal.width;
 const height = slidarGlobal.height;
@@ -18,6 +20,7 @@ export const init = async (rootSelector, selectedFilename) => {
     await Promise.all([
         slidesUtil.createSlide(createFct, "title-cube", selectedFilename),
         slidesUtil.createSlide(createFct, "the-matrix", selectedFilename),
+        slidesUtil.createSlide(createFct, "the-snakes", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {
@@ -27,5 +30,9 @@ export const init = async (rootSelector, selectedFilename) => {
         slideControl.setCurrentSlideId(selectedFilename);
     }
 
-    return slides.selection();
+    const selection = slides.selection();
+    await initPhase.waitForNumberOfSlides(selection.size());
+    slideControl.runSlideEnterFunction();
+
+    return selection;
 }

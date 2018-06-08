@@ -144,7 +144,7 @@ export const initSlides = async (rootSelector, slideCreateFunction, param) => {
         slidarGlobal.controls = controls;
         slidarGlobal.camera = camera;
 
-        position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene);
+        await position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene);
 
         renderer.render(scene, camera);
         addHudButtons(

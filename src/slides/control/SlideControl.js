@@ -9,6 +9,11 @@ import * as nonArSlides from '../nonArSlides';
 
 import * as arTransform from '../../ar/arTransform';
 
+export const PAUSE_FUNCTION = 'pauseFunction';
+export const RESUME_FUNCTION = 'resumeFunction';
+export const SLIDE_ENTER_FUNCTION = 'slideEnterFunction';
+export const SLIDE_EXIT_FUNCTION = 'slideExitFunction';
+
 /* eslint eqeqeq: "off" */
 class SlideControl {
 
@@ -115,11 +120,11 @@ class SlideControl {
     }
 
     pauseJs(param) {
-        this.doForOneOrForAll(param, "pauseFunction");
+        this.doForOneOrForAll(param, PAUSE_FUNCTION);
     }
 
     resumeJs(param) {
-        this.doForOneOrForAll(param, "resumeFunction");
+        this.doForOneOrForAll(param, RESUME_FUNCTION);
     }
 
     nextSlide() {
@@ -147,6 +152,9 @@ class SlideControl {
     }
 
     moveCameraFwdBack(trueIfFwd, sendStatusFunction) {
+        const self = this;
+        this.runSlideExitFunction();
+
         if(trueIfFwd) {
             this.shiftForwardCurrentSlideId();
         }
@@ -163,6 +171,7 @@ class SlideControl {
             .easing(this.TWEEN.Easing.Exponential.InOut)
             .onComplete(() => {
                 fct.call(sendStatusFunction);
+                self.runSlideEnterFunction();
             })
             .start();
     }
@@ -195,6 +204,23 @@ class SlideControl {
             fct.callWithPromise(sendStatusFunction).then(() => {
                 nonArSlides.nextSlide(this.currentSlideId);
             });
+        }
+    }
+
+    backSlide(sendStatusFunction) {
+        if(slidarGlobal.withAr) {
+            if(slidarGlobal.moveCameraNotSlides) {
+                this.moveCameraFwdBack(false, sendStatusFunction)
+            }
+            else {
+                this.moveSlides(false, sendStatusFunction);
+            }
+        }
+        else {
+            this.shiftBackwardCurrentSlideId();
+            fct.callWithPromise(sendStatusFunction).then(() => {
+                nonArSlides.nextSlide(this.currentSlideId);
+            })
         }
     }
 
@@ -276,18 +302,6 @@ class SlideControl {
         }
     }
 
-    backSlide(sendStatusFunction) {
-        if(slidarGlobal.withAr) {
-            this.moveSlides(false, sendStatusFunction);
-        }
-        else {
-            this.shiftBackwardCurrentSlideId();
-            fct.callWithPromise(sendStatusFunction).then(() => {
-                nonArSlides.nextSlide(this.currentSlideId);
-            })
-        }
-    }
-
     unactive() {
         d3.selectAll("#" + this.currentSlideId)
             .classed("activeslide", false)
@@ -333,18 +347,24 @@ class SlideControl {
     }
 
     pauseCurrentSlide() {
-        this.runScriptOnCurrentSlide('pauseFunction', 1000);
+        this.runScriptOnCurrentSlide(PAUSE_FUNCTION, 1000);
+    }
+
+    runSlideExitFunction() {
+        this.runScriptOnCurrentSlide(SLIDE_EXIT_FUNCTION, 0);
+    }
+
+    runSlideEnterFunction() {
+        this.runScriptOnCurrentSlide(SLIDE_ENTER_FUNCTION, 0);
     }
 
     resumeCurrentSlide() {
-        this.runScriptOnCurrentSlide('resumeFunction');
+        this.runScriptOnCurrentSlide(RESUME_FUNCTION);
     }
 
     shiftForwardCurrentSlideId() {
-        this.pauseCurrentSlide();
         const nextIndex = this.indexOfNextSlideForward();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
-        this.resumeCurrentSlide();
     }
 
     indexOfNextSlideBack() {
@@ -353,10 +373,8 @@ class SlideControl {
     }
 
     shiftBackwardCurrentSlideId() {
-        this.pauseCurrentSlide();
         const nextIndex = this.indexOfNextSlideBack();
         this.setCurrentSlideId(this.slideIds[nextIndex]);
-        this.resumeCurrentSlide();
     }
 
     setStepsObject(slideId, steps, stepNumber = 0) {
@@ -513,6 +531,7 @@ class SlideControl {
         const step = steps[newstepNumber];
         fct.call(step.b);
     }
+
 }
 
 export const slideControl = new SlideControl();
