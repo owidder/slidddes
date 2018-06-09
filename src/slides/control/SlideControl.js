@@ -333,8 +333,7 @@ class SlideControl {
     }
 
     runScriptOnCurrentSlide(scriptName, duration) {
-        const currentSlideId = this.getCurrentSlideId();
-        const config = this.getConfig(currentSlideId);
+        const config = this.getCurrentConfig();
         const script = config[scriptName];
         if(_.isFunction(script)) {
             if(duration > 0) {
@@ -350,12 +349,25 @@ class SlideControl {
         this.runScriptOnCurrentSlide(PAUSE_FUNCTION, 1000);
     }
 
+    getCurrentConfig() {
+        const currentSlideId = this.getCurrentSlideId();
+        return this.getConfig(currentSlideId);
+    }
+
     runSlideExitFunction() {
-        this.runScriptOnCurrentSlide(SLIDE_EXIT_FUNCTION, 0);
+        const config = this.getCurrentConfig();
+        if(config.lastRunEnterOrExitFunction == SLIDE_ENTER_FUNCTION) {
+            this.runScriptOnCurrentSlide(SLIDE_EXIT_FUNCTION, 0);
+            config.lastRunEnterOrExitFunction = SLIDE_EXIT_FUNCTION;
+        }
     }
 
     runSlideEnterFunction() {
-        this.runScriptOnCurrentSlide(SLIDE_ENTER_FUNCTION, 0);
+        const config = this.getCurrentConfig();
+        if(_.isUndefined(config.lastRunEnterOrExitFunction) || config.lastRunEnterOrExitFunction == SLIDE_EXIT_FUNCTION) {
+            this.runScriptOnCurrentSlide(SLIDE_ENTER_FUNCTION, 0);
+            config.lastRunEnterOrExitFunction = SLIDE_ENTER_FUNCTION;
+        }
     }
 
     resumeCurrentSlide() {
