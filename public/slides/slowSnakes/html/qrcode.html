@@ -5,18 +5,34 @@
         font-size: 2em;
     }
 
+    .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+
 </style>
 
-<div class="qrcode title"></div><br>
-<div class="text"></div>
+<div class="container-flex">
+    <div class="qrcode"></div>
+    <div class="text"></div>
+</div>
+
+
 
 <script>
 
     /* global slidAR */
 
     (function () {
-        const address = "https://rinkeby.etherscan.io/address/0x2b2e9386f295ed8072e3f851a02d65738e5667aa";
+        const ID = "qrcode";
+
+        const address = "http://165.227.137.94:1338/index.html?wsHost=1";
         slidAR.qrUtil.makeQrCode("#qrcode .qrcode", address);
-        $("#qrcode .text").html(address);
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", [
+            "Justa sneak preview",
+        ], "middle-large");
+
+        slidAR.initPhase.markSlideAsReady(ID);
     })()
 </script>
