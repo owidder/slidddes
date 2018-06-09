@@ -26,6 +26,11 @@ export class SnakeField {
         this.svgField.clear(parentSelector);
     }
 
+    clearSnakes() {
+        this.snakes = {};
+        this.svgField.clearRects();
+    }
+
     destroy() {
         return this.svgField.removeSvg();
     }
@@ -41,24 +46,27 @@ export class SnakeField {
         this.svgField.newHeads(this.snakes);
     }
 
+    move(id, diffX, diffY) {
+        if(!_.isUndefined(this.snakes[id])) {
+            const {x, y} = this.snakes[id];
+            this.newPosition({id, x: x+diffX, y: y+diffY});
+        }
+    }
+
     north(id) {
-        const {x, y} = this.snakes[id];
-        this.newPosition({id, x, y: y-1});
+        this.move(id, 0, -1);
     }
 
     south(id) {
-        const {x, y} = this.snakes[id];
-        this.newPosition({id, x, y: y+1});
+        this.move(id, 0, +1);
     }
 
     west(id) {
-        const {x, y} = this.snakes[id];
-        this.newPosition({id, y, x: x-1});
+        this.move(id, -1, 0);
     }
 
     east(id) {
-        const {x, y} = this.snakes[id];
-        this.newPosition({id, y, x: x+1});
+        this.move(id, +1, 0);
     }
 
     command(id, cmd) {

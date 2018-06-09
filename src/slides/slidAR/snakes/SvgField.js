@@ -49,7 +49,10 @@ export class SvgField {
 
         this.initSvg(selector);
         this.initAxes();
+        this.initRects();
+    }
 
+    initRects() {
         this.flattenedMatrix = emptyFlattenedMatrix(this.dimX, this.dimY);
         this.history = {};
     }
@@ -75,6 +78,11 @@ export class SvgField {
     clear(parentSelector) {
         d3.selectAll(parentSelector + " .svg-field")
             .remove();
+    }
+
+    clearRects() {
+        this.initRects();
+        this.grects.selectAll("rect.position").remove();
     }
 
     removeSvg() {

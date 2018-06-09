@@ -24,14 +24,16 @@
             slidAR.scripts.stopAllScriptsForSlideId(ID);
         }
 
+        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 100, 100);
+
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.dance01Forever(ID, "#" + ID, undefined, undefined, 180e3, 100, 100)
+            slidAR.slowSnakes.moveSlowSnakes.dance01Forever(ID, snakeField, 180e3);
         }
 
         slidAR.scripts.slideEnter(ID, enter);
         slidAR.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .text", ["Far away in", "Block Chain Land", "there is a", "100x100 matrix..."]);
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["On the matrix", "there are", "Snakes", "moving slowly"]);
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

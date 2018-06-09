@@ -89,7 +89,7 @@ const render = (selector, selectedId, currentBlockNumber, idToPosition) => {
 }
 
 const animate = (selector, selectedId, currentBlockNumber, idToPosition) => {
-    const index = _.random(0, 20);
+    const index = _.random(0, 10);
     let nextSelectedId = selectedId;
     if(index < 3) {
         const key = _.keys(idToPosition)[index];

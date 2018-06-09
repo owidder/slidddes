@@ -22,49 +22,29 @@ const _dance01 = (snakeField) => {
     snakeForms.moveDirections(snakeField, "_2", 90, 5, [[80, S], [80, W]]);
 }
 
-const once = (slideId, selector, width, height, command, dimX, dimY) => {
-    const snakeField = new SnakeField(slideId, selector, width, height, dimX, dimY);
+const forever = (slideId, snakeField, duration, command) => {
     command(snakeField);
 
-    return snakeField;
-}
-
-const forever = (slideId, selector, width, height, duration, command, dimX, dimY) => {
-    const callOnce = () => once(slideId, selector, width, height, command, dimX, dimY);
-    let snakeField = callOnce();
-
-    const interval = setInterval(async () => {
-        await snakeField.destroy();
-        snakeField = callOnce();
+    const interval = setInterval(() => {
+        snakeField.clearSnakes();
+        command(snakeField);
     }, duration > 0 ? duration : 30000);
 
-    const handle = {interval, snakeField, selector};
-
     scripts.registerStopFunction(slideId, () => {
-        stop(handle);
-    })
-
-    return handle;
-}
-
-const writeSlowSnakesForever = (slideId, selector, width, height, duration, dimX, dimY) => {
-    return forever(slideId, selector, width, height, duration, _writeSlowSnakes, dimX, dimY)
-}
-
-const dance01Forever = (slideId, selector, width, height, duration, dimX, dimY) => {
-    return forever(slideId, selector, width, height, duration, _dance01, dimX, dimY);
-}
-
-const stop = (handle) => {
-    if(!_.isUndefined(handle)) {
-        const {interval, snakeField, selector} = handle;
         clearInterval(interval);
-        snakeField.clear(selector);
-    }
+        snakeField.clearSnakes();
+    })
+}
+
+const writeSlowSnakesForever = (slideId, snakeField, duration) => {
+    return forever(slideId, snakeField, duration, _writeSlowSnakes);
+}
+
+const dance01Forever = (slideId, snakeField, duration) => {
+    return forever(slideId, snakeField, duration, _dance01);
 }
 
 export const moveSlowSnakes = {
     writeSlowSnakesForever,
     dance01Forever,
-    stop,
 }
