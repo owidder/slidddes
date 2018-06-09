@@ -21,6 +21,7 @@ export const init = async (rootSelector, selectedFilename) => {
         slidesUtil.createSlide(createFct, "title-cube", selectedFilename),
         slidesUtil.createSlide(createFct, "the-matrix", selectedFilename),
         slidesUtil.createSlide(createFct, "the-snakes", selectedFilename),
+        slidesUtil.createSlide(createFct, "coming-soon", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {

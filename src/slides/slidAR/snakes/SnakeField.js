@@ -110,8 +110,8 @@ export class SnakeField {
         this._doCommandRecursive(id, cmds, duration, 0, stoppedObj);
     }
 
-    registerAndCommands(id, x, y, cmds, duration) {
-        const startDuration = _.random(1000, 2000);
+    registerAndCommands(id, x, y, cmds, duration, noStartDuration) {
+        const startDuration = noStartDuration ? 0 : _.random(1000, 2000);
         let stopped = false;
         setTimeout(() => {
             if(stopped) return;

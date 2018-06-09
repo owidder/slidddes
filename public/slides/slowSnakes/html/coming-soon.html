@@ -1,0 +1,28 @@
+<style>
+    .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div class="container-flex">
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "coming-soon";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Coming soon...", "Any day now...", "Stay tuned!"]);
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

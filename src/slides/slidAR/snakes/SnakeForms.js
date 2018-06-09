@@ -74,7 +74,7 @@ const moveDirections = (snakeField, id, x, y, directions) => {
         return _.range(direction[0]).map(() => direction[1])
     });
     const flattened = Array.prototype.concat.apply([], directionArrays);
-    snakeField.registerAndCommands(id + "-moveDirections", x, y, flattened, randomDuration());
+    snakeField.registerAndCommands(id + "-moveDirections", x, y, flattened, randomDuration(), true);
 }
 
 export const snakeForms = {

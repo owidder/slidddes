@@ -20,6 +20,7 @@ const _writeSlowSnakes = (snakeField) => {
 const _dance01 = (snakeField) => {
     snakeForms.moveDirections(snakeField, "_1", 5, 90, [[80, N], [80, E]]);
     snakeForms.moveDirections(snakeField, "_2", 90, 5, [[80, S], [80, W]]);
+    snakeForms.moveDirections(snakeField, "_3", 60, 60, [[10, S], [10, W], [10, N], [8, E], [8, S]]);
 }
 
 const forever = (slideId, snakeField, duration, command) => {
