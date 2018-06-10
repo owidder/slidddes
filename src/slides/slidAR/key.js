@@ -9,7 +9,7 @@ keyboard.setLocale('us', usLocale);
 
 export const init = () => {
     keyboard.bind('right', () => {
-        executeCommand(COMMAND_FWD);
+        executeCommand(COMMAND_NEXT)
     })
 
     keyboard.bind('s', () => {
@@ -17,7 +17,7 @@ export const init = () => {
     })
 
     keyboard.bind('left', () => {
-        executeCommand(COMMAND_BACK)
+        executeCommand(COMMAND_PREV)
     })
 
     keyboard.bind('a', () => {
@@ -25,7 +25,7 @@ export const init = () => {
     })
 
     keyboard.bind('up', () => {
-        executeCommand(COMMAND_NEXT)
+        executeCommand(COMMAND_BACK)
     })
 
     keyboard.bind('w', () => {
@@ -33,7 +33,7 @@ export const init = () => {
     })
 
     keyboard.bind('down', () => {
-        executeCommand(COMMAND_PREV)
+        executeCommand(COMMAND_FWD);
     })
 
     keyboard.bind('y', () => {

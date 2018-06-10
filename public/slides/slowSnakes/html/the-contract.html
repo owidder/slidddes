@@ -1,0 +1,35 @@
+<style>
+    #the-contract .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    #the-contract .contract img {
+        width: 80vw;
+    }
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div class="container-flex">
+    <div class="contract">
+        <img src="./slides/slowSnakes/img/slowSnakesContract.png">
+    </div>
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "the-contract";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["...via a smart contract", "on the Rinkeby testnet",]);
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>
