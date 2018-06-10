@@ -9,7 +9,7 @@ import './Rinkeby.css';
 export class Rinkeby extends Component {
 
     componentDidMount() {
-        makeQrCode(".rinkeby .qr", "https://rinkeby.etherscan.io/address/0x7c8665a2697d0c178585e7ebeeab77e1a9932ee9");
+        makeQrCode(".rinkeby .qr", "https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c");
     }
 
     render() {
