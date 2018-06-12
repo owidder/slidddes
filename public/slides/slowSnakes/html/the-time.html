@@ -1,0 +1,39 @@
+<style>
+    #the-time .container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    #the-time .time {
+        transform: scale(5);
+    }
+</style>
+
+<div class="slidecounter"></div>
+<div class="code"></div>
+
+<div class="container-flex">
+    <div class="time"></div>
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "the-time";
+
+        slidAR.slowSnakes.RinkebyBlockCounter.create("#" + ID + " .time");
+        slidAR.coolText.glowText.create("#" + ID + " .text", [
+            "In Block Chain Land the blocks are the time.",
+            "The clock ticks each time a new block is born",
+        ]);
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

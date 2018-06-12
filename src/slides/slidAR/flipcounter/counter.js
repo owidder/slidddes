@@ -1,11 +1,12 @@
 import * as d3 from 'd3';
+import * as _ from 'lodash';
 
 import './flipcounter.css';
 
 import {guid} from '../../../util/random'
 import {flipCounter} from './flipcounter';
 
-const create = (containerSelector, start, durationInMs) => {
+const create = (containerSelector, start, durationInMsLower, durationInMsUpper) => {
     const id = "_fc-" + guid();
 
     d3.select(containerSelector)
@@ -17,13 +18,16 @@ const create = (containerSelector, start, durationInMs) => {
         .attr("id", id)
         .attr("class", "flip-counter small");
 
-    let _counterValue = start;
-    const _flipcounter = new flipCounter(id, {value: _counterValue});
+    const _flipcounter = new flipCounter(id, {value: start});
 
-    setInterval(() => {
-        _counterValue++;
-        _flipcounter.setValue(_counterValue);
-    }, durationInMs)
+    _nextValue(durationInMsLower, durationInMsUpper, start, _flipcounter);
+}
+
+const _nextValue = (durationInMsLower, durationInMsUpper, counterValue, flipcounter) => {
+    setTimeout(() => {
+        flipcounter.setValue(counterValue);
+        _nextValue(durationInMsLower, durationInMsUpper, counterValue+1, flipcounter);
+    }, _.random(durationInMsLower, durationInMsUpper));
 }
 
 export const counter = {

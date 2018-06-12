@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './TotalRewards.css';
 
-const MIN_REWARD = 10;
+const MIN_REWARD = 100;
+const MAX_REWARD = 1000;
+const REWARD_MODULO = MIN_REWARD + MAX_REWARD;
 
 const _nextReward = (position, currentBlockNumber) => {
     const ageOfLastMove = currentBlockNumber - position.blockNumber;
-    const nextReward = ageOfLastMove - MIN_REWARD;
+    const nextReward = (ageOfLastMove % REWARD_MODULO) - MIN_REWARD;
 
     return nextReward;
 }
@@ -104,26 +106,18 @@ const animate = (selector, selectedId, currentBlockNumber, idToPosition) => {
     }, 2000)
 }
 
-const create = (selector, startBlockCounter) => {
-    const snk = {
-        id: "snk",
-        blockNumberOfBirth: startBlockCounter - 5322,
-        blockNumber: startBlockCounter,
-        totalReward: 0
-    }
-    const slw = {
-        id: "slw",
-        blockNumberOfBirth: startBlockCounter - 72521,
-        blockNumber: startBlockCounter - 32,
-        totalReward: 0
-    }
-    const fcu = {
-        id: "fcu",
-        blockNumberOfBirth: startBlockCounter - 19937,
-        blockNumber: startBlockCounter - 355,
-        totalReward: 0
-    }
-    const idToPosition = {snk, slw, fcu};
+const create = (selector, names) => {
+    const startBlockCounter = 10000;
+    const idToPosition = {};
+    names.forEach((name) => {
+        idToPosition[name] = {
+            id: name,
+            blockNumberOfBirth: startBlockCounter - _.random(0, 5000),
+            blockNumber: startBlockCounter - _.random(0, 1000),
+            totalReward: _.random(-100, 1000)
+        }
+    })
+
     animate(selector, "snk", startBlockCounter, idToPosition);
 }
 

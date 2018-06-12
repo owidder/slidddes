@@ -22,6 +22,8 @@ export const init = async (rootSelector, selectedFilename) => {
         slidesUtil.createSlide(createFct, "the-matrix", selectedFilename),
         slidesUtil.createSlide(createFct, "the-snakes", selectedFilename),
         slidesUtil.createSlide(createFct, "the-contract", selectedFilename),
+        slidesUtil.createSlide(createFct, "the-time", selectedFilename),
+        slidesUtil.createSlide(createFct, "the-reward", selectedFilename),
         slidesUtil.createSlide(createFct, "coming-soon", selectedFilename),
         slidesUtil.createSlide(createFct, "qrcode", selectedFilename),
     ])

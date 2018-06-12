@@ -1,0 +1,53 @@
+<style>
+    #the-reward .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    #the-reward .inner-container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #the-time .time {
+        transform: scale(5);
+    }
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="reward"></div>
+        <div class="inner-text"></div>
+    </div>
+    <div class="outer-text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "the-reward";
+
+        slidAR.slowSnakes.totalRewards.create("#" + ID + " .reward", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
+
+        slidAR.coolText.glowText.create("#" + ID + " .inner-text", [
+            "A snake can get a reward with each move.",
+            "The longer the time since the last move",
+            "the bigger the reward"
+        ]);
+
+        slidAR.coolText.glowText.create("#" + ID + " .outer-text", [
+            "The reward starts with -100 (more a punish than a reward)",
+            "and ends with 999. And then starts again with -100"
+        ]);
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

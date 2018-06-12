@@ -12,9 +12,6 @@
 
 </style>
 
-<div class="slidecounter"></div>
-<div class="code"></div>
-
 <div id="_titlecube">
 </div>
 
@@ -32,12 +29,12 @@
         }
 
         slidAR.cube.create("#_titlecube", 350);
-        slidAR.counter.create("#" + ID + " .cube-right", 2612771, 2000);
+        slidAR.counter.create("#" + ID + " .cube-right", 2612771, 0, 2000);
 
         slidAR.coolText.glowText.create("#" + ID + " .cube-left", ["The","Block", "Chain", "Game"]);
         slidAR.coolText.title.create("#" + ID + " .cube-bottom", "Slow Snakes");
 
-        slidAR.slowSnakes.totalRewards.create("#" + ID + " .cube-top", 2612771);
+        slidAR.slowSnakes.totalRewards.create("#" + ID + " .cube-top", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
 
         slidAR.slowSnakes.rinkeby.create("#" + ID + " .cube-back");
 

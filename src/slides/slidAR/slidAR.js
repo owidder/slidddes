@@ -24,13 +24,14 @@ import {totalRewards} from '../slowSnakes/TotalRewards';
 import {title} from './coolText/Title';
 import {rinkeby} from '../slowSnakes/Rinkeby';
 import {initPhase} from './initPhase';
+import {RinkebyBlockCounter} from '../slowSnakes/RinkebyBlockCounter';
 
 const coolText = {
     glowText, title
 }
 
 const slowSnakes = {
-    moveSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms
+    moveSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms, RinkebyBlockCounter
 }
 
 export const slidAR = {
