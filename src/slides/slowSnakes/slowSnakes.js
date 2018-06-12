@@ -19,7 +19,6 @@ export const init = async (rootSelector, selectedFilename) => {
 
     await Promise.all([
         slidesUtil.createSlide(createFct, "title-cube", selectedFilename),
-        slidesUtil.createSlide(createFct, "the-matrix", selectedFilename),
         slidesUtil.createSlide(createFct, "the-snakes", selectedFilename),
         slidesUtil.createSlide(createFct, "the-contract", selectedFilename),
         slidesUtil.createSlide(createFct, "the-time", selectedFilename),

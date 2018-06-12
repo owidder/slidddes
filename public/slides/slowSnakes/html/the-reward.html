@@ -13,6 +13,10 @@
         width: 100%;
     }
 
+    #the-reward .inner-text {
+        margin-left: 5%;
+    }
+
     #the-time .time {
         transform: scale(5);
     }
@@ -33,18 +37,15 @@
     (function () {
         const ID = "the-reward";
 
-        slidAR.slowSnakes.totalRewards.create("#" + ID + " .reward", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
+        slidAR.slowSnakes.totalRewards.create("#" + ID + " .reward", ["geek", "poke", "_1337", "_42", "snk", "slw"], "big");
 
         slidAR.coolText.glowText.create("#" + ID + " .inner-text", [
-            "A snake can get a reward with each move.",
-            "The longer the time since the last move",
-            "the bigger the reward"
-        ]);
-
-        slidAR.coolText.glowText.create("#" + ID + " .outer-text", [
-            "The reward starts with -100 (more a punish than a reward)",
-            "and ends with 999. And then starts again with -100"
-        ]);
+            "The reward starts with -100 " +
+            "(negative one hundred, maybe more a punish than a reward) " +
+            "and - with each tick of the time - goes up to positive 999. And then starts again with negative 100 " +
+            "(that's why you should not wait too long).",
+            "A table on the field shows you the total rewards and the possible next rewards for each snake."
+        ], "small");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

@@ -55,7 +55,8 @@ export class TotalRewards extends Component {
 
     render() {
         return (
-            <div className="chaintable">
+            <div className={"chaintable " + this.props.classNames
+            }>
                 <table>
                     <thead>
                         <tr>
@@ -80,17 +81,18 @@ TotalRewards.propTypes = {
     idToPosition: PropTypes.object,
     currentBlockNumber: PropTypes.number,
     selectedId: PropTypes.string,
+    classNames: PropTypes.string,
 }
 
-const render = (selector, selectedId, currentBlockNumber, idToPosition) => {
+const render = (selector, selectedId, currentBlockNumber, idToPosition, classNames) => {
     ReactDOM.render(
-        <TotalRewards idToPosition={idToPosition} selectedId={selectedId} currentBlockNumber={currentBlockNumber}/>,
+        <TotalRewards idToPosition={idToPosition} selectedId={selectedId} currentBlockNumber={currentBlockNumber} classNames={classNames}/>,
         document.querySelector(selector)
     )
 
 }
 
-const animate = (selector, selectedId, currentBlockNumber, idToPosition) => {
+const animate = (selector, selectedId, currentBlockNumber, idToPosition, classNames) => {
     const index = _.random(0, 10);
     let nextSelectedId = selectedId;
     if(index < 3) {
@@ -100,13 +102,13 @@ const animate = (selector, selectedId, currentBlockNumber, idToPosition) => {
         position.blockNumber = currentBlockNumber;
         nextSelectedId = position.id;
     }
-    render(selector, nextSelectedId, currentBlockNumber+1, idToPosition);
+    render(selector, nextSelectedId, currentBlockNumber+1, idToPosition, classNames);
     setTimeout(() => {
-        animate(selector, nextSelectedId, currentBlockNumber+1, idToPosition);
+        animate(selector, nextSelectedId, currentBlockNumber+1, idToPosition, classNames);
     }, 2000)
 }
 
-const create = (selector, names) => {
+const create = (selector, names, classNames = "normal") => {
     const startBlockCounter = 10000;
     const idToPosition = {};
     names.forEach((name) => {
@@ -118,7 +120,7 @@ const create = (selector, names) => {
         }
     })
 
-    animate(selector, "snk", startBlockCounter, idToPosition);
+    animate(selector, "snk", startBlockCounter, idToPosition, classNames);
 }
 
 export const totalRewards = {

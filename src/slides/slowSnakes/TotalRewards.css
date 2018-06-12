@@ -2,6 +2,10 @@
     font-family: 'Courier', monospace;
 }
 
+.chaintable.big tr {
+    font-size: 3em;
+}
+
 .selected {
     background-color: yellow;
     font-weight: bolder;

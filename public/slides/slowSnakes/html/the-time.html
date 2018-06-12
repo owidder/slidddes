@@ -28,9 +28,11 @@
 
         slidAR.slowSnakes.RinkebyBlockCounter.create("#" + ID + " .time");
         slidAR.coolText.glowText.create("#" + ID + " .text", [
-            "In Block Chain Land the blocks are the time.",
-            "The clock ticks each time a new block is born",
-        ]);
+            "A snake can get a reward with each move. The longer the time between two moves the bigger the reward. " +
+            "(That's why they move so slow. But do not wait toooooooo long! Why? Wait until next slide!)",
+            "But what is 'time' in Block Chain Land? Well..., in Block Chain Land even the time is made out of blocks, i.e. the clock ticks each time a new block is born.",
+            "You can see the current BCT (block chain time) through a counter on the field",
+        ], "small");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()
