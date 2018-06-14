@@ -1,7 +1,14 @@
 <style>
-    #the-contract .container-flex {
+    #the-contract .inner-container-flex {
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
+    }
+
+    #the-contract .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #the-contract .contract img {
@@ -9,14 +16,14 @@
     }
 </style>
 
-<div class="slidecounter"></div>
-<div class="code"></div>
-
-<div class="container-flex">
-    <div class="contract">
-        <img src="./slides/slowSnakes/img/slowSnakesContract.png">
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/slowSnakesContract.png">
+        </div>
+        <div class="text"></div>
     </div>
-    <div class="text"></div>
+    <div>You can find it here: <a href="https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c" target="_blank">https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c</a></div>
 </div>
 
 <script>
@@ -26,7 +33,7 @@
     (function () {
         const ID = "the-contract";
 
-        slidAR.coolText.glowText.create("#" + ID + " .text", ["...via a smart contract", "on the Rinkeby testnet",]);
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["...via a smart contract", "on the Rinkeby testnet",], "normal glow");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

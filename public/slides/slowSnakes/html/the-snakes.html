@@ -3,11 +3,35 @@
         display: flex;
         justify-content: flex-start;
     }
+
+    #the-snakes .text-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80vh;
+        width: 100%;
+    }
+
+    #the-snakes .divider {
+        width: 50%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
 </style>
 
 <div class="container-flex">
     <div class="matrix"></div>
-    <div class="text"></div>
+    <div class="text-container-flex">
+        <div class="par1"></div>
+        <div class="divider"></div>
+        <div class="par2"></div>
+        <div class="divider"></div>
+        <div class="par3"></div>
+        <div class="divider"></div>
+        <div class="par4"></div>
+    </div>
 </div>
 
 <script>
@@ -30,12 +54,18 @@
         slidAR.scripts.slideEnter(ID, enter);
         slidAR.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .text", [
-            "Far away in Block Chain Land there is a 100x100 matrix",
-            "On the matrix there are snakes moving slowly.",
-            "(Hence the name 'SlowSnakes')",
-            "And you can create one and control it...",
+        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+            "Far away in Block Chain Land there is a 100x100 matrix"
+        ], "small glow");
+        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+            "On the matrix there are snakes moving slowly (hence the name 'SlowSnakes')."
         ], "small");
+        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+            "Btw: The blinking thingy is the head of a snake. There's something special with it (we'll explain later)."
+            ], "small");
+        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+            "But the best is: You can create and control your very own snake...",
+        ], "small glow");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

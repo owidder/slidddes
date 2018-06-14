@@ -9,6 +9,21 @@
     #the-time .time {
         transform: scale(5);
     }
+
+    #the-time .text-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #the-time .divider {
+        width: 100%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
 </style>
 
 <div class="slidecounter"></div>
@@ -16,7 +31,13 @@
 
 <div class="container-flex">
     <div class="time"></div>
-    <div class="text"></div>
+    <div class="text-container-flex">
+        <div class="par1"></div>
+        <div class="divider"></div>
+        <div class="par2"></div>
+        <div class="divider"></div>
+        <div class="par3"></div>
+    </div>
 </div>
 
 <script>
@@ -27,12 +48,19 @@
         const ID = "the-time";
 
         slidAR.slowSnakes.RinkebyBlockCounter.create("#" + ID + " .time");
-        slidAR.coolText.glowText.create("#" + ID + " .text", [
-            "A snake can get a reward with each move. The longer the time between two moves the bigger the reward. " +
-            "(That's why they move so slow. But do not wait toooooooo long! Why? Wait until next slide!)",
+        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+            "Your snake can get a reward with each move it takes."
+        ], "small glow");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+            "The longer the time between two moves the bigger the reward. " +
+            "(That's why they move so slowly. But do not wait toooooooo long! Why? Wait until next slide!)"
+        ], "small");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par3", [
             "But what is 'time' in Block Chain Land? Well..., in Block Chain Land even the time is made out of blocks, i.e. the clock ticks each time a new block is born.",
             "You can see the current BCT (block chain time) through a counter on the field",
-        ], "small");
+        ], "small glow");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

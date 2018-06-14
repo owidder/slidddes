@@ -1,0 +1,55 @@
+<style>
+    #the-field .container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #the-field .field img {
+        width: 80vw;
+    }
+
+    #the-field .divider {
+        width: 70%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+    #the-field .divider.small {
+        width: 10%;
+    }
+
+    #the-field .qrcode {
+        transform: scale(.1);
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="field">
+        <img src="./slides/slowSnakes/img/slowSnakesField.png">
+    </div>
+    <div class="divider"></div>
+    <div class="text"></div>
+    <div class="divider small"></div>
+    <div>You can find it here: <a href="http://165.227.137.94:1338/index.html?wsHost=1" target="_blank">http://165.227.137.94:1338/index.html?wsHost=1</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "the-field";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["And this is how the field looks like",], "normal glow");
+        slidAR.qrUtil.makeQrCode("#" + ID + " .qrcode", "http://165.227.137.94:1338/index.html?wsHost=1");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>
