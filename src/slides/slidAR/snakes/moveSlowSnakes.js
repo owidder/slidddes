@@ -23,6 +23,11 @@ const _dance01 = (snakeField) => {
     snakeForms.moveDirections(snakeField, "_3", 60, 60, [[10, S], [10, W], [10, N], [8, E], [8, S]]);
 }
 
+const _tailCollision = (snakeField) => {
+    snakeForms.moveDirections(snakeField, "_1", 10, 10, [[5, N]]);
+    snakeForms.moveDirections(snakeField, "_2", 19, 9, [[9, W]]);
+}
+
 const forever = (slideId, snakeField, duration, command) => {
     command(snakeField);
 
@@ -45,7 +50,12 @@ const dance01Forever = (slideId, snakeField, duration) => {
     return forever(slideId, snakeField, duration, _dance01);
 }
 
+const tailCollisionForever = (slideId, snakeField, duration) => {
+    return forever(slideId, snakeField, duration, _tailCollision);
+}
+
 export const moveSlowSnakes = {
     writeSlowSnakesForever,
     dance01Forever,
+    tailCollisionForever,
 }

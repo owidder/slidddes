@@ -1,10 +1,10 @@
 <style>
-    #the-reward .container-flex {
+    #tail-collision .container-flex {
         display: flex;
         justify-content: flex-start;
     }
 
-    #the-reward .text-container-flex {
+    #tail-collision .text-container-flex {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -12,29 +12,23 @@
         width: 100%;
     }
 
-    #the-reward .divider {
+    #tail-collision .divider {
         width: 50%;
         flex-shrink: 1;
         border-bottom: 1px solid black;
         margin: 5px;
     }
 
-    #the-reward .text-container-flex {
-        margin-left: 5%;
-    }
-
 </style>
 
 <div class="container-flex">
-    <div class="reward"></div>
+    <div class="matrix"></div>
     <div class="text-container-flex">
         <div class="par1"></div>
         <div class="divider"></div>
         <div class="par2"></div>
         <div class="divider"></div>
         <div class="par3"></div>
-        <div class="divider"></div>
-        <div class="par4"></div>
     </div>
 </div>
 
@@ -43,26 +37,30 @@
     /* global slidAR */
 
     (function () {
-        const ID = "the-reward";
+        const ID = "tail-collision";
 
-        slidAR.slowSnakes.totalRewards.create("#" + ID + " .reward", ["geek", "poke", "_1337", "_42", "snk", "slw"], "big");
+        function exit() {
+            slidAR.scripts.stopAllScriptsForSlideId(ID);
+        }
+
+        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+
+        function enter() {
+            slidAR.slowSnakes.moveSlowSnakes.tailCollisionForever(ID, snakeField, 20000);
+        }
+
+        slidAR.scripts.slideEnter(ID, enter);
+        slidAR.scripts.slideExit(ID, exit);
 
         slidAR.coolText.glowText.create("#" + ID + " .par1", [
-            "A table on the field shows you the total rewards and the possible next rewards for each snake."
+            "Moving on the tail of another snake is NOT a good idea!"
         ], "small glow");
-
         slidAR.coolText.glowText.create("#" + ID + " .par2", [
-            "The reward starts with -100 " +
-            "(negative one hundred, maybe more a punish than a reward) "
+            "If you have positive total rewards you lose all of them to the other snake and go back to negative 100",
         ], "smaller");
-
         slidAR.coolText.glowText.create("#" + ID + " .par3", [
-            "With each tick of the time it goes up to positive 999"
-        ], "small glow");
-
-        slidAR.coolText.glowText.create("#" + ID + " .par4", [
-            "And then starts again with negative 100 (that's why you should not wait too long)."
-        ], "smaller");
+            "If you have negative total rewards you also get punished (how? try it out! ;)",
+            ], "smaller");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

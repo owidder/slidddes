@@ -24,8 +24,7 @@ export const init = async (rootSelector, selectedFilename) => {
         slidesUtil.createSlide(createFct, "the-field", selectedFilename),
         slidesUtil.createSlide(createFct, "the-time", selectedFilename),
         slidesUtil.createSlide(createFct, "the-reward", selectedFilename),
-        slidesUtil.createSlide(createFct, "coming-soon", selectedFilename),
-        slidesUtil.createSlide(createFct, "qrcode", selectedFilename),
+        slidesUtil.createSlide(createFct, "tail-collision", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {
