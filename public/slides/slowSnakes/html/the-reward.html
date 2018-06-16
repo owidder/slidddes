@@ -1,33 +1,41 @@
 <style>
-    #the-reward .outer-container-flex {
+^    #the-reward .container-flex {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 100%;
+        justify-content: flex-start;
     }
 
-    #the-reward .inner-container-flex {
+    #the-reward .text-container-flex {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
+        height: 80vh;
         width: 100%;
     }
 
-    #the-reward .inner-text {
+    #the-reward .divider {
+        width: 50%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+    #the-reward .text-container-flex {
         margin-left: 5%;
     }
 
-    #the-time .time {
-        transform: scale(5);
-    }
 </style>
 
-<div class="outer-container-flex">
-    <div class="inner-container-flex">
-        <div class="reward"></div>
-        <div class="inner-text"></div>
+<div class="container-flex">
+    <div class="reward"></div>
+    <div class="text-container-flex">
+        <div class="par1"></div>
+        <div class="divider"></div>
+        <div class="par2"></div>
+        <div class="divider"></div>
+        <div class="par3"></div>
+        <div class="divider"></div>
+        <div class="par4"></div>
     </div>
-    <div class="outer-text"></div>
 </div>
 
 <script>
@@ -39,13 +47,22 @@
 
         slidAR.slowSnakes.totalRewards.create("#" + ID + " .reward", ["geek", "poke", "_1337", "_42", "snk", "slw"], "big");
 
-        slidAR.coolText.glowText.create("#" + ID + " .inner-text", [
-            "The reward starts with -100 " +
-            "(negative one hundred, maybe more a punish than a reward) " +
-            "and - with each tick of the time - goes up to positive 999. And then starts again with negative 100 " +
-            "(that's why you should not wait too long).",
+        slidAR.coolText.glowText.create("#" + ID + " .par1", [
             "A table on the field shows you the total rewards and the possible next rewards for each snake."
-        ], "small");
+        ], "small glow");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+            "The reward starts with -100 " +
+            "(negative one hundred, maybe more a punish than a reward) "
+        ], "smaller");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+            "With each tick of the time it goes up to positive 999"
+        ], "small glow");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+            "And then starts again with negative 100 (that's why you should not wait too long)."
+        ], "smaller");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

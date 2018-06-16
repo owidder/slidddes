@@ -1,0 +1,10 @@
+._hudmenu div.leftright {
+    color: black;
+    background-color: rgba(118, 118, 118, .3);
+    opacity: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+}

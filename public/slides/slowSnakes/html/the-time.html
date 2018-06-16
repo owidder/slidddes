@@ -7,18 +7,19 @@
     }
 
     #the-time .time {
-        transform: scale(5);
+        transform: scale(4);
     }
 
-    #the-time .text-container-flex {
+    #the-time .text-container-flex, #the-time .text-container-flex * {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
+        align-items: center;
     }
 
     #the-time .divider {
-        width: 100%;
+        width: 50%;
         flex-shrink: 1;
         border-bottom: 1px solid black;
         margin: 5px;
@@ -37,6 +38,10 @@
         <div class="par2"></div>
         <div class="divider"></div>
         <div class="par3"></div>
+        <div class="divider"></div>
+        <div class="par4"></div>
+        <div class="divider"></div>
+        <div class="par5"></div>
     </div>
 </div>
 
@@ -54,12 +59,22 @@
 
         slidAR.coolText.glowText.create("#" + ID + " .par2", [
             "The longer the time between two moves the bigger the reward. " +
-            "(That's why they move so slowly. But do not wait toooooooo long! Why? Wait until next slide!)"
-        ], "small");
+            "(That's why they move so slowly).",
+            "But do not wait toooooooo long! (Why? Wait until next slide!)"
+        ], "smaller");
 
         slidAR.coolText.glowText.create("#" + ID + " .par3", [
-            "But what is 'time' in Block Chain Land? Well..., in Block Chain Land even the time is made out of blocks, i.e. the clock ticks each time a new block is born.",
-            "You can see the current BCT (block chain time) through a counter on the field",
+            "What is 'time' in Block Chain Land? "
+        ], "small glow");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+            "Well..., in Block Chain Land even the time is made out of blocks, ",
+            "i.e. the clock ticks each time a new block is born on the Rinkeby test net. ",
+        ], "smaller");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par5", [
+            "You can see the current RBCT (Rinkeby Block Chain Time) ",
+            "through a counter on the field",
         ], "small glow");
 
         slidAR.initPhase.markSlideAsReady(ID);

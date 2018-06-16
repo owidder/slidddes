@@ -1,6 +1,8 @@
 import * as d3 from 'd3';
 import * as $ from 'jquery';
 
+import './hudUtil.css';
+
 import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
 export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
@@ -9,10 +11,11 @@ export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
     if(slidarGlobal.withAr) {
         const menu = d3.selectAll(hudSelector)
             .append("div")
-            .attr("class", "menu")
+            .attr("class", "menu _hudmenu")
 
         addHudButton(menu, "lefthud", "arrow_back", onLeftClick);
-        menu.append("span")
+        menu.append("div")
+            .attr("class", "leftright")
             .append("text")
             .text("Press left-/right arrow keys or click on the arrow-buttons")
         addHudButton(menu, "righthud", "arrow_forward", onRightClick);
