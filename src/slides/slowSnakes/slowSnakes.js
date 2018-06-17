@@ -28,6 +28,8 @@ export const init = async (rootSelector, selectedFilename) => {
         slidesUtil.createSlide(createFct, "head-collision", selectedFilename),
         slidesUtil.createSlide(createFct, "not-outside", selectedFilename),
         slidesUtil.createSlide(createFct, "and-now", selectedFilename),
+        slidesUtil.createSlide(createFct, "metamask", selectedFilename),
+        slidesUtil.createSlide(createFct, "select-rinkeby", selectedFilename),
     ])
 
     if(_.isEmpty(selectedFilename)) {

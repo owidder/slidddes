@@ -1,0 +1,43 @@
+<style>
+    #select-rinkeby .container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    #select-rinkeby .contract img {
+        width: 80vw;
+    }
+
+    #select-rinkeby img {
+        display: block;
+        max-width: 25vw;
+        width: auto;
+        height: auto;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="contract">
+        <img src="./slides/slowSnakes/img/select-rinkeby.png">
+    </div>
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "select-rinkeby";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Select the Rinkeby test network",], "normal glow");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>
