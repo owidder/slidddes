@@ -1,5 +1,5 @@
 <style>
-    .container-flex {
+    #and-now .container-flex {
         display: flex;
         justify-content: flex-start;
     }
@@ -14,9 +14,9 @@
     /* global slidAR */
 
     (function () {
-        const ID = "coming-soon";
+        const ID = "and-now";
 
-        slidAR.coolText.glowText.create("#" + ID + " .text", ["Coming soon...", "Any day now...", "Stay tuned!"], "large");
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["And now ?"], "larger glow");
 
         slidAR.initPhase.markSlideAsReady(ID);
     })()

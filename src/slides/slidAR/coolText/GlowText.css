@@ -30,6 +30,10 @@
     font-size: 10em;
 }
 
+.GlowText .larger {
+    font-size: 20em;
+}
+
 .GlowText .middle-large {
     font-size: 7em;
 }

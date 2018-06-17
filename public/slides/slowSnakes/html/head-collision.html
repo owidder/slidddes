@@ -1,10 +1,10 @@
 <style>
-    #tail-collision .container-flex {
+    #head-collision .container-flex {
         display: flex;
         justify-content: flex-start;
     }
 
-    #tail-collision .text-container-flex {
+    #head-collision .text-container-flex {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -12,7 +12,7 @@
         width: 100%;
     }
 
-    #tail-collision .divider {
+    #head-collision .divider {
         width: 50%;
         flex-shrink: 1;
         border-bottom: 1px solid black;
@@ -39,7 +39,7 @@
     /* global slidAR */
 
     (function () {
-        const ID = "tail-collision";
+        const ID = "head-collision";
 
         function exit() {
             slidAR.scripts.stopAllScriptsForSlideId(ID);
@@ -48,23 +48,23 @@
         const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.tailCollisionForever(ID, snakeField, 20000);
+            slidAR.slowSnakes.moveSlowSnakes.headCollisionForever(ID, snakeField, 20000);
         }
 
         slidAR.scripts.slideEnter(ID, enter);
         slidAR.scripts.slideExit(ID, exit);
 
         slidAR.coolText.glowText.create("#" + ID + " .par1", [
-            "Tail Collisions"
+            "Head Collisions"
         ], "normal glow");
         slidAR.coolText.glowText.create("#" + ID + " .par2", [
-            "Moving on the tail of another snake is NOT a good idea!"
+            "Whereas moving on the head of another snake is a GREAT thing to do!"
         ], "small glow");
         slidAR.coolText.glowText.create("#" + ID + " .par3", [
-            "If you have positive total rewards you lose all of them to the other snake and go back to negative 100",
+            "If the other snake has positive total rewards you get all of them and it falls back to negative 100",
         ], "smaller");
         slidAR.coolText.glowText.create("#" + ID + " .par4", [
-            "If you have negative total rewards you also get punished (how? try it out! ;)",
+            "BUT: Your snake has to be at least 1000 blocks old. If not this is treated like a tail collision (see slide before)",
             ], "smaller");
 
         slidAR.initPhase.markSlideAsReady(ID);
