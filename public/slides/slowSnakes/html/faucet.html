@@ -1,0 +1,64 @@
+<style>
+    #faucet .inner-container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #faucet .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #faucet .contract img {
+        width: 80vw;
+    }
+
+    #faucet .qrcode {
+        transform: scale(.2);
+    }
+
+    #faucet img {
+        display: block;
+        max-width: 65vw;
+        width: auto;
+        height: auto;
+    }
+
+    #faucet .text {
+        margin-left: 5%;
+    }
+
+    #faucet .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/faucet.png">
+        </div>
+        <div class="text"></div>
+    </div>
+    <div class="subtext">Go to: <a href="https://faucet.rinkeby.io" target="_blank">https://faucet.rinkeby.io</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "faucet";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Go to the Rinkeby faucet and get your new account some Ethers",], "normal glow");
+        slidAR.qrUtil.makeQrCode("#" + ID + " .qrcode", "https://faucet.rinkeby.io");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

@@ -1,0 +1,65 @@
+<style>
+    #connect-with-metamask .inner-container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #connect-with-metamask .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #connect-with-metamask .contract img {
+        width: 80vw;
+    }
+
+    #connect-with-metamask .qrcode {
+        transform: scale(.2);
+    }
+
+    #connect-with-metamask img {
+        display: block;
+        max-width: 65vw;
+        width: auto;
+        height: auto;
+    }
+
+    #connect-with-metamask .text {
+        margin-left: 5%;
+    }
+
+    #connect-with-metamask .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/connect-with-metamask.png">
+        </div>
+        <div class="text"></div>
+    </div>
+    <div class="subtext">Go to: <a href="https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c#writeContract" target="_blank">https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c#writeContract</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "connect-with-metamask";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Go to the contract on Etherscan, select the 'Write Contract' " +
+        "tab and click on 'Connect with Metamask'",], "small glow");
+        slidAR.qrUtil.makeQrCode("#" + ID + " .qrcode", "https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c#writeContract");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

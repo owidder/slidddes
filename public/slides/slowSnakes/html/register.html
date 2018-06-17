@@ -1,0 +1,61 @@
+<style>
+    #register .container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 80vh;
+    }
+
+    #register img {
+        display: block;
+        max-width: 90vw;
+        width: auto;
+        height: auto;
+    }
+
+    #register .divider {
+        width: 50%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div>
+        <img src="./slides/slowSnakes/img/register.png">
+    </div>
+    <div class="par1"></div>
+    <div class="divider"></div>
+    <div class="par2"></div>
+    <div class="divider"></div>
+    <div class="par3"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "register";
+
+        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+            "Now you can register your snake",
+        ], "small glow");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+            "First parameter is the ID (arbitrary string between 3 and 10 chars)",
+        ], "smaller");
+
+        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+            "Second and third are X and Y coordinates (0 - 99)"
+        ], "smaller");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

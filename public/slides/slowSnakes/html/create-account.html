@@ -1,0 +1,43 @@
+<style>
+    #create-account .container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    #create-account .contract img {
+        width: 80vw;
+    }
+
+    #create-account img {
+        display: block;
+        max-width: 25vw;
+        width: auto;
+        height: auto;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="contract">
+        <img src="./slides/slowSnakes/img/create-account.png">
+    </div>
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "create-account";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Create an account",], "normal glow");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

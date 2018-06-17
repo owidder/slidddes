@@ -33,6 +33,10 @@ const _headCollision = (snakeField) => {
     snakeForms.moveDirections(snakeField, "_2", 5, 12, [[5, E]]);
 }
 
+const _selfCollision = (snakeField) => {
+    snakeForms.moveDirections(snakeField, "_1", 10, 10, [[3, N], [2, E], [2, S], [2, W]]);
+}
+
 const _doNotMoveOutside = (snakeField) => {
     snakeForms.moveDirections(snakeField, "_1", 15, 15, [[4, S]]);
 }
@@ -67,6 +71,10 @@ const headCollisionForever = (slideId, snakeField, duration) => {
     return forever(slideId, snakeField, duration, _headCollision);
 }
 
+const selfCollisionForever = (slideId, snakeField, duration) => {
+    return forever(slideId, snakeField, duration, _selfCollision);
+}
+
 const doNotMoveOutsideForever = (slideId, snakeField, duration) => {
     return forever(slideId, snakeField, duration, _doNotMoveOutside);
 }
@@ -77,4 +85,5 @@ export const moveSlowSnakes = {
     tailCollisionForever,
     headCollisionForever,
     doNotMoveOutsideForever,
+    selfCollisionForever,
 }

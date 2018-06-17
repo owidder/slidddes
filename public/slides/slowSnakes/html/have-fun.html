@@ -1,0 +1,25 @@
+<style>
+    #have-fun .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+<div class="container-flex">
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidAR */
+
+    (function () {
+        const ID = "have-fun";
+
+        slidAR.coolText.glowText.create("#" + ID + " .text", ["Have fun !!!"], "larger glow");
+
+        slidAR.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>
