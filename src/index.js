@@ -47,11 +47,7 @@ switch (bodyType) {
         initSlides("#container", dbar.init, paramValue);
         break;
 
-    case BODY_TYPE_SLIDE_SLOW_SNAKES:
+    default:
         slidarGlobal.slidesFolder = "slides/slowSnakes/html/";
         initSlides("#container", slowSnakes.init, paramValue);
-        break;
-
-    default:
-        // do nothing
 }
