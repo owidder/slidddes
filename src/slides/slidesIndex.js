@@ -1,6 +1,5 @@
 import * as _ from 'lodash';
 
-import {log} from '../util/log';
 import {setArPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/arPositions';
 import {initThree} from '../three/threeApp';
 import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
