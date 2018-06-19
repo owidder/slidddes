@@ -7,11 +7,6 @@ window.THREE_orig = THREE_orig // Not saying it's pretty
 const THREE_argon = window.THREE;
 window.THREE_argon = THREE_argon;
 
-const set_THREE_argon = () => {
-    window.THREE = THREE_argon;
-    slidarGlobal.THREE = THREE_argon;
-}
-
 const set_THREE_orig = () => {
     window.THREE = THREE_orig;
 
@@ -23,5 +18,5 @@ const set_THREE_orig = () => {
 
 export {
     THREE_argon, THREE_orig,
-    set_THREE_argon, set_THREE_orig
+    set_THREE_orig
 }
