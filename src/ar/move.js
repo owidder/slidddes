@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import * as arTransform from './arTransform';
+import * as arTransform from './transform';
 
 const setXYZ = (newXYZ, currentXYZ) => {
     const x = _.isUndefined(newXYZ.x) ? currentXYZ.x : newXYZ.x;
