@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import {slideControl} from '../control/SlideControl';
 import {createReverseStep} from './steps';
 import {slidarGlobal} from './slidarGlobal';
-import * as move from '../../ar/move';
+import * as move from '../../three/move';
 
 const toPosition = (slideId, newPosition) => {
     const object = slideControl.getObject(slideId);
