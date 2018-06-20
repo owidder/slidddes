@@ -7,7 +7,7 @@ import * as fct from '../../util/fct';
 import {slidarGlobal} from '../slidAR/slidarGlobal';
 import * as nonArSlides from '../nonArSlides';
 
-import * as arTransform from '../../ar/transform';
+import * as arTransform from '../../three/transform';
 
 export const PAUSE_FUNCTION = 'pauseFunction';
 export const RESUME_FUNCTION = 'resumeFunction';
