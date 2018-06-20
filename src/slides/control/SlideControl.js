@@ -17,7 +17,7 @@ export const SLIDE_EXIT_FUNCTION = 'slideExitFunction';
 /* eslint eqeqeq: "off" */
 class SlideControl {
 
-    constructor(withAr) {
+    constructor() {
         this.configs = {};
         this.steps = {};
         this.slideIds = [];
@@ -128,7 +128,7 @@ class SlideControl {
     }
 
     nextSlide() {
-        if(slidarGlobal.withAr) {
+        if(slidarGlobal.with3d) {
             const allObjects = this.getAllObjects();
             arTransform.allNext(allObjects, this.TWEEN);
             this.shiftForwardCurrentSlideId();
@@ -142,7 +142,7 @@ class SlideControl {
     gotoSlide(slideId) {
         if(slideId != this.currentSlideId) {
             this.setCurrentSlideId(slideId);
-            if(slidarGlobal.withAr) {
+            if(slidarGlobal.with3d) {
                 this.initCamera(this.indexOfCurrentSlide());
             }
             else {
@@ -191,7 +191,7 @@ class SlideControl {
     }
 
     fwdSlide(sendStatusFunction) {
-        if(slidarGlobal.withAr) {
+        if(slidarGlobal.with3d) {
             if(slidarGlobal.moveCameraNotSlides) {
                 this.moveCameraFwdBack(true, sendStatusFunction)
             }
@@ -208,7 +208,7 @@ class SlideControl {
     }
 
     backSlide(sendStatusFunction) {
-        if(slidarGlobal.withAr) {
+        if(slidarGlobal.with3d) {
             if(slidarGlobal.moveCameraNotSlides) {
                 this.moveCameraFwdBack(false, sendStatusFunction)
             }

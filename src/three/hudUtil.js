@@ -8,7 +8,7 @@ import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
     $(hudSelector).empty();
 
-    if(slidarGlobal.withAr) {
+    if(slidarGlobal.with3d) {
         const menu = d3.selectAll(hudSelector)
             .append("div")
             .attr("class", "menu _hudmenu")

@@ -72,7 +72,7 @@ export const initSlides = async (rootSelector, slideCreateFunction) => {
     const positionFunction = createPositionFunction(type, radius);
 
     set_THREE_orig();
-    slidarGlobal.withAr = true;
+    slidarGlobal.with3d = true;
     slidarGlobal.useArgon = false;
     slidarGlobal.moveCameraNotSlides = true;
     const {scene, camera, renderer, controls} = initThree("#container");

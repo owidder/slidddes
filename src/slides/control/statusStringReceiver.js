@@ -23,7 +23,7 @@ const parseCurrentIdPart = (currentIdPartStr) => {
 }
 
 const parseNextPrevPart = (nextPrevPartStr) => {
-    if(slidarGlobal.withAr) {
+    if(slidarGlobal.with3d) {
         switch (nextPrevPartStr) {
             case COMMAND_NEXT:
                 slideControl.fwdSlide();
