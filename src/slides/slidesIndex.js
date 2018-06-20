@@ -8,7 +8,7 @@ import * as key from './slidAR/key';
 import * as query from '../util/query';
 import * as slidAR from './slidAR/slidAR';
 import {slidarGlobal} from './slidAR/slidarGlobal';
-import * as hudUtil from "../ar/hudUtil";
+import * as hudUtil from "../three/hudUtil";
 import {set_THREE_orig} from '../three/threeHelper';
 
 window.slidAR = slidAR;
