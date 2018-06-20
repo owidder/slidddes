@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import * as arTransform from './transform';
+import * as transform from './transform';
 
 const setXYZ = (newXYZ, currentXYZ) => {
     const x = _.isUndefined(newXYZ.x) ? currentXYZ.x : newXYZ.x;
@@ -15,7 +15,7 @@ export const toPosition = (object, newPosition, TWEEN, duration) => {
     const currentRotation = getRotation(object);
     const _newPosition = setXYZ(newPosition, currentPosition);
 
-    arTransform.moveTo(object, _newPosition, currentRotation, TWEEN, duration);
+    transform.moveTo(object, _newPosition, currentRotation, TWEEN, duration);
 
     return currentPosition;
 }
@@ -25,7 +25,7 @@ export const toRotation = (object, newRotation, TWEEN, duration) => {
     const currentRotation = getRotation(object);
     const _newRotation = setXYZ(newRotation, currentRotation);
 
-    arTransform.moveTo(object, currentPosition, _newRotation, TWEEN, duration);
+    transform.moveTo(object, currentPosition, _newRotation, TWEEN, duration);
 
     return currentRotation;
 }

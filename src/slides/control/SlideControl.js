@@ -7,7 +7,7 @@ import * as fct from '../../util/fct';
 import {slidarGlobal} from '../slidAR/slidarGlobal';
 import * as nonArSlides from '../nonArSlides';
 
-import * as arTransform from '../../three/transform';
+import * as transform from '../../three/transform';
 
 export const PAUSE_FUNCTION = 'pauseFunction';
 export const RESUME_FUNCTION = 'resumeFunction';
@@ -130,7 +130,7 @@ class SlideControl {
     nextSlide() {
         if(slidarGlobal.with3d) {
             const allObjects = this.getAllObjects();
-            arTransform.allNext(allObjects, this.TWEEN);
+            transform.allNext(allObjects, this.TWEEN);
             this.shiftForwardCurrentSlideId();
         }
         else {
@@ -178,7 +178,7 @@ class SlideControl {
 
     moveSlides(trueIfFwd, sendStatusFunction) {
         const allObjects = this.getAllObjects();
-        arTransform.allFwdBack(allObjects, this.TWEEN, trueIfFwd).then(() => {
+        transform.allFwdBack(allObjects, this.TWEEN, trueIfFwd).then(() => {
             if(trueIfFwd) {
                 this.shiftForwardCurrentSlideId();
             }
@@ -226,20 +226,20 @@ class SlideControl {
 
     moveOffsetOnAllSlides(offset) {
         const allObjects = this.getAllObjects();
-        arTransform.allMoveOffset(allObjects, this.TWEEN, offset);
+        transform.allMoveOffset(allObjects, this.TWEEN, offset);
     }
 
     moveToAbsolutePosition(slideId, position) {
         const object = this.getObject(slideId);
         if(_.isObject(object)) {
-            arTransform.moveTo(object, position, object.rotation, this.TWEEN);
+            transform.moveTo(object, position, object.rotation, this.TWEEN);
         }
     }
 
     moveToAbsoluteRotation(slideId, rotation) {
         const object = this.getObject(slideId);
         if(_.isObject(object)) {
-            arTransform.moveTo(object, object.position, rotation, this.TWEEN);
+            transform.moveTo(object, object.position, rotation, this.TWEEN);
         }
     }
 
@@ -298,7 +298,7 @@ class SlideControl {
     moveToAbsolutePositionRotation(slideId, position, rotation) {
         const object = this.getObject(slideId);
         if(_.isObject(object)) {
-            arTransform.moveTo(object, position, rotation, this.TWEEN);
+            transform.moveTo(object, position, rotation, this.TWEEN);
         }
     }
 
