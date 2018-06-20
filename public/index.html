@@ -6,10 +6,7 @@
     <meta http-equiv="origin-trial" data-feature="WebVR" data-expires="2017-06-06" content="ArfXzMSluPfAfoVDD+ne9oWykUyDeLFD/z4/0uRCdZ1491aSrytWyj7gnGhwK1/Tzg/D+UOvNgD2+L9PWqF5XwwAAABceyJvcmlnaW4iOiJodHRwczovL2FyZ29uanMuaW86NDQzIiwiZmVhdHVyZSI6IldlYlZSIiwiZXhwaXJ5IjoxNDk2NzcxODA0LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
     <meta name="theme-color" content="#333333">
 
-    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="stylesheet" type="text/css" href="./css/material-icons.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/protip.min.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/prism.css">
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -17,20 +14,6 @@
 </head>
 <body>
 <div id="container"></div>
-<div id="_hud" style="pointer-events:auto">
-    <div class="menu">
-        <button onclick="simplAR.move(10)" class="lefthud"><i class="material-icons">arrow_left_alt</i></button>
-        <button onclick="simplAR.move(-10)" class="righthud"><i class="material-icons">arrow_right_alt</i></button>
-    </div>
-</div>
-<script>
-    $(document).ready(function(){
-        $.protip();
-    });
-</script>
-<script src="../public/code/pages.js"></script>
-<script src="../public/code/code.js"></script>
-<script src="../public/code/stockprices.js"></script>
-<script src="../public/js/simplAR.js"></script>
+<div id="_hud"></div>
 </body>
 </html>

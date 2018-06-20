@@ -9,6 +9,8 @@ import {slidAR} from './slides/slidAR/slidAR';
 import {simplAR} from './simplAR/simplAR';
 import {slidarGlobal} from './slides/slidAR/slidarGlobal';
 
+import './slidddes.css';
+
 window.slidAR = slidAR;
 window.simplAR = simplAR;
 

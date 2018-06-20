@@ -1,0 +1,17 @@
+.slidecounter {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    background-color: grey;
+    color: white;
+    opacity: .5;
+}
+
+.activeslide::before {
+    content: "♥";
+}
+.activeslide:after {
+    border-color: lightgrey;
+    border-style: dotted;
+}
