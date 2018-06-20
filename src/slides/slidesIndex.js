@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import {setArPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/arPositions';
+import {setPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/arPositions';
 import {initThree} from '../three/threeApp';
 import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
@@ -55,7 +55,7 @@ const position3dSlides = async (rootSelector, slideCreateFunction, positionFunct
     const selection = await slideCreateFunction(rootSelector);
     slidarGlobal.selection = selection;
     selection.each(function (id, i) {
-        const object = setArPositionRotation(this, root, type, i, selection.size(), positionFunction);
+        const object = setPositionRotation(this, root, type, i, selection.size(), positionFunction);
         slideControl.addObject(id, object);
     });
 

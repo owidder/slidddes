@@ -1,5 +1,5 @@
 import Radars from './Radars';
-import {setArPositionRotation, TYPE_RING} from '../ar/arPositions';
+import {setPositionRotation, TYPE_RING} from '../ar/arPositions';
 import {init} from '../ar/argonApp';
 
 export const initRadars = () => {
@@ -7,6 +7,6 @@ export const initRadars = () => {
     const radars = new Radars(250);
     const radarSvgs = radars.draw();
     radarSvgs.each(function (d, i) {
-        setArPositionRotation(this, root, TYPE_RING, i, radars.numberOfRadars())
+        setPositionRotation(this, root, TYPE_RING, i, radars.numberOfRadars())
     });
 }

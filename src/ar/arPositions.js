@@ -221,7 +221,7 @@ const addDataToObject = (object, type, index, totalNum, positionFunction) => {
     object._data = objectData;
 }
 
-export const setArPositionRotation = (element, root, type, i, totalNum, positionFunction) => {
+export const setPositionRotation = (element, root, type, i, totalNum, positionFunction) => {
     const {position, rotation} = getArPositionRotation(type, i, totalNum, positionFunction);
     const object = addToRoot(element, root, position, rotation);
     addDataToObject(object, type, i, totalNum, positionFunction);
