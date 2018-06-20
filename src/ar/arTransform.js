@@ -1,4 +1,4 @@
-import {getArPositionRotation, setPositionRotationOnObject} from './positions';
+import {getArPositionRotation, setPositionRotationOnObject} from '../three/positions';
 
 const DEFAULT_DURATION = 1000;
 

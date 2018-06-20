@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
 
-import {ObjectData} from './ObjectData';
+import {ObjectData} from '../ar/ObjectData';
 
 export const TYPE_HELIX = "helix";
 export const TYPE_SPHERE = "sphere";

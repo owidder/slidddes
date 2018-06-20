@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import {setPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../ar/positions';
+import {setPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../three/positions';
 import {initThree} from '../three/threeApp';
 import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
