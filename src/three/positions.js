@@ -162,7 +162,7 @@ const addToRoot = (element, root, position, rotation) => {
     return object;
 }
 
-export const getArPositionRotation = (type, i, num, positionFunction, offset) => {
+export const getPositionRotation = (type, i, num, positionFunction, offset) => {
     let three3dObject;
 
     switch (type) {
@@ -222,7 +222,7 @@ const addDataToObject = (object, type, index, totalNum, positionFunction) => {
 }
 
 export const setPositionRotation = (element, root, type, i, totalNum, positionFunction) => {
-    const {position, rotation} = getArPositionRotation(type, i, totalNum, positionFunction);
+    const {position, rotation} = getPositionRotation(type, i, totalNum, positionFunction);
     const object = addToRoot(element, root, position, rotation);
     addDataToObject(object, type, i, totalNum, positionFunction);
 

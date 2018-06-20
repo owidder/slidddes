@@ -1,4 +1,4 @@
-import {getArPositionRotation, setPositionRotationOnObject} from './positions';
+import {getPositionRotation, setPositionRotationOnObject} from './positions';
 
 const DEFAULT_DURATION = 1000;
 
@@ -10,7 +10,7 @@ const nextPositionAndRotation = (object) => {
     const totalNum = object._data.getTotalNum();
     const nextIndex = object._data.getNextIndex();
     const positionFunction = object._data.getPositionFunction();
-    const {position, rotation} = getArPositionRotation(type, nextIndex, totalNum, positionFunction);
+    const {position, rotation} = getPositionRotation(type, nextIndex, totalNum, positionFunction);
 
     return {nextIndex, position, rotation}
 }
@@ -21,7 +21,7 @@ const fwdBackPositionAndRotation = (object, trueIfFwd) => {
     const nextIndex = trueIfFwd ? object._data.getPrevIndex() : object._data.getNextIndex();
     const positionFunction = object._data.getPositionFunction();
     const offset = object._data.getOffset();
-    const {position, rotation} = getArPositionRotation(type, nextIndex, totalNum, positionFunction, offset);
+    const {position, rotation} = getPositionRotation(type, nextIndex, totalNum, positionFunction, offset);
 
     return {nextIndex, position, rotation}
 }
@@ -32,7 +32,7 @@ const refreshPositionAndRotation = (object) => {
     const index = object._data.getIndex();
     const positionFunction = object._data.getPositionFunction();
     const offset = object._data.getOffset();
-    const {position, rotation} = getArPositionRotation(type, index, totalNum, positionFunction, offset);
+    const {position, rotation} = getPositionRotation(type, index, totalNum, positionFunction, offset);
 
     return {index, position, rotation}
 }
