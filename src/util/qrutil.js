@@ -1,4 +1,4 @@
-const QRCode = window.QRCode;
+import QRCode from 'qrcode';
 
 const getCurrentAddressWithRemoveText = (removeText) => {
     const url = window.location.href;
@@ -15,7 +15,9 @@ export const qrCurrentAddress = (selector, removeText) => {
 
 export const makeQrCode = (selector, text) => {
     const element = document.querySelector(selector);
-    return new QRCode(element, text);
+    const canvas = document.createElement('canvas');
+    element.appendChild(canvas);
+    QRCode.toCanvas(canvas, text);
 }
 
 export const qrUtil = {

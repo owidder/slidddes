@@ -47,6 +47,7 @@
     "promise": "8.0.1",
     "prop-types": "^15.6.1",
     "protip": "^1.4.16",
+    "qrcode": "^1.2.0",
     "react": "^16.4.0",
     "react-dev-utils": "^4.0.1",
     "react-dom": "^16.4.0",
