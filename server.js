@@ -1,7 +1,7 @@
 var express = require('express');
 var http = require('http');
 
-const commandServer = require('./serverSrc/slidAR/commandServer');
+const commandServer = require('./serverSrc/slidddes/commandServer');
 
 
 function startServer() {
