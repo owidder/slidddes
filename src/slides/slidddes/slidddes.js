@@ -34,7 +34,7 @@ const slowSnakes = {
     moveSlowSnakes, rinkeby, totalRewards, SvgField, SnakeField, snakeForms, RinkebyBlockCounter
 }
 
-export const slidAR = {
+export const slidddes = {
     d3,
     classUtil,
     highlight,

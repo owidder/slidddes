@@ -6,7 +6,7 @@ import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './contro
 import {slideControl} from './control/SlideControl';
 import * as key from './slidddes/key';
 import * as query from '../util/query';
-import * as slidAR from './slidddes/slidAR';
+import * as slidAR from './slidddes/slidddes';
 import {slidarGlobal} from './slidddes/slidarGlobal';
 import * as hudUtil from "../three/hudUtil";
 import {set_THREE_orig} from '../three/threeHelper';
