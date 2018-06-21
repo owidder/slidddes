@@ -63,25 +63,25 @@
         var timer1, timer2;
 
         function animate() {
-            slidAR.classUtil.setClass(".slide-title div.char", "xaxis", 100);
+            slidddes.classUtil.setClass(".slide-title div.char", "xaxis", 100);
             timer1 = setTimeout(function () {
-                slidAR.classUtil.setClass("#totaly", "totaly");
+                slidddes.classUtil.setClass("#totaly", "totaly");
             }, 5000);
             timer2 = setTimeout(function () {
-                slidAR.classUtil.setClass("#totalz", "totalz");
+                slidddes.classUtil.setClass("#totalz", "totalz");
             }, 10000);
         }
 
         function _animate() {
             clearTimeout(timer1);
             clearTimeout(timer2);
-            slidAR.classUtil.removeClass(".slide-title div.char", "xaxis");
-            slidAR.classUtil.removeClass("#totaly", "totaly");
-            slidAR.classUtil.removeClass("#totalz", "totalz");
+            slidddes.classUtil.removeClass(".slide-title div.char", "xaxis");
+            slidddes.classUtil.removeClass("#totaly", "totaly");
+            slidddes.classUtil.removeClass("#totalz", "totalz");
         }
 
 
-        slidAR.steps.set("title", [
+        slidddes.steps.set("title", [
             {f: animate, b: _animate, demo: true},
         ]);
     })()

@@ -6,12 +6,12 @@ import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './contro
 import {slideControl} from './control/SlideControl';
 import * as key from './slidddes/key';
 import * as query from '../util/query';
-import * as slidAR from './slidddes/slidddes';
+import * as slidddes from './slidddes/slidddes';
 import {slidddesGlobal} from './slidddes/slidddesGlobal';
 import * as hudUtil from "../three/hudUtil";
 import {set_THREE_orig} from '../three/threeHelper';
 
-window.slidAR = slidAR;
+window.slidddes = slidddes;
 
 const TWEEN = window.TWEEN;
 slideControl.setTWEEN(TWEEN);

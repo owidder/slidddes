@@ -46,39 +46,39 @@
         const ID = "the-snakes";
 
         function exit() {
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 100, 100);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 100, 100);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.dance01Forever(ID, snakeField, 180e3);
+            slidddes.slowSnakes.moveSlowSnakes.dance01Forever(ID, snakeField, 180e3);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
             "Far away in Block Chain Land there is a 100x100 matrix"
         ], "small glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
             "On the matrix there are snakes moving slowly ",
             "(hence the name 'SlowSnakes')."
         ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
             "Snakes gain rewards by moving north, east, south or west.",
             ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
             "A snake can steal the total rewards from another snake by moving on its head (the blinking rectangle).",
             ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par5", [
+        slidddes.coolText.glowText.create("#" + ID + " .par5", [
             "A snake also loses its total rewards to another snake by moving on its tail (all the non blinking rectangles)."
             ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par6", [
+        slidddes.coolText.glowText.create("#" + ID + " .par6", [
             "And you can create and control your very own snake...",
         ], "small glow");
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 

@@ -42,32 +42,32 @@
         const ID = "tail-collision";
 
         function exit() {
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.tailCollisionForever(ID, snakeField, 20000);
+            slidddes.slowSnakes.moveSlowSnakes.tailCollisionForever(ID, snakeField, 20000);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
             "Tail Collision"
         ], "normal glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
             "Moving on the tail of another snake is NOT a good idea!"
         ], "small glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
             "If you have positive total rewards you lose all of them to the other snake and go back to negative 100",
         ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
             "If you have negative total rewards you also get punished (how? try it out! ;)",
             ], "smaller");
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 

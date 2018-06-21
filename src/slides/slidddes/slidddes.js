@@ -46,7 +46,7 @@ export const slidddes = {
     canvas,
     demo,
     positionRotation,
-    slidarGlobal: slidddesGlobal,
+    slidddesGlobal: slidddesGlobal,
     math,
     qrUtil,
     counter,

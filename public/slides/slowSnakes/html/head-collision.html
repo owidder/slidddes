@@ -42,32 +42,32 @@
         const ID = "head-collision";
 
         function exit() {
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.headCollisionForever(ID, snakeField, 20000);
+            slidddes.slowSnakes.moveSlowSnakes.headCollisionForever(ID, snakeField, 20000);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
             "Head Collision"
         ], "normal glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
             "Whereas moving on the head of another snake is a GREAT thing to do!"
         ], "small glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
             "If the other snake has positive total rewards you get all of them and it falls back to negative 100",
         ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
             "BUT: Your snake has to be at least 1000 blocks old. If not this is treated like a tail collision (see slide before)",
             ], "smaller");
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 

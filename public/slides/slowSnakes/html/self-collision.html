@@ -42,32 +42,32 @@
         const ID = "self-collision";
 
         function exit() {
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.selfCollisionForever(ID, snakeField, 20000);
+            slidddes.slowSnakes.moveSlowSnakes.selfCollisionForever(ID, snakeField, 20000);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
             "Self Collision"
         ], "normal glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
             "Also crossing yourself is definitely not recommended"
         ], "small glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par3", [
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
             "If you have positive total rewards you'll lose all of them.",
         ], "smaller");
-        slidAR.coolText.glowText.create("#" + ID + " .par4", [
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
             "And even if you have negative total reward you'll get punished",
             ], "smaller");
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 

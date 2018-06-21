@@ -38,26 +38,26 @@
         const ID = "not-outside";
 
         function exit() {
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
 
         function enter() {
-            slidAR.slowSnakes.moveSlowSnakes.doNotMoveOutsideForever(ID, snakeField, 20000);
+            slidddes.slowSnakes.moveSlowSnakes.doNotMoveOutsideForever(ID, snakeField, 20000);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.coolText.glowText.create("#" + ID + " .par1", [
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
             "There is nothing outside the matrix!"
         ], "normal glow");
-        slidAR.coolText.glowText.create("#" + ID + " .par2", [
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
             "So don't try to move oustide!"
         ], "normal glow");
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 

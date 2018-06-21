@@ -10,7 +10,7 @@ import {slidddesGlobal} from './slides/slidddes/slidddesGlobal';
 
 import './slidddes.css';
 
-window.slidAR = slidddes;
+window.slidddes = slidddes;
 
 slidddesGlobal.slidesFolder = "slides/slowSnakes/html/";
 initSlides("#container", slowSnakes.init);

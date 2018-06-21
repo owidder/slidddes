@@ -24,31 +24,31 @@
         const ID = "title-cube";
 
         function exit() {
-            slidAR.cube.startStopAnimation(false)
-            slidAR.scripts.stopAllScriptsForSlideId(ID);
+            slidddes.cube.startStopAnimation(false)
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
         }
 
-        slidAR.cube.create("#_titlecube", 350);
-        slidAR.counter.create("#" + ID + " .cube-right", 2612771, 0, 2000);
+        slidddes.cube.create("#_titlecube", 350);
+        slidddes.counter.create("#" + ID + " .cube-right", 2612771, 0, 2000);
 
-        slidAR.coolText.glowText.create("#" + ID + " .cube-left", ["The","Block", "Chain", "Game"], "normal glow");
-        slidAR.coolText.title.create("#" + ID + " .cube-bottom", "Slow Snakes");
+        slidddes.coolText.glowText.create("#" + ID + " .cube-left", ["The","Block", "Chain", "Game"], "normal glow");
+        slidddes.coolText.title.create("#" + ID + " .cube-bottom", "Slow Snakes");
 
-        slidAR.slowSnakes.totalRewards.create("#" + ID + " .cube-top", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
+        slidddes.slowSnakes.totalRewards.create("#" + ID + " .cube-top", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
 
-        slidAR.slowSnakes.rinkeby.create("#" + ID + " .cube-back");
+        slidddes.slowSnakes.rinkeby.create("#" + ID + " .cube-back");
 
-        const snakeField = new slidAR.slowSnakes.SnakeField(ID, "#" + ID + " .cube-front", 300, 300, 30, 30);
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .cube-front", 300, 300, 30, 30);
 
         function enter() {
-            slidAR.cube.startStopAnimation(true)
-            slidAR.slowSnakes.moveSlowSnakes.writeSlowSnakesForever(ID, snakeField, 30000);
+            slidddes.cube.startStopAnimation(true)
+            slidddes.slowSnakes.moveSlowSnakes.writeSlowSnakesForever(ID, snakeField, 30000);
         }
 
-        slidAR.scripts.slideEnter(ID, enter);
-        slidAR.scripts.slideExit(ID, exit);
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
 
-        slidAR.initPhase.markSlideAsReady(ID);
+        slidddes.initPhase.markSlideAsReady(ID);
     })()
 
 
