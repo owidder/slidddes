@@ -2,17 +2,17 @@ import * as _ from 'lodash';
 
 import {slideControl} from '../control/SlideControl';
 import {createReverseStep} from './steps';
-import {slidarGlobal} from './slidarGlobal';
+import {slidddesGlobal} from './slidddesGlobal';
 import * as move from '../../three/move';
 
 const toPosition = (slideId, newPosition) => {
     const object = slideControl.getObject(slideId);
-    return move.toPosition(object, newPosition, slidarGlobal.TWEEN)
+    return move.toPosition(object, newPosition, slidddesGlobal.TWEEN)
 }
 
 const toRotation = (slideId, newRotation) => {
     const object = slideControl.getObject(slideId);
-    return move.toRotation(object, newRotation, slidarGlobal.TWEEN)
+    return move.toRotation(object, newRotation, slidddesGlobal.TWEEN)
 }
 
 const toPositionStepWithReverse = (slideId, newPosition) => {

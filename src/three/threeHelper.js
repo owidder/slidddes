@@ -1,4 +1,4 @@
-import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slides/slidddes/slidddesGlobal';
 
 import * as THREE_orig from 'three'
 
@@ -13,7 +13,7 @@ const set_THREE_orig = () => {
     require('three/examples/js/controls/TrackballControls.js') // eslint-disable-line
     require('three/examples/js/renderers/CSS3DRenderer.js') // eslint-disable-line
 
-    slidarGlobal.THREE = window.THREE;
+    slidddesGlobal.THREE = window.THREE;
 }
 
 export {

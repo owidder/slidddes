@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
 import {SvgField} from './SvgField';
-import {slidarGlobal} from '../slidarGlobal';
+import {slidddesGlobal} from '../slidddesGlobal';
 import {scripts} from '../scripting/scripts';
 
 const defaultSize = () => {
-    return Math.min(slidarGlobal.width, slidarGlobal.height) * .9;
+    return Math.min(slidddesGlobal.width, slidddesGlobal.height) * .9;
 }
 
 export class SnakeField {

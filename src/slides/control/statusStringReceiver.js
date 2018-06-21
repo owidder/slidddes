@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import {COMMAND_NEXT, COMMAND_PREV} from './commandExecutor';
 import {slideControl} from './SlideControl';
-import {slidarGlobal} from "../slidddes/slidarGlobal";
+import {slidddesGlobal} from "../slidddes/slidddesGlobal";
 
 const oneStep = (oneStepStr) => {
     const pair = oneStepStr.split("=");
@@ -23,7 +23,7 @@ const parseCurrentIdPart = (currentIdPartStr) => {
 }
 
 const parseNextPrevPart = (nextPrevPartStr) => {
-    if(slidarGlobal.with3d) {
+    if(slidddesGlobal.with3d) {
         switch (nextPrevPartStr) {
             case COMMAND_NEXT:
                 slideControl.fwdSlide();
@@ -40,12 +40,12 @@ const parseNextPrevPart = (nextPrevPartStr) => {
 }
 
 export const parse = (statusString) => {
-    if(!slidarGlobal.isMaster) {
+    if(!slidddesGlobal.isMaster) {
         const parts = statusString.split("#");
 
         parseStepPart(parts[0]);
         parseCurrentIdPart(parts[1]);
-        if(slidarGlobal.useArgon) {
+        if(slidddesGlobal.useArgon) {
             parseNextPrevPart(parts[2]);
         }
     }

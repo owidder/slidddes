@@ -1,4 +1,4 @@
-export const slidarGlobal = {
+export const slidddesGlobal = {
     with3d: undefined,
     isMaster: undefined,
     socket: undefined,

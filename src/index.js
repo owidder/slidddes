@@ -6,11 +6,11 @@ import {initSlides} from './slides/slidesIndex';
 import * as slowSnakes from "./slides/slowSnakes/slowSnakes";
 
 import {slidddes} from './slides/slidddes/slidddes';
-import {slidarGlobal} from './slides/slidddes/slidarGlobal';
+import {slidddesGlobal} from './slides/slidddes/slidddesGlobal';
 
 import './slidddes.css';
 
 window.slidAR = slidddes;
 
-slidarGlobal.slidesFolder = "slides/slowSnakes/html/";
+slidddesGlobal.slidesFolder = "slides/slowSnakes/html/";
 initSlides("#container", slowSnakes.init);

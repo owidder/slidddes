@@ -10,7 +10,7 @@ import {cube} from './cube';
 import {canvas} from './canvas';
 import {demo} from './demo';
 import {positionRotation} from './positionRotation';
-import {slidarGlobal} from './slidarGlobal';
+import {slidddesGlobal} from './slidddesGlobal';
 import {math} from '../../util/mathUtil';
 import {qrUtil} from '../../util/qrutil';
 import {counter} from './flipcounter/counter';
@@ -46,7 +46,7 @@ export const slidddes = {
     canvas,
     demo,
     positionRotation,
-    slidarGlobal,
+    slidarGlobal: slidddesGlobal,
     math,
     qrUtil,
     counter,

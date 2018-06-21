@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 
 import {log} from '../../util/log';
 import * as fct from '../../util/fct';
-import {slidarGlobal} from '../slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slidddes/slidddesGlobal';
 import * as nonArSlides from '../nonArSlides';
 
 import * as transform from '../../three/transform';
@@ -25,7 +25,7 @@ class SlideControl {
 
     setTWEEN(TWEEN) {
         this.TWEEN = TWEEN;
-        slidarGlobal.TWEEN = TWEEN;
+        slidddesGlobal.TWEEN = TWEEN;
     }
 
     getNumberOfSlides() {
@@ -128,7 +128,7 @@ class SlideControl {
     }
 
     nextSlide() {
-        if(slidarGlobal.with3d) {
+        if(slidddesGlobal.with3d) {
             const allObjects = this.getAllObjects();
             transform.allNext(allObjects, this.TWEEN);
             this.shiftForwardCurrentSlideId();
@@ -142,7 +142,7 @@ class SlideControl {
     gotoSlide(slideId) {
         if(slideId != this.currentSlideId) {
             this.setCurrentSlideId(slideId);
-            if(slidarGlobal.with3d) {
+            if(slidddesGlobal.with3d) {
                 this.initCamera(this.indexOfCurrentSlide());
             }
             else {
@@ -166,7 +166,7 @@ class SlideControl {
         const currentObject = this.getObject(currentSlideId);
         const newCameraPosition = this.cameraPositionForObject(currentObject);
         this.moveCameraToCurrentSlide();
-        new this.TWEEN.Tween(slidarGlobal.camera.position)
+        new this.TWEEN.Tween(slidddesGlobal.camera.position)
             .to({x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z}, (1 + Math.random()) * 2000)
             .easing(this.TWEEN.Easing.Exponential.InOut)
             .onComplete(() => {
@@ -191,8 +191,8 @@ class SlideControl {
     }
 
     fwdSlide(sendStatusFunction) {
-        if(slidarGlobal.with3d) {
-            if(slidarGlobal.moveCameraNotSlides) {
+        if(slidddesGlobal.with3d) {
+            if(slidddesGlobal.moveCameraNotSlides) {
                 this.moveCameraFwdBack(true, sendStatusFunction)
             }
             else {
@@ -208,8 +208,8 @@ class SlideControl {
     }
 
     backSlide(sendStatusFunction) {
-        if(slidarGlobal.with3d) {
-            if(slidarGlobal.moveCameraNotSlides) {
+        if(slidddesGlobal.with3d) {
+            if(slidddesGlobal.moveCameraNotSlides) {
                 this.moveCameraFwdBack(false, sendStatusFunction)
             }
             else {
@@ -253,8 +253,8 @@ class SlideControl {
     }
 
     initCamera(targetIndex = 0) {
-        const camera = slidarGlobal.camera;
-        const selection = slidarGlobal.selection;
+        const camera = slidddesGlobal.camera;
+        const selection = slidddesGlobal.selection;
 
         if(!_.isUndefined(camera)) {
             selection
@@ -266,31 +266,31 @@ class SlideControl {
                     camera.position.y = cameraPosition.y;
                     camera.position.z = cameraPosition.z;
 
-                    if(!_.isUndefined(slidarGlobal.controls)) {
-                        slidarGlobal.controls.target = object.position;
+                    if(!_.isUndefined(slidddesGlobal.controls)) {
+                        slidddesGlobal.controls.target = object.position;
                     }
                 })
         }
     }
 
     moveCameraToCurrentSlide() {
-        if(!_.isUndefined(slidarGlobal.controls)) {
+        if(!_.isUndefined(slidddesGlobal.controls)) {
             const currentSlideId = this.getCurrentSlideId();
             const currentObject = this.getObject(currentSlideId);
 
             if(this.TWEEN) {
-                const startPosition = {...slidarGlobal.controls.target};
+                const startPosition = {...slidddesGlobal.controls.target};
                 new this.TWEEN.Tween(startPosition)
                     .to({x: currentObject.position.x, y: currentObject.position.y, z: currentObject.position.z}, (1 + Math.random()) * 1000)
                     .onUpdate((currentPosition) => {
                         console.log(startPosition);
-                        slidarGlobal.controls.target = startPosition;
+                        slidddesGlobal.controls.target = startPosition;
                     })
                     .easing(this.TWEEN.Easing.Exponential.InOut)
                     .start();
             }
             else {
-                slidarGlobal.controls.target = currentObject.position;
+                slidddesGlobal.controls.target = currentObject.position;
             }
         }
     }

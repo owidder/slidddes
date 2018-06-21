@@ -1,7 +1,7 @@
-import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slides/slidddes/slidddesGlobal';
 
 const animate = (controls, render) => {
-    const TWEEN = slidarGlobal.TWEEN;
+    const TWEEN = slidddesGlobal.TWEEN;
 
     requestAnimationFrame(() => {animate(controls, render)});
     controls.update();
@@ -10,9 +10,9 @@ const animate = (controls, render) => {
 }
 
 export const initThree = (containerSelector) => {
-    const THREE = slidarGlobal.THREE;
-    const width = slidarGlobal.width;
-    const height = slidarGlobal.height;
+    const THREE = slidddesGlobal.THREE;
+    const width = slidddesGlobal.width;
+    const height = slidddesGlobal.height;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, .1, 100000);

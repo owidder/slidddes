@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import {log} from '../../util/log';
 import * as query from '../../util/query';
 
-import {slidarGlobal} from '../slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slidddes/slidddesGlobal';
 import {execute} from './commandExecutor';
 
 import * as webSocketHub from '../../websocket/webSocketHub';
@@ -31,7 +31,7 @@ export class CommandHub {
             execute(commandStr);
         }
 
-        slidarGlobal.socket = this.socket;
+        slidddesGlobal.socket = this.socket;
     }
 }
 
@@ -41,5 +41,5 @@ export const connect = () => {
         execute(commandStr);
     });
 
-    slidarGlobal.socket = socket;
+    slidddesGlobal.socket = socket;
 }

@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import {slidarGlobal} from '../slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slidddes/slidddesGlobal';
 import {slideControl} from './SlideControl';
 import * as wsSender from './wsSender';
 
@@ -24,7 +24,7 @@ const createStatusString = (nextPrev) => {
 }
 
 export const sendStatusString = (nextPrev) => {
-    if(wsSender.isOnline() && slidarGlobal.isMaster) {
+    if(wsSender.isOnline() && slidddesGlobal.isMaster) {
         const statusString = createStatusString(nextPrev);
         const commandString = "status " + statusString;
 

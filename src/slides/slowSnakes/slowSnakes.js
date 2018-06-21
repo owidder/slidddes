@@ -4,12 +4,12 @@ import {Slides} from "../Slides";
 import {staticSlide} from "../staticSlide";
 import * as slidesUtil from '../slidesUtil';
 import {slideControl} from '../control/SlideControl';
-import {slidarGlobal} from '../slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slidddes/slidddesGlobal';
 import {initPhase} from '../slidddes/initPhase';
 
 
-const width = slidarGlobal.width;
-const height = slidarGlobal.height;
+const width = slidddesGlobal.width;
+const height = slidddesGlobal.height;
 
 export const init = async (rootSelector, selectedFilename) => {
 

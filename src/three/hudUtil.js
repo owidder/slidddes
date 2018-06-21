@@ -3,12 +3,12 @@ import * as $ from 'jquery';
 
 import './hudUtil.css';
 
-import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
+import {slidddesGlobal} from '../slides/slidddes/slidddesGlobal';
 
 export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
     $(hudSelector).empty();
 
-    if(slidarGlobal.with3d) {
+    if(slidddesGlobal.with3d) {
         const menu = d3.selectAll(hudSelector)
             .append("div")
             .attr("class", "menu _hudmenu")
