@@ -1,4 +1,4 @@
-import {counter} from '../slidAR/flipcounter/counter';
+import {counter} from '../slidddes/flipcounter/counter';
 
 const time0 = 1528733890540;
 const blockCount0 = 2444254;

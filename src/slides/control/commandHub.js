@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import {log} from '../../util/log';
 import * as query from '../../util/query';
 
-import {slidarGlobal} from '../slidAR/slidarGlobal';
+import {slidarGlobal} from '../slidddes/slidarGlobal';
 import {execute} from './commandExecutor';
 
 import * as webSocketHub from '../../websocket/webSocketHub';

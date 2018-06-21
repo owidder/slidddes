@@ -1,4 +1,4 @@
-import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
+import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
 
 import * as THREE_orig from 'three'
 

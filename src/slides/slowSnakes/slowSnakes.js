@@ -4,8 +4,8 @@ import {Slides} from "../Slides";
 import {staticSlide} from "../staticSlide";
 import * as slidesUtil from '../slidesUtil';
 import {slideControl} from '../control/SlideControl';
-import {slidarGlobal} from '../slidAR/slidarGlobal';
-import {initPhase} from '../slidAR/initPhase';
+import {slidarGlobal} from '../slidddes/slidarGlobal';
+import {initPhase} from '../slidddes/initPhase';
 
 
 const width = slidarGlobal.width;

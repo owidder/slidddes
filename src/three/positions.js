@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
+import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
 
 import {ObjectData} from './ObjectData';
 

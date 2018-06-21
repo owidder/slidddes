@@ -5,8 +5,8 @@ import './tween/tweenHelper';
 import {initSlides} from './slides/slidesIndex';
 import * as slowSnakes from "./slides/slowSnakes/slowSnakes";
 
-import {slidAR} from './slides/slidAR/slidAR';
-import {slidarGlobal} from './slides/slidAR/slidarGlobal';
+import {slidAR} from './slides/slidddes/slidAR';
+import {slidarGlobal} from './slides/slidddes/slidarGlobal';
 
 import './slidddes.css';
 

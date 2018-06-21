@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 
 import {log} from '../../util/log';
 import * as fct from '../../util/fct';
-import {slidarGlobal} from '../slidAR/slidarGlobal';
+import {slidarGlobal} from '../slidddes/slidarGlobal';
 import * as nonArSlides from '../nonArSlides';
 
 import * as transform from '../../three/transform';

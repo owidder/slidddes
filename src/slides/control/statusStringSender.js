@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import {slidarGlobal} from '../slidAR/slidarGlobal';
+import {slidarGlobal} from '../slidddes/slidarGlobal';
 import {slideControl} from './SlideControl';
 import * as wsSender from './wsSender';
 

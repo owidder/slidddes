@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import {COMMAND_NEXT, COMMAND_PREV} from './commandExecutor';
 import {slideControl} from './SlideControl';
-import {slidarGlobal} from "../slidAR/slidarGlobal";
+import {slidarGlobal} from "../slidddes/slidarGlobal";
 
 const oneStep = (oneStepStr) => {
     const pair = oneStepStr.split("=");

@@ -4,10 +4,10 @@ import {setPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringIni
 import {initThree} from '../three/threeApp';
 import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
-import * as key from './slidAR/key';
+import * as key from './slidddes/key';
 import * as query from '../util/query';
-import * as slidAR from './slidAR/slidAR';
-import {slidarGlobal} from './slidAR/slidarGlobal';
+import * as slidAR from './slidddes/slidAR';
+import {slidarGlobal} from './slidddes/slidarGlobal';
 import * as hudUtil from "../three/hudUtil";
 import {set_THREE_orig} from '../three/threeHelper';
 

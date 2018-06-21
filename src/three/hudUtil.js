@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 
 import './hudUtil.css';
 
-import {slidarGlobal} from '../slides/slidAR/slidarGlobal';
+import {slidarGlobal} from '../slides/slidddes/slidarGlobal';
 
 export const addLeftRightButtons = (hudSelector, onLeftClick, onRightClick) => {
     $(hudSelector).empty();
