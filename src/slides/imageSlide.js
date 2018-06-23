@@ -1,13 +1,15 @@
 import * as d3 from 'd3';
 
-const create = (slideId, pathOrUrl) => {
-
+const create = (slideId, config) => {
     const selector = "#" + slideId;
     d3.select(selector)
         .append('img')
-        .attr('src', pathOrUrl);
+        .attr('src', config.pathToImage);
+
+    return Promise.resolve();
 }
 
 export const imageSlide = {
     create
 }
+
