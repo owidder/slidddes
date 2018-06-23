@@ -1,4 +1,6 @@
-import * as d3 from 'd3';
+import * as _d3 from 'd3';
+
+const d3 = _d3;
 
 const create = (slideId, config) => {
     const selector = "#" + slideId;
