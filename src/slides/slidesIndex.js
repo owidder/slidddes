@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import {setPositionRotation, TYPE_RING, TYPE_SPHERE, TYPE_SPHERE_RANDOM, ringInit, sphereInit, randomSphereInit} from '../three/positions';
 import {initThree} from '../three/threeApp';
-import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV} from './control/commandExecutor';
+import {executeCommand, COMMAND_INIT, COMMAND_NEXT, COMMAND_PREV, COMMAND_NEXT_FOREVER} from './control/commandExecutor';
 import {slideControl} from './control/SlideControl';
 import * as key from './slidddes/key';
 import * as query from '../util/query';
@@ -63,11 +63,10 @@ const position3dSlides = async (rootSelector, slideCreateFunction, positionFunct
 }
 
 export const initSlides = async (rootSelector, slideCreateFunction) => {
-    key.init();
-
     const type = query.paramValue("type") || TYPE_RING;
     const radius = query.paramValue("radius");
     const hud = query.paramValue("hud");
+    const show = query.paramValue("show");
 
     const positionFunction = createPositionFunction(type, radius);
 
@@ -93,5 +92,14 @@ export const initSlides = async (rootSelector, slideCreateFunction) => {
             });
     }
 
-    executeCommand(COMMAND_INIT);
+    if(show > 0) {
+        setTimeout(() => {
+            executeCommand(COMMAND_NEXT_FOREVER);
+        }, 1000)
+    }
+    else {
+        key.init();
+        executeCommand(COMMAND_INIT);
+    }
+
 }

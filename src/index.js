@@ -3,7 +3,6 @@ import 'materialize-css/dist/css/materialize.css';
 import './tween/tweenHelper';
 
 import {initSlides} from './slides/slidesIndex';
-import * as slowSnakes from "./slides/slowSnakes/slowSnakes";
 import {createSlides} from './slides/createSlides';
 
 import {slidddes} from './slides/slidddes/slidddes';
