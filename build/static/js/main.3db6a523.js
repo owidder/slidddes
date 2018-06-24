@@ -110799,7 +110799,7 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageSlide_css__ = __webpack_require__(608);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageSlide_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__imageSlide_css__);
-var d3=__WEBPACK_IMPORTED_MODULE_0_d3__;var create=function create(slideId,config){var selector="#"+slideId;d3.select(selector).append('img').attr("class","img-slide").attr('src',config.pathToImage);return Promise.resolve();};var imageSlide={create:create};
+var d3=__WEBPACK_IMPORTED_MODULE_0_d3__;var create=function create(slideId,config){return new Promise(function(resolve){var selector="#"+slideId;d3.select(selector).append('img').attr("class","img-slide");var imageElement=document.querySelector(selector+" .img-slide");var image=new Image();image.onload=function(){imageElement.src=this.src;resolve();};image.src=config.pathToImage;});};var imageSlide={create:create};
 
 /***/ }),
 /* 608 */
@@ -110815,4 +110815,4 @@ var d3=__WEBPACK_IMPORTED_MODULE_0_d3__;var create=function create(slideId,confi
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.f584a80c.js.map
+//# sourceMappingURL=main.3db6a523.js.map
