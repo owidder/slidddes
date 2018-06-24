@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as $ from 'jquery';
 import * as d3 from 'd3';
 
+import {multiplyPosition} from '../../util/mathUtil';
 import {log} from '../../util/log';
 import * as fct from '../../util/fct';
 import {slidddesGlobal} from '../slidddes/slidddesGlobal';
@@ -168,15 +169,19 @@ class SlideControl {
         const currentSlideId = this.getCurrentSlideId();
         const currentObject = this.getObject(currentSlideId);
         const newCameraPosition = this.cameraPositionForObject(currentObject, factor);
+        const newControlTarget = multiplyPosition(currentObject.position, -1.0);
 
-        return this.moveCameraTo(newCameraPosition, duration);
+        return Promise.all([
+            this.moveCameraTo(newCameraPosition, duration),
+            this.moveControlTargetTo(newControlTarget, duration)
+        ])
     }
 
     async moveCameraFwdBack(trueIfFwd, sendStatusFunction) {
         const self = this;
         this.runSlideExitFunction();
 
-        await this.moveCameraAway(3000);
+        //await this.moveCameraAway(3000);
 
         if(trueIfFwd) {
             this.shiftForwardCurrentSlideId();
@@ -278,13 +283,8 @@ class SlideControl {
         }
     }
 
-    cameraPositionForObject(object, factor) {
-        const _factor = factor > 0 ? factor : .95;
-        return {
-            x: object.position.x * _factor,
-            y: object.position.y * _factor,
-            z: object.position.z * _factor
-        };
+    cameraPositionForObject(object, factor = .95) {
+        return multiplyPosition(object.position, factor);
     }
 
     initCamera(targetIndex = 0) {

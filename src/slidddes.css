@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 .slidecounter {
     position: fixed;
     top: 0px;
