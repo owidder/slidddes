@@ -309,34 +309,26 @@ class SlideControl {
     }
 
     moveCameraToCurrentSlide(duration) {
-        if(!_.isUndefined(slidddesGlobal.controls)) {
-            return new Promise((resolve) => {
-                const currentSlideId = this.getCurrentSlideId();
-                const currentObject = this.getObject(currentSlideId);
+        const currentSlideId = this.getCurrentSlideId();
+        const currentObject = this.getObject(currentSlideId);
 
-                if(this.TWEEN) {
-                    const startPosition = {...slidddesGlobal.controls.target};
-                    new this.TWEEN.Tween(startPosition)
-                        .to({x: currentObject.position.x, y: currentObject.position.y, z: currentObject.position.z}, (1 + Math.random()) * duration)
-                        .onUpdate((currentPosition) => {
-                            console.log(startPosition);
-                            slidddesGlobal.controls.target = startPosition;
-                        })
-                        .easing(this.TWEEN.Easing.Linear.None)
-                        .onComplete(() => {
-                            resolve();
-                        })
-                        .start();
-                }
-                else {
-                    slidddesGlobal.controls.target = currentObject.position;
+        return this.moveControlTargetTo(currentObject.position, duration);
+    }
+
+    moveControlTargetTo(newControlTargetPosition, duration) {
+        return new Promise((resolve) => {
+            const startPosition = {...slidddesGlobal.controls.target};
+            new this.TWEEN.Tween(startPosition)
+                .to({x: newControlTargetPosition.x, y: newControlTargetPosition.y, z: newControlTargetPosition.z}, (1 + Math.random()) * duration)
+                .onUpdate((currentPosition) => {
+                    slidddesGlobal.controls.target = startPosition;
+                })
+                .easing(this.TWEEN.Easing.Linear.None)
+                .onComplete(() => {
                     resolve();
-                }
-            })
-        }
-        else {
-            return Promise.resolve();
-        }
+                })
+                .start();
+        })
     }
 
     moveToAbsolutePositionRotation(slideId, position, rotation) {
