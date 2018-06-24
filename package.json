@@ -84,7 +84,7 @@
       "changeOrigin": true
     }
   },
-  "homepage": "https://owidder.github.io/radAR/build",
+  "homepage": "https://owidder.github.io/slidddes/build",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
