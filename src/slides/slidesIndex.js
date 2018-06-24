@@ -51,8 +51,8 @@ const createPositionFunction = (type, radius) => {
     }
 }
 
-const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root) => {
-    const selection = await slideCreateFunction(rootSelector);
+const position3dSlides = async (rootSelector, slideCreateFunction, positionFunction, type, root, size) => {
+    const selection = await slideCreateFunction(rootSelector, undefined, size);
     slidddesGlobal.selection = selection;
     selection.each(function (id, i) {
         const object = setPositionRotation(this, root, type, i, selection.size(), positionFunction);
@@ -67,6 +67,7 @@ export const initSlides = async (rootSelector, slideCreateFunction) => {
     const radius = query.paramValue("radius");
     const hud = query.paramValue("hud");
     const show = query.paramValue("show");
+    const size = query.paramValue("size");
 
     const positionFunction = createPositionFunction(type, radius);
 
@@ -78,7 +79,7 @@ export const initSlides = async (rootSelector, slideCreateFunction) => {
     slidddesGlobal.controls = controls;
     slidddesGlobal.camera = camera;
 
-    await position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene);
+    await position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene, size);
 
     renderer.render(scene, camera);
 
