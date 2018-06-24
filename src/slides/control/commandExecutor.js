@@ -20,6 +20,7 @@ const parse = (commandStr) => {
 export const COMMAND_FWD = "fwd";
 export const COMMAND_BACK = "back";
 export const COMMAND_NEXT = "next";
+export const COMMAND_NEXT_FOREVER = "next-forever";
 export const COMMAND_PREV = "prev";
 export const COMMAND_LAST = "last";
 export const COMMAND_FIRST = "first";
@@ -61,6 +62,10 @@ export const executeCommand = async (command, argument) => {
 
         case COMMAND_NEXT:
             slideControl.fwdSlide(() => sendStatusString(COMMAND_NEXT));
+            break;
+
+        case COMMAND_NEXT_FOREVER:
+            slideControl.fwdSlideForever();
             break;
 
         case COMMAND_PREV:

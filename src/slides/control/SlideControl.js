@@ -195,34 +195,51 @@ class SlideControl {
     }
 
     moveSlides(trueIfFwd, sendStatusFunction) {
-        const allObjects = this.getAllObjects();
-        transform.allFwdBack(allObjects, this.TWEEN, trueIfFwd).then(() => {
-            if(trueIfFwd) {
-                this.shiftForwardCurrentSlideId();
-            }
-            else {
-                this.shiftBackwardCurrentSlideId();
-            }
-            fct.call(sendStatusFunction);
-            this.moveCameraToCurrentSlide();
+        return new Promise((resolve) => {
+            const allObjects = this.getAllObjects();
+            transform.allFwdBack(allObjects, this.TWEEN, trueIfFwd).then(() => {
+                if(trueIfFwd) {
+                    this.shiftForwardCurrentSlideId();
+                }
+                else {
+                    this.shiftBackwardCurrentSlideId();
+                }
+                fct.call(sendStatusFunction);
+                this.moveCameraToCurrentSlide(1000).then(() => {
+                    resolve();
+                })
+            })
+        })
+    }
+
+    fwdSlideForever() {
+        this.fwdSlide().then(() => {
+            this.fwdSlideForever();
         })
     }
 
     fwdSlide(sendStatusFunction) {
-        if(slidddesGlobal.with3d) {
-            if(slidddesGlobal.moveCameraNotSlides) {
-                this.moveCameraFwdBack(true, sendStatusFunction)
+        return new Promise((resolve) => {
+            if(slidddesGlobal.with3d) {
+                if(slidddesGlobal.moveCameraNotSlides) {
+                    this.moveCameraFwdBack(true, sendStatusFunction).then(() => {
+                        resolve();
+                    })
+                }
+                else {
+                    this.moveSlides(true, sendStatusFunction).then(() => {
+                        resolve();
+                    })
+                }
             }
             else {
-                this.moveSlides(true, sendStatusFunction);
+                this.shiftForwardCurrentSlideId();
+                fct.callWithPromise(sendStatusFunction).then(() => {
+                    nonArSlides.nextSlide(this.currentSlideId);
+                    resolve();
+                });
             }
-        }
-        else {
-            this.shiftForwardCurrentSlideId();
-            fct.callWithPromise(sendStatusFunction).then(() => {
-                nonArSlides.nextSlide(this.currentSlideId);
-            });
-        }
+        })
     }
 
     backSlide(sendStatusFunction) {
