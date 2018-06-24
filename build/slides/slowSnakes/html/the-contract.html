@@ -1,0 +1,60 @@
+<style>
+    #the-contract .inner-container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #the-contract .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #the-contract .contract img {
+        width: 80vw;
+    }
+
+    #the-contract .qrcode {
+        transform: scale(.2);
+    }
+
+    #the-contract img {
+        display: block;
+        max-width: 70vw;
+        width: auto;
+        height: auto;
+    }
+
+    #the-contract .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/slowSnakesContract.png">
+        </div>
+        <div class="text"></div>
+    </div>
+    <div class="subtext">You can find it here: <a href="https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c" target="_blank">https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "the-contract";
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", ["...via a smart contract", "on the Rinkeby testnet",], "normal glow");
+        slidddes.qrUtil.makeQrCode("#" + ID + " .qrcode", "https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

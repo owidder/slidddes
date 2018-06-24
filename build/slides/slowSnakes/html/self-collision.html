@@ -1,0 +1,74 @@
+<style>
+    #self-collision .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    #self-collision .text-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80vh;
+        width: 100%;
+    }
+
+    #self-collision .divider {
+        width: 50%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="matrix"></div>
+    <div class="text-container-flex">
+        <div class="par1"></div>
+        <div class="divider"></div>
+        <div class="par2"></div>
+        <div class="divider"></div>
+        <div class="par3"></div>
+        <div class="divider"></div>
+        <div class="par4"></div>
+    </div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "self-collision";
+
+        function exit() {
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
+        }
+
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 20, 20);
+
+        function enter() {
+            slidddes.slowSnakes.moveSlowSnakes.selfCollisionForever(ID, snakeField, 20000);
+        }
+
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
+
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
+            "Self Collision"
+        ], "normal glow");
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
+            "Also crossing yourself is definitely not recommended"
+        ], "small glow");
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
+            "If you have positive total rewards you'll lose all of them.",
+        ], "smaller");
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
+            "And even if you have negative total reward you'll get punished",
+            ], "smaller");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

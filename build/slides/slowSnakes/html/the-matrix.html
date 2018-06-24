@@ -1,0 +1,27 @@
+<style>
+    #the-matrix .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+<div class="container-flex">
+    <div class="matrix"></div>
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "the-matrix";
+
+        new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 100, 100);
+        slidddes.coolText.glowText.create("#" + ID + " .text", ["Far away in", "Block Chain Land", "there is a", "100x100 matrix..."]);
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

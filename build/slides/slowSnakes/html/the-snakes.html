@@ -1,0 +1,85 @@
+<style>
+    #the-snakes .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    #the-snakes .text-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80vh;
+        width: 100%;
+    }
+
+    #the-snakes .divider {
+        width: 50%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="matrix"></div>
+    <div class="text-container-flex">
+        <div class="par1"></div>
+        <div class="divider"></div>
+        <div class="par2"></div>
+        <div class="divider"></div>
+        <div class="par3"></div>
+        <div class="divider"></div>
+        <div class="par4"></div>
+        <div class="divider"></div>
+        <div class="par5"></div>
+        <div class="divider"></div>
+        <div class="par6"></div>
+    </div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "the-snakes";
+
+        function exit() {
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
+        }
+
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .matrix", undefined, undefined, 100, 100);
+
+        function enter() {
+            slidddes.slowSnakes.moveSlowSnakes.dance01Forever(ID, snakeField, 180e3);
+        }
+
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
+
+        slidddes.coolText.glowText.create("#" + ID + " .par1", [
+            "Far away in Block Chain Land there is a 100x100 matrix"
+        ], "small glow");
+        slidddes.coolText.glowText.create("#" + ID + " .par2", [
+            "On the matrix there are snakes moving slowly ",
+            "(hence the name 'SlowSnakes')."
+        ], "smaller");
+        slidddes.coolText.glowText.create("#" + ID + " .par3", [
+            "Snakes gain rewards by moving north, east, south or west.",
+            ], "smaller");
+        slidddes.coolText.glowText.create("#" + ID + " .par4", [
+            "A snake can steal the total rewards from another snake by moving on its head (the blinking rectangle).",
+            ], "smaller");
+        slidddes.coolText.glowText.create("#" + ID + " .par5", [
+            "A snake also loses its total rewards to another snake by moving on its tail (all the non blinking rectangles)."
+            ], "smaller");
+        slidddes.coolText.glowText.create("#" + ID + " .par6", [
+            "And you can create and control your very own snake...",
+        ], "small glow");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

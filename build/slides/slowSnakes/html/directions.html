@@ -1,0 +1,62 @@
+<style>
+    #directions .inner-container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #directions .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #directions .contract img {
+        width: 80vw;
+    }
+
+    #directions .qrcode {
+        transform: scale(.2);
+    }
+
+    #directions img {
+        display: block;
+        max-width: 70vw;
+        width: auto;
+        height: auto;
+    }
+
+    #directions .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/directions.png">
+        </div>
+        <div class="text"></div>
+    </div>
+    <div class="subtext">Go to: <a href="https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c" target="_blank">https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "directions";
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", [
+            "And when the time has come to move your snake, use the south/west/east/north methods of the smart contract",
+        ], "small glow");
+        slidddes.qrUtil.makeQrCode("#" + ID + " .qrcode", "https://rinkeby.etherscan.io/address/0xA27D8E863435cf555122665c5C46b91cE62Df63c");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

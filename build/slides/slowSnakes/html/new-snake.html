@@ -1,0 +1,65 @@
+<style>
+    #new-snake .container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #new-snake .divider {
+        width: 70%;
+        flex-shrink: 1;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+    #new-snake .divider.small {
+        width: 10%;
+    }
+
+    #new-snake .qrcode {
+        transform: scale(.2);
+    }
+
+    #new-snake img {
+        display: block;
+        max-width: 65vw;
+        width: auto;
+        height: auto;
+    }
+
+    #empty-slot .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="field">
+        <img src="./slides/slowSnakes/img/new-snake.png">
+    </div>
+    <div class="divider"></div>
+    <div class="text"></div>
+    <div class="divider small"></div>
+    <div class="subtext">Go to: <a href="http://165.227.137.94:1338/index.html?wsHost=1" target="_blank">http://165.227.137.94:1338/index.html?wsHost=1</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "new-snake";
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", [
+            "Back on the field you can now see your new snake ",
+            "(may take a little until the transaction is gone through)",
+        ], "small glow");
+        slidddes.qrUtil.makeQrCode("#" + ID + " .qrcode", "http://165.227.137.94:1338/index.html?wsHost=1");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

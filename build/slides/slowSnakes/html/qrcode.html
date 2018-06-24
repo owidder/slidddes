@@ -1,0 +1,38 @@
+<style>
+
+    #qrcode .text {
+        margin-left: 30%;
+        font-size: 2em;
+    }
+
+    .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+</style>
+
+<div class="container-flex">
+    <div class="qrcode"></div>
+    <div class="text"></div>
+</div>
+
+
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "qrcode";
+
+        const address = "http://165.227.137.94:1338/index.html?wsHost=1";
+        slidddes.qrUtil.makeQrCode("#qrcode .qrcode", address);
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", [
+            "Justa sneak preview",
+        ], "middle-large");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+</script>

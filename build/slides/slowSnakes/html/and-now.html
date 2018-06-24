@@ -1,0 +1,25 @@
+<style>
+    #and-now .container-flex {
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+<div class="container-flex">
+    <div class="text"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "and-now";
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", ["And now ?"], "larger glow");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

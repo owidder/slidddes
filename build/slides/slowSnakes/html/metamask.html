@@ -1,0 +1,61 @@
+<style>
+    #metamask .inner-container-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #metamask .outer-container-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #metamask .contract img {
+        width: 80vw;
+    }
+
+    #metamask .qrcode {
+        transform: scale(.2);
+    }
+
+    #metamask img {
+        display: block;
+        max-width: 50vw;
+        width: auto;
+        height: auto;
+    }
+
+    #metamask .subtext {
+        font-size: 1.5em;
+    }
+
+</style>
+
+<div class="outer-container-flex">
+    <div class="inner-container-flex">
+        <div class="contract">
+            <img src="./slides/slowSnakes/img/metamask.png">
+        </div>
+        <div class="text"></div>
+    </div>
+    <div class="subtext">Go to: <a href="https://metamask.io/" target="_blank">https://metamask.io/</a></div>
+    <div class="qrcode"></div>
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+        const ID = "metamask";
+
+        slidddes.coolText.glowText.create("#" + ID + " .text", ["Install the Metamask browser plugin",], "normal glow");
+        slidddes.qrUtil.makeQrCode("#" + ID + " .qrcode", "https://metamask.io/");
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>

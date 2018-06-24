@@ -1,0 +1,55 @@
+<style>
+
+    @keyframes graph-animate-cube {
+        33% {transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg)}
+        66% {transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+    }
+
+    #title-cube .animate-cube {
+        animation: graph-animate-cube 100s infinite ease-in-out;
+    }
+
+</style>
+
+<div id="_titlecube">
+</div>
+
+<script>
+
+    /* global slidddes */
+
+    (function () {
+
+        const ID = "title-cube";
+
+        function exit() {
+            slidddes.cube.startStopAnimation(false)
+            slidddes.scripts.stopAllScriptsForSlideId(ID);
+        }
+
+        slidddes.cube.create("#_titlecube", 350);
+        slidddes.counter.create("#" + ID + " .cube-right", 2612771, 0, 2000);
+
+        slidddes.coolText.glowText.create("#" + ID + " .cube-left", ["The","Block", "Chain", "Game"], "normal glow");
+        slidddes.coolText.title.create("#" + ID + " .cube-bottom", "Slow Snakes");
+
+        slidddes.slowSnakes.totalRewards.create("#" + ID + " .cube-top", ["geek", "poke", "_1337", "_42", "snk", "slw"]);
+
+        slidddes.slowSnakes.rinkeby.create("#" + ID + " .cube-back");
+
+        const snakeField = new slidddes.slowSnakes.SnakeField(ID, "#" + ID + " .cube-front", 300, 300, 30, 30);
+
+        function enter() {
+            slidddes.cube.startStopAnimation(true)
+            slidddes.slowSnakes.moveSlowSnakes.writeSlowSnakesForever(ID, snakeField, 30000);
+        }
+
+        slidddes.scripts.slideEnter(ID, enter);
+        slidddes.scripts.slideExit(ID, exit);
+
+        slidddes.initPhase.markSlideAsReady(ID);
+    })()
+
+
+</script>
