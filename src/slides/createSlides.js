@@ -4,7 +4,6 @@ import {Slides} from "./Slides";
 import {imageSlide} from './imageSlide';
 import {slideControl} from './control/SlideControl';
 import {slidddesGlobal} from './slidddes/slidddesGlobal';
-import {Config} from './Config';
 
 const width = slidddesGlobal.width;
 const height = slidddesGlobal.height;
@@ -21,7 +20,7 @@ export const createSlides = async (rootSelector, selectedImgName) => {
         const id = idFromString(imgName);
         if(_.isUndefined(selectedImgName) || id == idFromString(selectedImgName)) {
             slides.addOne(id);
-            const config = new Config();
+            const config = {};
             config.pathToImage = "img/" + imgName;
             slideControl.addSlideId(id);
             slideControl.registerConfig(id, config);
