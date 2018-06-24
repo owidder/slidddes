@@ -57,6 +57,7 @@ export const createSlides = async (rootSelector, selectedImgName) => {
         'hahn-small.jpg',
         'hase-small.jpg',
         'heineken-small.jpg',
+        'hund-small.jpg',
         'ibiza-small.jpg',
         'jps-small.jpg',
         'koeln-small.jpg',
