@@ -312,7 +312,11 @@ class SlideControl {
         const currentSlideId = this.getCurrentSlideId();
         const currentObject = this.getObject(currentSlideId);
 
-        return this.moveControlTargetTo(currentObject.position, duration);
+        return this.moveControlTargetTo({
+            x: currentObject.position.x,
+            y: currentObject.position.y,
+            z: currentObject.position.z
+        }, duration);
     }
 
     moveControlTargetTo(newControlTargetPosition, duration) {

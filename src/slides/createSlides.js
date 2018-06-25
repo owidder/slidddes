@@ -17,7 +17,7 @@ const replaceSize = (name, size) => {
     return name.replace('<size>', size);
 }
 
-export const createSlides = async (rootSelector, selectedImgName, size = 'small') => {
+export const createSlides = async (rootSelector, selectedImgName) => {
 
     const slides = new Slides(rootSelector, width, height);
 
@@ -85,7 +85,7 @@ export const createSlides = async (rootSelector, selectedImgName, size = 'small'
         'voegel-<size>.jpg',
     ]
 
-    const imgNames = templateImgNames.map(templateImgName => replaceSize(templateImgName, size));
+    const imgNames = templateImgNames.map(templateImgName => replaceSize(templateImgName, slidddesGlobal.size));
 
     await Promise.all(imgNames.map(imgName => create(imgName)));
 

@@ -12,4 +12,5 @@ export const slidddesGlobal = {
     selection: undefined,
     moveCameraNotSlides: undefined,
     slidesFolder: "slides/slowSnakes/html/",
+    size: "small"
 }

@@ -114,7 +114,7 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx|.ts)$/,
+        test: /\.(js|jsx|ts)$/,
         enforce: 'pre',
         use: [
           {
@@ -145,7 +145,7 @@ module.exports = {
           },
           // Process JS with Babel.
           {
-            test: /\.(js|jsx|.ts)$/,
+            test: /\.(js|jsx|ts)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {

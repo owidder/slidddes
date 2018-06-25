@@ -78,6 +78,7 @@ export const initSlides = async (rootSelector, slideCreateFunction) => {
     const {scene, camera, renderer, controls} = initThree("#container");
     slidddesGlobal.controls = controls;
     slidddesGlobal.camera = camera;
+    slidddesGlobal.size = _.isEmpty(size) ? "small" : size;
 
     await position3dSlides(rootSelector, slideCreateFunction, positionFunction, type, scene, size);
 
